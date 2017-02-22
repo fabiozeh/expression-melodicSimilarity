@@ -40,8 +40,8 @@ for ii = 1:(length(r)-1)
 end
 r(ii+1,1) = rms(wavfile(ptr:end));
 
-r = [[0; (step/sRate)*(1:(length(r)-1))'], r];
-csvwrite([dataFolder sep 'analysis' sep 'rms.csv'], r);
+r = [[0; (step/sRate)*(1:(length(r)-1))'], 20*log(r)]; % r in dBFS
+csvwrite([dataFolder sep 'analysis' sep 'loudness.csv'], r);
 
 % compute average energy around each performed note
 perfmidi = computeVelocity(perfmidi, r);
