@@ -5,30 +5,55 @@ if isunix(), sep = '/'; else sep = '\'; end
 dataFolder = ['..' sep 'data' sep 'bachManual'];
 automaticNoteDetection = 0;
 
-%% Load the files for score and performance
+%% Load the required libraries and files for score and performance
+
+% include miditoolbox
+% TODO
 
 % Automatic note detection
 if automaticNoteDetection
     % perform note onset detection with pYin vamp plugin (running script)
-    % TODO
-end
-
-perfmidi = readmidi([dataFolder sep 'input' sep 'perfAlignment.mid']);
-
-if automaticNoteDetection
-    if isunix()
-        !mv ../data/bachAutom/input/performance.mid ../data/bachAutom/analysis/perfAlignment.mid
-    else
-        !move ..\data\bachAutom\input\performance.mid ..\data\bachAutom\analysis\perfAlignment.mid
-    end
-end
     
+    if isunix
+        % set VAMP_PATH to include ../resources/pYin
+        exportCommand = 'export VAMP_PATH=$(pwd)/../resources/pYin; ';
+        moveCommand = 'mv ';
+        if ismac
+            platFolder = 'macosx';
+        else
+            platFolder = 'debian64';
+        end
+    else
+        exportCommand = 'set VAMP_PATH=%cd%\..\resources\pYin & ';
+        moveCommand = 'move ';
+        platFolder = 'win32';
+    end
+    sonicFolder = ['..' sep 'resources' sep 'sonic-annotator'];
+    system([exportCommand sonicFolder sep platFolder sep 'sonic-annotator -t ' ...
+         sonicFolder sep 'transform.rdf -w midi ' ...
+        dataFolder sep 'input' sep 'performance.wav']);
+    
+    % move analysis file to analysis folder with proper name
+    system([moveCommand dataFolder sep 'input' sep 'performance.mid ' ...
+        dataFolder sep 'analysis' sep 'perfAlignment.mid']);
+    
+    perfmidi = readmidi([dataFolder sep 'analysis' sep 'perfAlignment.mid']);
+else
+    perfmidi = readmidi([dataFolder sep 'input' sep 'perfAlignment.mid']);
+end
+
 scoremidi = readmidi([dataFolder sep 'input' sep 'score.mid']);
+
+clear sonicFolder platFolder exportCommand moveCommand automaticNoteDetection
 
 %% Calculate dynamics of reference performance
 
-% load the RMS value of the performance audio signal
+% load the performance audio signal
 [wavfile, sRate] = audioread([dataFolder sep 'input' sep 'performance.wav']);
+
+% filter it for more realistic loudness calculation from an auditory
+% perspective
+wavfile = Aweight(wavfile, sRate);
 
 % do rms for every sRate/100 elements (441 in 44.1kHz wav file)
 step = floor(sRate/100);
@@ -53,6 +78,8 @@ segments = findPhrases(scoremidi);
 
 % align the performance with the score
 alignedperf = perfAlign(scoremidi, perfmidi);
+% decide an artificial note for deletions
+% TODO
 
 % calculate the matrix of segment similarities
 scores = Inf(size(segments, 1));
@@ -161,10 +188,10 @@ clear ii v perfStartInd perfEndInd trivialModel trivMeanSqErr
 % for each segment increases, whereas the same doesn't happen for the 
 % trivial model which acts as a baseline. For distances below 2 we see that
 % our model outperforms the trivial model in this criteria.
-%hold on
-%plot(ccEvolution(:,1),ccEvolution(:,3));
-%plot(ccEvolution(:,1),ccT_Ev);
-%hold off
+hold on
+plot(ccEvolution(:,1),ccEvolution(:,3));
+plot(ccEvolution(:,1),ccT_Ev);
+hold off
 
 % This graph show the same fact as before, but instead of using mean
 % squared error, we use mean correlation between predicted dynamics and
@@ -209,16 +236,18 @@ corr_errXmelDist = corr(cc(:,2),cc(:,3));
 %plot(alignedperf(:,5));
 %hold off
 
+figure
 hold on
 plot(prediction);
 plot(truth);
 hold off
 
-%hold on
-%plot(errSmooth);
-%plot(errTrivial);
-%plot(melDistance(10:end));
-%hold off
+figure
+hold on
+plot(errSmooth);
+plot(errTrivial);
+plot(melDistance(10:end));
+hold off
 
 %% reported data
 x = cc(cc(:,3)<=2,1);
@@ -236,4 +265,4 @@ CIall = mean(x) + PLMINall;                 % Confidence Interval
 %addpath('util');
 %writeall(segments, [dataFolder sep 'analysis']);
 
-clear x SEM ts PLMIN PLMINall dataFolder sep automaticNoteDetection
+clear x SEM ts PLMIN PLMINall dataFolder sep

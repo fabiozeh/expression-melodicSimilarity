@@ -2,15 +2,8 @@
 @prefix vamp:     <http://purl.org/ontology/vamp/> .
 @prefix :         <#> .
 
-:transform_plugin a vamp:Plugin ;
-    vamp:identifier "pyin" .
-
-:transform_library a vamp:PluginLibrary ;
-    vamp:identifier "pyin" ;
-    vamp:available_plugin :transform_plugin .
-
 :transform a vamp:Transform ;
-    vamp:plugin :transform_plugin ;
+    vamp:plugin <http://vamp-plugins.org/rdf/plugins/pyin#pyin> ;
     vamp:step_size "256"^^xsd:int ; 
     vamp:block_size "2048"^^xsd:int ; 
     vamp:plugin_version """2""" ; 
@@ -38,4 +31,4 @@
         vamp:parameter [ vamp:identifier "threshdistr" ] ;
         vamp:value "2"^^xsd:float ;
     ] ;
-    vamp:output [ vamp:identifier "notes" ] .
+    vamp:output <http://vamp-plugins.org/rdf/plugins/pyin#pyin_output_notes> .
