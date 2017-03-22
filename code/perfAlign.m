@@ -1,4 +1,4 @@
-function aligned = perfAlign(scoremidi, perfmidi)
+function aligned = perfAlign(scoremidi, perfmidi, fillDeletions)
     score = bestalign(scoremidi(:,4),perfmidi(:,4));
     allpaths = score{2};
     isDone = 0;
@@ -46,6 +46,9 @@ function aligned = perfAlign(scoremidi, perfmidi)
             ix1 = ix1 + 1;
             ixp = ixp + 1;
         elseif outcomes(ixp) == 'd'
+            if fillDeletions
+                % make up a note at
+            end
             ix1 = ix1 + 1;
             ixp = ixp + 1;
         elseif outcomes(ixp) == 'i'

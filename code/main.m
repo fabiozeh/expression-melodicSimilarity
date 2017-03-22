@@ -18,35 +18,59 @@
 %   |_ analysis/
 %
 % perfAlignment.mid is a MIDI file with note onsets aligned to
-% performance.wav.
+% performance.wav. Alternatively, for monophonic solo violin pieces, the
+% variable automaticNoteDetection can be set to 1 for automatic alignment.
+%
+% In the absence of score.mid, the alignment midi file (automatic or
+% manual) will be used as symbolic representation of the piece.
 
 if isunix(), sep = '/'; else sep = '\'; end
 
 dataFolder = ['..' sep 'data' sep 'bachManual'];
+automaticNoteDetection = 0;
 
-%% Load required libraries and files for performance, score, and alignment
+%% Load the required libraries and files for score and performance
 
 addpath(genpath('miditoolbox'));
 
-[wavfile, sRate] = audioread([dataFolder sep 'input' sep 'performance.wav']);
-scoremidi = readmidi([dataFolder sep 'input' sep 'score.mid']);
-perfmidi = readmidi([dataFolder sep 'input' sep 'perfAlignment.mid']);
+% Automatic note detection
+if automaticNoteDetection
+    % perform note onset detection with pYin vamp plugin (running script)
+    pYinNotes([dataFolder sep 'input'], 'performance.wav', ...
+        [dataFolder sep 'analysis' sep 'perfAlignment.mid'], ...
+        ['..' sep 'resources' sep 'pYin'], ...
+        ['..' sep 'resources' sep 'sonic-annotator'], ...
+        ['..' sep 'resources' sep 'sonic-annotator' sep 'transform.rdf']);
+    
+    perfmidi = readmidi([dataFolder sep 'analysis' sep 'perfAlignment.mid']);
+else
+    perfmidi = readmidi([dataFolder sep 'input' sep 'perfAlignment.mid']);
+end
+
+if exist([dataFolder sep 'input' sep 'score.mid'], 'file')
+    scoremidi = readmidi([dataFolder sep 'input' sep 'score.mid']);
+else
+    scoremidi = perfmidi;
+end
+
+clear automaticNoteDetection
 
 %% Calculate dynamics of reference performance
 
-% calculate RMS value of the performance audio signal
+% load the performance audio signal
+[wavfile, sRate] = audioread([dataFolder sep 'input' sep 'performance.wav']);
+
+% filter it for more realistic loudness calculation from an auditory
+% perspective
+wavfile = Aweight(wavfile, sRate);
 
 % do rms for every sRate/100 elements (441 in 44.1kHz wav file)
 step = floor(sRate/100);
-ptr = 1;
-r = zeros(1+floor(length(wavfile)/step),1);
-for ii = 1:(length(r)-1)
-    r(ii,1) = rms(wavfile(ptr:(ptr+step-1)));
-    ptr = ptr + step;
-end
-r(ii+1,1) = rms(wavfile(ptr:end));
+r = windowedRms(wavfile, step, step);
 
-r = [[0; (step/sRate)*(1:(length(r)-1))'], r];
+r = [[0; (step/sRate)*(1:(length(r)-1))'], 20*log(r)]; % r in dBFS
+%debug:
+%csvwrite([dataFolder sep 'analysis' sep 'loudness.csv'], r);
 
 % compute average energy around each performed note
 perfmidi = computeVelocity(perfmidi, r);
@@ -58,6 +82,8 @@ segments = findPhrases(scoremidi);
 
 % align the performance with the score
 alignedperf = perfAlign(scoremidi, perfmidi);
+% decide an artificial note for deletions
+% TODO
 
 % calculate the matrix of segment similarities
 scores = Inf(size(segments, 1));
@@ -84,6 +110,7 @@ for ii = 1:size(scores,1)
     % take mean level in segment
     mL = mean(alignedperf(perfStartInd:perfEndInd, 5));
     segments{ii,1}(:,5) = scaleInterpolate(size(segments{ii,1},1), alignedperf(perfStartInd:perfEndInd, 5) - mL);
+    % segments{:,4} --> offset from previous section
     if perfStartInd > 4
         segments{ii,4} = mL - mean(alignedperf((perfStartInd - 4):(perfStartInd - 1),5));
     elseif perfStartInd > 1
@@ -91,8 +118,14 @@ for ii = 1:size(scores,1)
     else
         segments{ii,4} = 0;
     end
+    segments{ii,5} = mL; % segment mean level
 end
 % should interpolation be done in time domain instead of note domain?
+
+% TODO
+% more stable algorithm:
+% if segment level is > 1 sd from mean, copy neighbor gradient
+% else copy deviation from mean
 
 % adjust mean level of segments
 % the strategy is as follows:
@@ -166,10 +199,11 @@ clear ii v perfStartInd perfEndInd trivialModel trivMeanSqErr
 % for each segment increases, whereas the same doesn't happen for the 
 % trivial model which acts as a baseline. For distances below 2 we see that
 % our model outperforms the trivial model in this criteria.
-%hold on
-%plot(ccEvolution(:,1),ccEvolution(:,3));
-%plot(ccEvolution(:,1),ccT_Ev);
-%hold off
+figure
+hold on
+plot(ccEvolution(:,1),ccEvolution(:,3));
+plot(ccEvolution(:,1),ccT_Ev);
+hold off
 
 % This graph show the same fact as before, but instead of using mean
 % squared error, we use mean correlation between predicted dynamics and
@@ -214,16 +248,18 @@ corr_errXmelDist = corr(cc(:,2),cc(:,3));
 %plot(alignedperf(:,5));
 %hold off
 
+figure
 hold on
 plot(prediction);
 plot(truth);
 hold off
 
-%hold on
-%plot(errSmooth);
-%plot(errTrivial);
-%plot(melDistance(10:end));
-%hold off
+figure
+hold on
+plot(errSmooth);
+plot(errTrivial);
+plot(melDistance(10:end));
+hold off
 
 %% reported data
 x = cc(cc(:,3)<=2,1);
