@@ -1,9 +1,33 @@
-%% Perform the whole analysis %%
+%% Violin expressivity model evaluation
+% This script is an early evaluation of our proposed model of expressivity
+% in violin performances (as given by variations in dynamics).
+%
+% Based on the performance of a single piece, the script segments the score
+% and generates a prediction for the dynamics of each segment in a 
+% leave-one-out approach. The intention is validating whether melodically 
+% similar segments tend to be performed similarly, so the method can be 
+% later applied to a larger database of expert performances.
+%
+% The script expects to find the following files in the folder given by
+% variable dataFolder:
+% dataFolder/
+%   |_ input/
+%   |    |_ performance.wav
+%   |    |_ score.mid
+%   |    |_ perfAlignment.mid
+%   |_ analysis/
+%
+% perfAlignment.mid is a MIDI file with note onsets aligned to
+% performance.wav. Alternatively, for monophonic solo violin pieces, the
+% variable automaticNoteDetection can be set to 1 for automatic alignment.
+%
+% In the absence of score.mid, the alignment midi file (automatic or
+% manual) will be used as symbolic representation of the piece.
 
 if isunix(), sep = '/'; else sep = '\'; end
 
-dataFolder = ['..' sep 'data' sep 'telmi_eulalie'];
-automaticNoteDetection = 1;
+dataFolder = ['..' sep 'data' sep 'bachManual'];
+automaticNoteDetection = 0;
 
 %% Load the required libraries and files for score and performance
 
