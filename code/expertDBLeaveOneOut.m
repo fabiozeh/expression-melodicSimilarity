@@ -1,6 +1,4 @@
-%% Perform the prediction and analysis %%
-
-if isunix(), sep = '/'; else sep = '\'; end
+%% Perform the prediction and analysis
     
 %% Load the required libraries
 
@@ -66,9 +64,6 @@ for ii = 2:size(segments,1)
     segments{ii,1}(:,5) = segments{ii,1}(:,5) + offset;
 end
 
-
-
-
 clear ii ind perfStartInd perfEndInd meanOS mL meanVel offset
 
 %% test quality of output according to original performance
@@ -105,13 +100,13 @@ end
 % among notes in all other segments in the piece.
 outputTrivial = cat(1, trivialModel{:,1});
 
-trivMeanSqErr(:) = arrayfun(@(x) mean((trivialModel{x,1}(:,5) - ...
+trivMeanSqErr(1,:) = arrayfun(@(x) mean((trivialModel{x,1}(:,5) - ...
     alignedperf(trivialModel{x,2}:(trivialModel{x,2}+size(trivialModel{x,1},1)-1),5)).^2), ...
     1:size(trivialModel,1));
 
 % ccT_Ev(i) = the mean squared error between trivial model and performance for all
 % segments with distance d <= ccEvolution(i,1).
-ccT_Ev(:) = arrayfun(@(x)mean(trivMeanSqErr(cc(:,3)<=x)), ccEvolution(:,1));
+ccT_Ev(1,:) = arrayfun(@(x)mean(trivMeanSqErr(cc(:,3)<=x)), ccEvolution(:,1));
 
 clear ii v perfStartInd perfEndInd trivialModel trivMeanSqErr
 
