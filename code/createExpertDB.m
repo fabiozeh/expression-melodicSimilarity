@@ -8,10 +8,8 @@ applyAweighting = 0;
 
 if isunix(), sep = '/'; else sep = '\'; end
 
-%% Load the required libraries and files for score and performance
-
-% include miditoolbox
-% TODO
+% Load the miditoolbox library
+addpath(genpath('miditoolbox'));
 
 expertDB = {};
 for piece = folderList'
@@ -19,7 +17,7 @@ for piece = folderList'
     folder = ['..' sep 'data' sep piece{1} sep 'input'];
     [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting);
     
-    %% segment the score into melodic phrases
+    % segment the score into melodic phrases
     segments = findPhrases(score);
 
     % copy performance information into segment cell array

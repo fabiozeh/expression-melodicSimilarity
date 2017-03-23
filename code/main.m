@@ -12,10 +12,9 @@
 % variable dataFolder:
 % dataFolder/
 %   |_ input/
-%   |    |_ performance.wav
-%   |    |_ score.mid
-%   |    |_ perfAlignment.mid
-%   |_ analysis/
+%        |_ performance.wav
+%        |_ score.mid
+%        |_ perfAlignment.mid
 %
 % perfAlignment.mid is a MIDI file with note onsets aligned to
 % performance.wav. Alternatively, for monophonic solo violin pieces, the
@@ -37,7 +36,7 @@ addpath(genpath('miditoolbox'));
 if automaticNoteDetection
     % perform note onset detection with pYin vamp plugin (running script)
     pYinNotes([dataFolder sep 'input'], 'performance.wav', ...
-        [dataFolder sep 'analysis' sep 'perfAlignment.mid'], ...
+        [dataFolder sep 'analysis'], 'perfAlignment.mid', ...
         ['..' sep 'resources' sep 'pYin'], ...
         ['..' sep 'resources' sep 'sonic-annotator'], ...
         ['..' sep 'resources' sep 'sonic-annotator' sep 'transform.rdf']);
@@ -183,13 +182,13 @@ end
 % among notes in all other segments in the piece.
 outputTrivial = cat(1, trivialModel{:,1});
 
-trivMeanSqErr(:) = arrayfun(@(x) mean((trivialModel{x,1}(:,5) - ...
+trivMeanSqErr(1,:) = arrayfun(@(x) mean((trivialModel{x,1}(:,5) - ...
     alignedperf(trivialModel{x,2}:(trivialModel{x,2}+size(trivialModel{x,1},1)-1),5)).^2), ...
     1:size(trivialModel,1));
 
 % ccT_Ev(i) = the mean squared error between trivial model and performance for all
 % segments with distance d <= ccEvolution(i,1).
-ccT_Ev(:) = arrayfun(@(x)mean(trivMeanSqErr(cc(:,3)<=x)), ccEvolution(:,1));
+ccT_Ev(1,:) = arrayfun(@(x)mean(trivMeanSqErr(cc(:,3)<=x)), ccEvolution(:,1));
 
 clear ii v perfStartInd perfEndInd trivialModel trivMeanSqErr
 
