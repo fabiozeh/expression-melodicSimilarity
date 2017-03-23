@@ -8,7 +8,7 @@ To reproduce the experiment of expressive dynamic modeling for violin, refer to 
 
 When cloning this repository, remember to do so with the "recursive" option (Git 1.6.5 or later) in order to load submodules as well.
 ```
-git clone --recursive git://github.com/fabiozeh/expressiveViolin.git
+git clone --recursive https://github.com/fabiozeh/expressiveViolin.git
 ```
 
 ### Credits
