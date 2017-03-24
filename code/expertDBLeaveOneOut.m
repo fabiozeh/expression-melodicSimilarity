@@ -15,7 +15,7 @@ for jj = 1:size(scores,2)
     for ii = 1:size(scores,1)
         if ii < jj
             scores(ii, jj) = scores(jj, ii); % it is simmetric
-        elseif ii > jj % for equal indices, score = 0, so skip.
+        elseif ii > jj % for equal indices, leave it out, so skip.
             [H, tbk] = dtwSig2(expertDB{jj,1}, expertDB{ii,1}, 0, 1, 0, 1, 'no');
             scores(ii, jj) = H(tbk(end,1),tbk(end,2)); %sum(h(sub2ind(size(h),tbk(:,1)+1,tbk(:,2)+1)))
         end
@@ -24,7 +24,7 @@ end
 
 clear ii jj H tbk
 
-%% Compute dynamic estimations for each segment
+% Compute dynamic estimations for each segment
 
 for ii = 1:size(scores,1)
     [expertDB{ii,4}, ind] = min(scores(ii,:)); % for the lowest value of each row (could be column)

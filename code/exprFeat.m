@@ -1,4 +1,7 @@
 function [scoremidi, alignedperf] = exprFeat(inputFolder, detectOnsets, applyAweighting)
+    
+    if isunix(), sep = '/'; else sep = '\'; end
+
     if detectOnsets
         % Automatic note onset detection with pYin vamp plugin (running script)
         pYinNotes(inputFolder, 'performance.wav');
@@ -32,7 +35,7 @@ function [scoremidi, alignedperf] = exprFeat(inputFolder, detectOnsets, applyAwe
     % compute average energy around each performed note
     perfmidi = computeVelocity(perfmidi, r);
 
-    clear ptr wavfile sRate step 
+    clear ptr wavfile sRate step sep
 
     % align the performance with the score
     alignedperf = perfAlign(scoremidi, perfmidi);

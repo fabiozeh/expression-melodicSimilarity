@@ -1,38 +1,40 @@
-% Perform dynamics estimation for a given score %
+% Perform dynamics estimation for a given score
 function segments = dynamicsEstimation(scoremidi, expertDB)
 
-meanVel = {expertDB(expertDB{:,2} == 1, 3), -1};
+% meanVel = { name of piece, mean piece velocity}
+meanVel = expertDB([expertDB{:,2}] == 1, 3);
 for i = 1:size(meanVel,1)
-    meanVel{i,2} = mean(cellfun(@(x) mean(x(:,5)), expertDB(expertDB{:,3}==meanVel{i,1},1)));
+    meanVel{i,2} = mean(cellfun(@(x) mean(x(:,5)), expertDB(...
+        cellfun(@(x) strcmp(meanVel{i,1}, x), expertDB(:,3)), 1)));
 end
 
 %% segment the score into melodic phrases
 segments = findPhrases(scoremidi);
 
 %% Compute dynamics estimation for each segment
-segments{:,3} = Inf(size(segments, 1),1);
+[segments{:,3}] = deal(Inf);
 for jj = 1:size(segments,1)
     % find most similar segment(s)
     for ii = 1:size(expertDB,1)
         [H, tbk] = dtwSig2(segments{jj,1}, expertDB{ii,1}, 0, 1, 0, 1, 'no');
         score = H(tbk(end,1),tbk(end,2));
         if score < segments{jj,3}
-            segments{jj,3} = score;
-            segments{jj,4} = ii;
+            segments{jj,3} = score; % computed melodic distance score
+            segments{jj,4} = ii; % index of match(es) in expertDB
         elseif score == segments{jj,3}
             segments{jj,4} = [segments{jj,4}; ii];
         end
     end
     matchSeg = expertDB(segments{jj,4}(1),:);
-    segments{jj,5} = mean(matchSeg{1}(:,5)); %segment mean level
+    segments{jj,5} = mean(matchSeg{1}(:,5)); % segment mean level
     segments{jj,1}(:,5) = scaleInterpolate(size(segments{jj,1},1), matchSeg{1}(:,5) - segments{jj,5});
-    %segments{jj,6} --> offset from prev. segment
+    % segments{jj,6} --> offset from prev. segment
     if matchSeg{2} > 1
-        segments{jj,6} = segments{jj,5} - mean(expertDB{segments{jj,4}(1)-1,1}(:,5))
+        segments{jj,6} = segments{jj,5} - mean(expertDB{segments{jj,4}(1)-1,1}(:,5));
     else
         segments{jj,6} = 0;
     end
-    segments{jj,7} = meanVel{[meanVel{:,1}]==matchSeg{3},2}; % match piece mean level
+    segments{jj,7} = meanVel{cellfun(@(x) strcmp(matchSeg{3}, x), meanVel(:,1)),2}; % match piece mean level
 end
 % should interpolation be done in time domain instead of note domain?
 
