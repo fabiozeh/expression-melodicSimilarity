@@ -26,14 +26,9 @@ for jj = 1:size(segments,1)
         end
     end
     matchSeg = expertDB(segments{jj,4}(1),:);
-    segments{jj,5} = mean(matchSeg{1}(:,5)); % segment mean level
+    segments{jj,5} = matchSeg{4}; % segment mean level
     segments{jj,1}(:,5) = scaleInterpolate(size(segments{jj,1},1), matchSeg{1}(:,5) - segments{jj,5});
-    % segments{jj,6} --> offset from prev. segment
-    if matchSeg{2} > 1
-        segments{jj,6} = segments{jj,5} - mean(expertDB{segments{jj,4}(1)-1,1}(:,5));
-    else
-        segments{jj,6} = 0;
-    end
+    segments{jj,6} = matchSeg{5}; % offset from prev. segment
     segments{jj,7} = meanVel{cellfun(@(x) strcmp(matchSeg{3}, x), meanVel(:,1)),2}; % match piece mean level
 end
 % should interpolation be done in time domain instead of note domain?

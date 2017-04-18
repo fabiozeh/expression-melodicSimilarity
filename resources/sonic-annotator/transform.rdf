@@ -13,7 +13,7 @@
     ] ;
     vamp:parameter_binding [
         vamp:parameter [ vamp:identifier "onsetsensitivity" ] ;
-        vamp:value "0.75"^^xsd:float ;
+        vamp:value "0.7"^^xsd:float ;
     ] ;
     vamp:parameter_binding [
         vamp:parameter [ vamp:identifier "outputunvoiced" ] ;
