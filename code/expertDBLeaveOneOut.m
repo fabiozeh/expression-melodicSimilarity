@@ -36,65 +36,155 @@ for ii = 1:size(meanVel,1)
         cellfun(@(x) strcmp(meanVel{ii,1}, x), expertDB(:,3)), 1)));
 end
 
-% preallocation
-[expertDB{:,6:12}] = deal(0);
+% allocation
+predictions{size(expertDB,1),9} = [];
 
 for ii = 1:size(scores,1)
-    [expertDB{ii,6}, ind] = min(scores(ii,:)); % for the lowest value of each row (could be column)
+    [predictions{ii,2}, ind] = min(scores(ii,:)); % for the lowest value of each row (could be column)
+    predictions{ii,1} = ind;
     % base level prediction as linear interpolation of matching segment levels
-    expertDB{ii,7} = scaleInterpolate(size(expertDB{ii,1},1), expertDB{ind,1}(:,5) - expertDB{ind,4})';
+    predictions{ii,3} = scaleInterpolate(size(expertDB{ii,1},1), expertDB{ind,1}(:,5) - expertDB{ind,4})';
     % matching segment offset from previous
-    expertDB{ii,8} = expertDB{ind,5};
+    predictions{ii,4} = expertDB{ind,5};
     % matching segment mean level
-    expertDB{ii,9} = expertDB{ind,4};
+    predictions{ii,5} = expertDB{ind,4};
     % matching piece mean level
-    expertDB{ii,10} = meanVel{cellfun(@(x) strcmp(expertDB{ind,3}, x), meanVel(:,1)),2};
+    predictions{ii,6} = meanVel{cellfun(@(x) strcmp(expertDB{ind,3}, x), meanVel(:,1)),2};
     % normalized melodic distance
-    expertDB{ii,11} = expertDB{ii,6}/size(expertDB{ii,1},1);
+    predictions{ii,7} = predictions{ii,2}/size(expertDB{ii,1},1);
 end
 % should interpolation be done in time domain instead of note domain?
 
-% TODO
-% more stable algorithm:
-% if segment level is > 1 sd from mean, copy neighbor gradient
-% else copy deviation from mean
-
 % adjust mean level of segments
-% the strategy is as follows:
-% - two parameters are saved for each reference segment: the mean level of
-% the piece it belongs to (meanVel = expertDB{:,10}) and the offset of the segment mean relative to
-% the mean level of previous segment (os = expertDB{:,8}).
-% - after determining all predictions, the final piece mean level is adjusted to
-% be the mean(meanVel) taking all segments into account and the offset of each
-% segment is corrected to os = os - mean(os).
-%meanOS = mean([expertDB{:,8}]);
-%predVel = mean([expertDB{:,10}]);
-%offset = predVel + expertDB{1,8} - meanOS;
-%expertDB{1,11} = expertDB{1,7} + offset;
-%for ii = 2:size(expertDB,1)
-%    offset = expertDB{ii,8} + offset - meanOS;
-%    expertDB{ii,11} = expertDB{ii,7} + offset;
+
+% the algorith below simply makes the segment's mean level deviate from the
+% piece mean level by the same amount as the matching (reference) segment
+% deviates from its original piece mean level.
+%outMean = mean([predictions{:,6}]);
+%for ii = 1:size(predictions,1)
+%    predictions{ii,8} = predictions{ii,3} + outMean + predictions{ii,5} - predictions{ii,6};
 %end
 
-%for ii = 1:size(expertDB,1)
-%    expertDB{ii,11} = expertDB{ii,7} + expertDB{ii,9};
-%end
-
-outMean = mean([expertDB{:,10}]);
-for ii = 1:size(expertDB,1)
-    expertDB{ii,12} = expertDB{ii,7} + outMean + expertDB{ii,9} - expertDB{ii,10};
+% more stable algorithm:
+% if ref. segment level is > 1 sd from mean, copy neighbor gradient
+% else copy deviation from mean
+outMean = mean([predictions{:,6}]);
+for ii = 1:size(predictions,1)
+    if expertDB{predictions{ii,1},6} > 1
+        predictions{ii,9} = outMean + predictions{ii,4};
+    else
+        predictions{ii,9} = outMean + predictions{ii,5} - predictions{ii,6};
+    end
+    predictions{ii,8} = predictions{ii,3} + predictions{ii,9};
 end
 
 clear ind outMean meanVel
 
 %% test quality of output according to original performance
 
+% 1. Note-level analyses
+
+% calculate overall mean level for comparison
+trivialLevel = mean([expertDB{:,4}]);
+
+% generate performed dynamics curve from concatenation of all segments in DB
+performedDyn = vertcat(expertDB{:,1});
+performedDyn = performedDyn(:,5);
+
+% generate predicted dynamics curve from concatenation of all segments in DB
+predictedDyn = vertcat(predictions{:,8});
+
+trivialSqErr = (performedDyn - trivialLevel).^2;
+predictedSqErr = (predictedDyn - performedDyn).^2;
+
+figure
+boxplot([sqrt(predictedSqErr),sqrt(trivialSqErr)],'Notch', 'on', 'Labels',{'Model','Trivial (average value)'});
+title('Distribution of note level errors in dynamics predictions vs. trivial approach');
+ylabel('Error in predicted loudness (0-127)');
+
+clear performedDyn predictedDyn trivialSqErr predictedSqErr
+
+performedInSegmentDyn = [];
+for ii = 1:size(expertDB,1)
+    performedInSegmentDyn = vertcat(performedInSegmentDyn, expertDB{ii,1}(:,5) - expertDB{ii,4});
+end
+predictedInSegmentDyn = vertcat(predictions{:,3});
+
+figure
+boxplot([abs(predictedInSegmentDyn - performedInSegmentDyn),abs(performedInSegmentDyn)],'Notch', 'on', 'Labels',{'Model','Baseline'});
+title('Distribution of note level errors in short-range dynamics predictions vs. Baseline');
+ylabel('Error in predicted loudness (0-127)');
+
+figure
+boxplot([abs(diff(predictedInSegmentDyn) - diff(performedInSegmentDyn)),abs(diff(performedInSegmentDyn))], ...
+    'Notch', 'on', 'Labels',{'Model','Baseline'});
+title('Distribution of note level errors in short-range dynamics derivative predictions vs. Baseline');
+ylabel('Error in predicted loudness variation (0-127)');
+
+clear predictedInSegmentDyn performedInSegmentDyn
+
+for ii = 1:size(expertDB,1)
+    predictedInSegmentDynMSE(ii,1) = mean((expertDB{ii,1}(:,5) - expertDB{ii,4} - predictions{ii,3}).^2);
+    segmentRMS(ii,1) = rms(expertDB{ii,1}(:,5) - expertDB{ii,4});
+end
+
+%figure
+%boxplot([sqrt(predictedInSegmentDynMSE),segmentRMS], ...
+%    'Notch', 'on', 'Labels',{'Model','Baseline'});
+%title('Distribution of mean note level errors in short-range dynamics predictions vs. Baseline');
+%ylabel('Error in predicted loudness (0-127)');
+
+% correlation between intra segment level predictions MSE and melodic distance
+corr_inSegDynMseXmelDist = corr(predictedInSegmentDynMSE, vertcat(predictions{:,6}));
+
+for ii = 1:size(expertDB,1)
+    predictedInSegmentDynDiffMSE(ii,1) = mean((diff(expertDB{ii,1}(:,5) - expertDB{ii,4}) - diff(predictions{ii,3})).^2);
+    segmentDiffRMS(ii,1) = rms(diff(expertDB{ii,1}(:,5) - expertDB{ii,4}));
+end
+
+%figure
+%boxplot([sqrt(predictedInSegmentDynDiffMSE),segmentDiffRMS], ...
+%    'Notch', 'on', 'Labels',{'Model','Baseline'});
+%title('Distribution of mean note level errors in short-range dynamics derivative predictions vs. Baseline');
+%ylabel('Error in predicted loudness variation (0-127)');
+
+% correlation between intra segment level predictions derivative MSE and melodic distance
+corr_inSegDynDiffMseXmelDist = corr(predictedInSegmentDynDiffMSE, vertcat(predictions{:,6}));
+
+clear predictedInSegmentDynMSE predictedInSegmentDynDiffMSE segmentRMS segmentDiffRMS
+
+% 2. Segment-level analyses
+
+performedDyn = vertcat(expertDB{:,4});
+predictedDyn = vertcat(predictions{:,9});
+
+figure
+boxplot([abs(predictedDyn - performedDyn), abs(performedDyn - trivialLevel)], ...
+    'Notch', 'on', 'Labels',{'Model','Trivial (average-based)'});
+title('Distribution of phrase level errors in dynamics predictions vs. trivial approach');
+ylabel('Error in predicted loudness (0-127)');
+
+%figure
+%boxplot([abs(diff(predictedDyn) - diff(performedDyn)), abs(diff(performedDyn))], ...
+%    'Notch', 'on', 'Labels',{'Model','Trivial (average-based)'});
+%title('Distribution of phrase level errors in dynamics derivative predictions vs. trivial approach');
+%ylabel('Error in predicted loudness variation (0-127)');
+
+% correlation between segment mean level prediction errors and melodic distance
+corr_errSegLevelXmelDist = corr(abs(predictedDyn - performedDyn), vertcat(predictions{:,7}));
+
+% correlation between segment mean level derivative prediction errors and melodic distance
+%corr_errSegLevelDerivXmelDist = corr([0; abs(diff(predictedDyn) - diff(performedDyn))], vertcat(predictions{:,7}));
+
+% Missing: sort segments by melodic distance and calculate moving average
+% of errors to improve upon metrics evolution below. 
+
 % metrics = [segmentCorrelation segmentMeanSqError normalizedSegmentDistance segmentNumberOfNotes]
 metrics = zeros(size(expertDB,1),4); % preallocation
 for ii = 1:size(expertDB,1)
-    metrics(ii,1) = corr(expertDB{ii,1}(:,5), expertDB{ii,12});
-    metrics(ii,2) = mean((expertDB{ii,1}(:,5) - expertDB{ii,12}).^2);
-    metrics(ii,3) = expertDB{ii,11}; % change to 6 for non-normalized
+    metrics(ii,1) = corr(expertDB{ii,1}(:,5), predictions{ii,8});
+    metrics(ii,2) = mean((expertDB{ii,1}(:,5) - predictions{ii,8}).^2);
+    metrics(ii,3) = predictions{ii,7}; % change to 2 for non-normalized
     metrics(ii,4) = size(expertDB{ii,1},1);
 end
 
@@ -138,19 +228,6 @@ for ii = 2:size(notesEvolution,1)
     notesEvolution(ii,4) = sum(f);
 end
 notesEvolution = notesEvolution(2:end,:);
-
-% calculate overall mean level for comparison
-trivialLevel = mean([expertDB{:,4}]);
-
-% generate performed dynamics curve from concatenation of all segments in DB
-performedDyn = vertcat(expertDB{:,1});
-performedDyn = performedDyn(:,5);
-
-% generate predicted dynamics curve from concatenation of all segments in DB
-predictedDyn = vertcat(expertDB{:,12});
-
-trivialMse = (performedDyn - trivialLevel).^2;
-predictedMse = (predictedDyn - performedDyn).^2;
 
 trivialSegmentMse = arrayfun(@(x) mean((expertDB{x,1}(:,5) - trivialLevel).^2), 1:size(expertDB,1));
 
