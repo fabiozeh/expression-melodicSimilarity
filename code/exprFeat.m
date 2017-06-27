@@ -1,4 +1,4 @@
-function [scoremidi, alignedperf] = exprFeat(inputFolder, detectOnsets, applyAweighting)
+function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detectOnsets, applyAweighting)
     
     if isunix(), sep = '/'; else sep = '\'; end
 
@@ -28,14 +28,13 @@ function [scoremidi, alignedperf] = exprFeat(inputFolder, detectOnsets, applyAwe
     end
 
     % do rms for every sRate/100 elements (441 in 44.1kHz wav file)
-    step = floor(sRate/100);
-    r = windowedRms(wavfile, step, step);
-    r = [[0; (step/sRate)*(1:(length(r)-1))'], 20*log(r)]; % r in dBFS
+    %step = floor(sRate/100);
+    %r = windowedRms(wavfile, step, step);
+    %r = [[0; (step/sRate)*(1:(length(r)-1))'], 20*log(r)]; % r in dBFS
 
     % compute average energy around each performed note
-    perfmidi = computeVelocity(perfmidi, r);
-
-    clear ptr wavfile sRate step sep
+    %perfmidi = computeVelocity(perfmidi, r);
+    perfmidi = computeVelocity2(perfmidi, wavfile, sRate);
 
     % align the performance with the score
     alignedperf = perfAlign(scoremidi, perfmidi);

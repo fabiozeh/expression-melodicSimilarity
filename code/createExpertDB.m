@@ -15,12 +15,14 @@
 %   folder names input in folderList.
 %   4: mean loudness level in segment.
 %   5: difference between mean loudness level in this segment and in the
-%   previous segment of its originating piece.
+%   entire piece.
 %   6: z-score of mean loudness level in segment, relative to piece mean
+%   7: duration of segment in seconds
 
 % column 1 = folder name. Column 2 = 1 to do automatic onset detection
-folderList = {'meditacion', 0; 'bachManual', 0; 'beethoven4_3', 0; 'borodin2_1', 0; 'haydn', 0};
-applyAweighting = 1;
+function expertDB = createExpertDB(folderList, applyAweighting)
+
+if nargin < 2, applyAweighting = 0; end
 
 if isunix(), sep = '/'; else sep = '\'; end
 
@@ -38,8 +40,11 @@ for piece = folderList'
     % segment the score into melodic phrases
     segments = findPhrases(score);
 
+    % compute piece overall mean dynamics
+    overall = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
+    
     % copy performance information into segment cell array
-    segments(:,3:5) = num2cell(deal(0)); % preallocation
+    segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
         % performance dynamics as midi velocity
         segments{ii,1}(:,5) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5);
@@ -49,11 +54,11 @@ for piece = folderList'
         % piece name
         segments{ii,3} = piece{1};
         % mean velocity
-        segments{ii,4} = mean(segments{ii,1}(:,5));
-        % mean velocity offset from previous segment
-        if ii > 1
-            segments{ii,5} = segments{ii,4} - segments{ii-1,4};
-        end
+        segments{ii,4} = segments{ii,1}(:,5)'*segments{ii,1}(:,10)./sum(segments{ii,1}(:,10));
+        % mean velocity offset from piece mean (salience)
+        segments{ii,5} = segments{ii,4} - overall;
+        % duration of segment in seconds
+        segments{ii,7} = segments{ii,1}(end,9) + segments{ii,1}(end,10) - segments{ii,1}(1,9);
     end
     
     % segment velocity z-score
@@ -64,4 +69,4 @@ for piece = folderList'
     
 end
 
-clear ii segments piece score alignedperf folder sep folderList applyAweighting
+end
