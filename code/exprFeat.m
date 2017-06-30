@@ -34,7 +34,7 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
 
     % compute average energy around each performed note
     %perfmidi = computeVelocity(perfmidi, r);
-    perfmidi = computeVelocity2(perfmidi, wavfile, sRate);
+    perfmidi = computeNoteLoudness(perfmidi, wavfile, sRate);
 
     % align the performance with the score
     alignedperf = perfAlign(scoremidi, perfmidi);

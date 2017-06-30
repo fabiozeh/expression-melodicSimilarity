@@ -6,7 +6,7 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% Load Expert Database
-folderList = {'beethoven4_4N1', 0; 'beethoven4_3', 0; 'beethoven4_1', 0}; %; 'bachManual', 0; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
+folderList = {'beethoven4_4N1', 0; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
 expertDB = createExpertDB(folderList, 1);
 s = size(expertDB,1);
 
@@ -70,7 +70,7 @@ clear ind
 % Weighted-sum predictions
 
 % weights are proportional to the reciprocal of the melodic distance
-w = 1./(scores+1e-80);
+w = 1./(scores+1e-9);
 % some normalization
 w = w./(diag(std(w,0,2))*ones(size(w)));
 %w = w.^2;
@@ -91,6 +91,7 @@ overall_knn = w*(vertcat(expertDB{:,4})-vertcat(expertDB{:,5}))./sum(w,2);
 overall_knn = [predictions{:,4}]*overall_knn./sum([predictions{:,4}]);
 
 % weighted-sum prediction based on quadratic regression
+quadCoef = zeros(s,3);
 for ii = 1:s
     x = expertDB{ii,1};
     x0 = x(1,1);
@@ -344,14 +345,18 @@ end
 % higher than mean correlation overall.
 
 c_cnlXweight = zeros(s,1);
+low_score = 0.4;
+y1 = [];
 for ii = 1:s
-    x = w(:,ii);
-    y = corrNoteLvlAll(:,ii);
+    x = scores(ii,:);
+    y = corrNoteLvlAll(ii,:);
+    y1 = [y1 corrNoteLvlAll(ii, scores(ii,:) <= low_score)];
     x(ii) = [];
     y(ii) = [];
-    c_cnlXweight(ii) = corr(x, y);
+    c_cnlXweight(ii) = corr(x', y');
 end
 [areNoteLevelCorrAndWeightCorrelated, ~, c_cnlXweight_ci, ~] = ttest(c_cnlXweight);
+[~, ~, nlc_highW_ci, ~] = ttest(y1');
 
 clear x y ii jj
 

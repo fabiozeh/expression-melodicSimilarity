@@ -1,90 +1,128 @@
 %% analysis of dynamics estimation
 
-%% create expert database
-createExpertDB
-
-if isunix(), sep = '/'; else sep = '\'; end
-
-folder = ['..' sep 'data' sep 'meditacion' sep 'input'];
-
-%% Load the required libraries and files for score and performance
+clear
+%% Load the required libraries
 
 addpath(genpath('miditoolbox'));
 
+%% create expert database
+trainingSet = {'beethoven4_4E1', 0}; %; 'bachManual', 0; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
+expertDB = createExpertDB(trainingSet, 0);
+s = size(expertDB,1);
+
+if isunix(), sep = '/'; else sep = '\'; end
+
+%%%%% TODO: compute overall lvl and dynamic range of test/xval sets under
+%%%%% the premise that the model only has to guess the relative salience
+%%%%% and contours.
+
 % load score and calculate expressive features from performance
-[score, performance] = exprFeat(folder, 0, 1);
+testSet = {'beethoven4_3', 0; 'beethoven4_1', 0};
+performance = [];
+score = {};
+feats = {};
+for i = 1:size(testSet, 1)
+    f = createExpertDB(testSet(i,:), 0);
+    p = vertcat(f{:,1});
+    score{i} = p(:,1:7);
+    performance = [performance; p]; %#ok<AGROW>
+    feats = [feats; f]; %#ok<AGROW>
+end
+
+% load a cross-validation set
+[XVscore, XVperf] = exprFeat(['..' sep 'data' sep 'bachManual' sep 'input'], 0, 0);
+
+% estimate dynamics for cross-validation set and choose parameters
+for i = 1:6
+    for j = 1:5
+        pred = dynamicsEstimation(XVscore, expertDB, 'w-knn', i+5, 10^(j-9));
+        errnotes = vertcat(pred{:,1});
+        errnotes = errnotes(:,5) - XVperf(:,5);
+        sqerr(i,j) = errnotes'*errnotes;
+    end
+end
+
+[aux, min_i] = min(sqerr);
+[~, min_j] = min(min_i);
+k = min_i(min_j)+5;
+c = 10^(min_j-9);
 
 %% estimate dynamics for target score
 
-segments = dynamicsEstimation(score, expertDB);
+predwknn = {};
+predknn = {};
+predqnn = {};
+prednn = {};
+for i = 1:size(testSet,1)
+    [wknn, knn, qnn, nn] = dynamicsEstimation(score{i}, expertDB, 'all', k, c);
+    predwknn = [predwknn; wknn]; %#ok<AGROW>
+    predknn = [predknn; knn]; %#ok<AGROW>
+    predqnn = [predqnn; qnn]; %#ok<AGROW>
+    prednn = [prednn; nn]; %#ok<AGROW>
+end
 
-% reconstruct predicted performance from segments
-outputmidi = cat(1, segments{:,1});
+clear folderList training wknn knn qnn nn aux min_i min_j i j pred errnotes f p
 
 %% test quality of output according to original performance
 
-% cc = [segmentCorrelation segmentMeanSqError segmentDistance]
-cc(:,1) = arrayfun(@(x) corr(segments{x,1}(:,5), ...
-    performance(segments{x,2}:(segments{x,2}+size(segments{x,1},1)-1),5)), ...
-    1:size(segments,1));
-cc(:,2) = arrayfun(@(x) mean((segments{x,1}(:,5) - ...
-    performance(segments{x,2}:(segments{x,2}+size(segments{x,1},1)-1),5)).^2), ...
-    1:size(segments,1));
-cc(:,3) = arrayfun(@(x) segments{x,3}, 1:size(segments,1));
+% 1. Note-level analyses
 
-%ccEvolution = [maxDistance meanCorrelation meanSquareError numSegments]
-% "for all segments with melodic distance d <= ..."
-ccEvolution(:,1) = [0; 0.25; 0.5; 1; 2; 4; 8; 16; 32; 64];
-% "the mean correlation between prediction and performance"
-ccEvolution(:,2) = arrayfun(@(x)mean(cc(cc(:,3)<=x,1)), ccEvolution(:,1));
-% "the mean squared error between prediction and performance"
-ccEvolution(:,3) = arrayfun(@(x)mean(cc(cc(:,3)<=x,2)), ccEvolution(:,1));
-% "the number of segments in this category (distance <= 1st col value)"
-ccEvolution(:,4) = arrayfun(@(x)sum(cc(:,3)<=x), ccEvolution(:,1));
+% calculate overall mean level for comparison
+trivialLevel = mean([expertDB{:,4}]);
 
-mse = (outputmidi(:,5) - performance(:,5)).^2;
-allsegs = vertcat(expertDB{:,1});
-trivial = mean(allsegs(:,5));
-trivialMse = (trivial - performance(:,5)).^2;
+% generate predicted dynamics curve from concatenation of all segments in
+% predictions and calculate mean squared error
+nnDyn = vertcat(prednn{:,1});
+nnDyn = nnDyn(:,5);
+qnnDyn = vertcat(predqnn{:,1});
+qnnDyn = qnnDyn(:,5);
+knnDyn = vertcat(predknn{:,1});
+knnDyn = knnDyn(:,5);
+wknnDyn = vertcat(predwknn{:,1});
+wknnDyn = wknnDyn(:,5);
 
-clear allsegs;
-
-% the melodic distance of each note, for plotting against output curve
-melDistance = Inf(size(outputmidi,1),1);
-for ii = 1:size(segments,1)
-    melDistance(segments{ii,2}:(segments{ii,2}+size(segments{ii,1},1)-1),1) = ...
-        segments{ii,3} + zeros(size(segments{ii,1},1),1);
-end
-clear ii
+trivialSqErr = (performance(:,5) - trivialLevel).^2;
+nnSqErr = (nnDyn - performance(:,5)).^2;
+qnnSqErr = (qnnDyn - performance(:,5)).^2;
+knnSqErr = (knnDyn - performance(:,5)).^2;
+wknnSqErr = (wknnDyn - performance(:,5)).^2;
 
 figure
-hold on
-plot(mse);
-plot(trivialMse);
-plot(melDistance)
-hold off;
+boxplot([sqrt(trivialSqErr), sqrt(nnSqErr), sqrt(qnnSqErr), sqrt(knnSqErr), sqrt(wknnSqErr)], ...
+    'Notch', 'on', 'Labels', ...
+    {'Trivial (mean loudness)','1-NN (exact)', '1-NN (parabola)','k-NN','weighted k-NN'});
+title('Distribution of note level errors in dynamics predictions vs. trivial approach');
+ylabel('Error in predicted loudness (dBFS)');
 
+performedContour = [];
+for i = 1:size(feats,1)
+    performedContour = vertcat(performedContour, feats{i,1}(:,5) - feats{i,4}); %#ok<AGROW>
+end
 
-% correlation between computed distance of a segment and the correlation
-% value between prediction and performance of the same segment
-corr_corrXmelDist = corr(cc(:,1),cc(:,3));
+nnContourErr = abs(vertcat(prednn{:,4}) - performedContour);
+qnnContourErr = abs(vertcat(predqnn{:,4}) - performedContour);
+knnContourErr = abs(vertcat(predknn{:,4}) - performedContour);
+wknnContourErr = abs(vertcat(predwknn{:,4}) - performedContour);
 
+figure
+boxplot([abs(performedContour), nnContourErr, qnnContourErr, knnContourErr, wknnContourErr], ...
+    'Notch', 'on', 'Labels', ...
+    {'Baseline','1-NN (exact)', '1-NN (parabola)','k-NN','weighted k-NN'});
+title('Distribution of note level errors in dynamics contour predictions vs. Baseline');
+ylabel('Error in predicted loudness (dBFS)');
 
-% correlation between the mean squared error between prediction and
-% performance of a segment and the computed distance between score segment
-% and reference segment.
-corr_errXmelDist = corr(cc(:,2),cc(:,3));
+clear performedContour nnContourErr qnnContourErr wknnContourErr
 
-x = cc(cc(:,3)<=2,1);
-SEM = std(x)/sqrt(length(x));               % Standard Error
-ts = tinv([0.025  0.975],length(x)-1);      % T-Score
-PLMIN = ts*SEM;
-CIcorr = mean(x) + PLMIN;                       % Confidence Interval
+performedSalience = vertcat(feats{:,6});
+nnErr = abs(vertcat(prednn{:,5}) - performedSalience);
+knnErr = abs(vertcat(predknn{:,5}) - performedSalience);
+wknnErr = abs(vertcat(predwknn{:,5}) - performedSalience);
 
-x = cc(cc(:,3)<=2,2);
-SEM = std(x)/sqrt(length(x));               % Standard Error
-ts = tinv([0.025  0.975],length(x)-1);      % T-Score
-PLMIN = ts*SEM;
-CImse = mean(x) + PLMIN;                       % Confidence Interval
+figure
+boxplot([abs(performedSalience), nnErr, knnErr, wknnErr], ...
+    'Notch', 'on', 'Labels', ...
+    {'Trivial (mean loudness)','1-NN','k-NN','weighted k-NN'});
+title('Distribution of phrase level errors in dynamic salience predictions vs. trivial approach');
+ylabel('Error in predicted loudness (dBFS)');
 
-clear x SEM ts PLMIN folder sep
+clear performedSalience nnErr knnErr wknnErr

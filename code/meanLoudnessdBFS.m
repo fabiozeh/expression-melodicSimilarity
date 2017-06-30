@@ -2,8 +2,9 @@ function l = meanLoudnessdBFS(start_time, end_time, wavfile, sRate)
 if ~iscolumn(start_time), start_time = start_time'; end
 if ~iscolumn(end_time), end_time = end_time'; end
 
-indexStart = start_time .* sRate;
-indexEnd = end_time .* sRate;
+tolerance = 2;
+indexStart = max(0, floor(start_time .* sRate) - tolerance);
+indexEnd = min(size(wavfile,1), ceil(end_time .* sRate) + tolerance);
 
 s = min(size(indexStart,1),size(indexEnd,1));
 l = zeros(s,1);
