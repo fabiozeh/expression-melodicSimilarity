@@ -76,28 +76,28 @@ clear folderList training wknn knn qnn nn min_i min_j aux cvals kvals i j pred e
 trivialLevel = mean([expertDB{:,4}]);
 
 % calculate O(n) and Ranges
-startind = 0;
-newnn = [];
-newknn = [];
-for i = 1:size(testSet,1)
-    p = score{i};
-    n = size(p,1);
-    O(i) = p(:,5)'*p(:,7)./sum(p(:,7));
-    
-    % compute piece dynamic range
-    R(i) = std(p(:,5));
-    j = 1;
-    while startind+j <= size(feats,1) && strcmp(testSet{i,1}, feats{startind+j,3})
-        newnni = O(i) + R(i).*(prednn{startind+j,3} + prednn{startind+j,5}.* ...
-            prednn{startind+j,4});
-        newknni = O(i) + R(i).*(predknn{startind+j,3} + predknn{startind+j,5}.* ...
-            predknn{startind+j,4});
-        newnn = [newnn; newnni];
-        newknn = [newknn; newknni];
-        j = j + 1;
-    end
-    startind = startind + j - 1;
-end
+% startind = 0;
+% newnn = [];
+% newknn = [];
+% for i = 1:size(testSet,1)
+%     p = score{i};
+%     n = size(p,1);
+%     O(i) = p(:,5)'*p(:,7)./sum(p(:,7));
+%     
+%     % compute piece dynamic range
+%     R(i) = std(p(:,5));
+%     j = 1;
+%     while startind+j <= size(feats,1) && strcmp(testSet{i,1}, feats{startind+j,3})
+%         newnni = O(i) + R(i).*(prednn{startind+j,3} + prednn{startind+j,5}.* ...
+%             prednn{startind+j,4});
+%         newknni = O(i) + R(i).*(predknn{startind+j,3} + predknn{startind+j,5}.* ...
+%             predknn{startind+j,4});
+%         newnn = [newnn; newnni];
+%         newknn = [newknn; newknni];
+%         j = j + 1;
+%     end
+%     startind = startind + j - 1;
+% end
 
 clear newnni newknni startind endind p n
 

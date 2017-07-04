@@ -50,7 +50,7 @@ for i = 1:S
     x1 = x(end,1)+x(end,2);
     x = x(:,1)+0.5.*x(:,2);
     quadCoef(i,:) = polyfit(lin_interpolation(x, 0, x0, 10, x1), ...
-        expertDB{i,10},2);%CHANGE expertDB{i,1}(:,5) - expertDB{i,4}, 2);
+        expertDB{i,1}(:,5) - expertDB{i,4}, 2);
 end
 
 clear H tbk x0 x1
@@ -71,11 +71,11 @@ if method(idxnn) || method(idxnnq)
         end
         nn_calc{i,3} = nn_calc{i,1}/size(segments{i,1},1); % normalized mel. dist.
         matchSeg = expertDB(nn_calc{i,2}(1),:); % nearest neighbor
-        nn_calc{i,4} = matchSeg{8}; %CHANGE matchSeg{5}; % segment salience
-        nn_calc{i,5} = matchSeg{9}; %CHANGE matchSeg{4} - matchSeg{5}; % match piece mean level
+        nn_calc{i,4} = matchSeg{5}; % segment salience
+        nn_calc{i,5} = matchSeg{4} - matchSeg{5}; % match piece mean level
         C = quadCoef(nn_calc{i,2}(1),:); % nearest neighbor quad coefficients
         if method(idxnn)
-            nn_calc{i,6} = scaleInterpolate(size(segments{i,1},1), matchSeg{10});%CHANGE matchSeg{1}(:,5) - matchSeg{4}); % contour
+            nn_calc{i,6} = scaleInterpolate(size(segments{i,1},1), matchSeg{1}(:,5) - matchSeg{4}); % contour
         end
         if method(idxnnq)
             nn_calc{i,7} = C(1).*segments{i,4}.^2 + C(2).*segments{i,4} + C(3); % contour
@@ -98,7 +98,7 @@ if method(idxnn) || method(idxnnq)
         for i = 1:s
             output_nnq{i,1}(:,5) = overall_nn + output_nnq{i,3} + output_nnq{i,4};
         end
-        output_nnq(:,5) = nn_calc(:,5); %CHANGE nn_calc(:,8); % relative salience
+        output_nnq(:,5) = nn_calc(:,8); % relative salience
     end
     if method(idxnn)
         output_nn = segments;
@@ -107,7 +107,7 @@ if method(idxnn) || method(idxnnq)
         for i = 1:s
             output_nn{i,1}(:,5) = overall_nn + output_nn{i,3} + output_nn{i,4};
         end
-        output_nn(:,5) = nn_calc(:,5); %CHANGE nn_calc(:,8); % relative salience
+        output_nn(:,5) = nn_calc(:,8); % relative salience
     end
     
 end
@@ -148,7 +148,7 @@ if method(idxknn) || method(idxwknn)
         output_knn = segments;
         
         % Salience Estimate
-        output_knn(:,3) = num2cell(w2*vertcat(expertDB{:,8})./sum(w2,2)); %CHANGE num2cell(w2*vertcat(expertDB{:,5})./sum(w2,2));
+        output_knn(:,3) = num2cell(w2*vertcat(expertDB{:,5})./sum(w2,2));
         % Contour Estimate
         for i = 1:s
             output_knn{i,4} = wCoef(i,1).*segments{i,4}.^2 + ...
@@ -156,7 +156,7 @@ if method(idxknn) || method(idxwknn)
             output_knn{i,1}(:,5) = overall_knn + output_knn{i,3} + output_knn{i,4};
         end
         % Relative Salience Estimate (in standard deviations)
-        output_knn(:,5) = num2cell(w2*vertcat(expertDB{:,9})./sum(w2,2)); %CHANGE num2cell(w2*vertcat(expertDB{:,6})./sum(w2,2));
+        output_knn(:,5) = num2cell(w2*vertcat(expertDB{:,6})./sum(w2,2));
         
     end
     

@@ -30,12 +30,6 @@ end
 
 clear ii jj H tbk
 
-% meanVel = { name of piece, mean piece velocity}
-%meanVel = expertDB([expertDB{:,2}] == 1, 3);
-%for ii = 1:size(meanVel,1)
-%    meanVel{ii,2} = mean([expertDB{strcmp(meanVel{ii,1}, expertDB(:,3)), 4}]);
-%end
-
 % allocation
 predictions{s,13} = [];
 for ii = 1:s
