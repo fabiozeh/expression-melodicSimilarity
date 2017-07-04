@@ -6,7 +6,7 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% Load Expert Database
-folderList = {'beethoven4_4N1', 0; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
+folderList = {'beethoven4_4N1', 0}%; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
 expertDB = createExpertDB(folderList, 1);
 s = size(expertDB,1);
 

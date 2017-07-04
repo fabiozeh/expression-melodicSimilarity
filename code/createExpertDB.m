@@ -43,11 +43,15 @@ for piece = folderList'
     % compute piece overall mean dynamics
     overall = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
     
+    % compute piece dynamic range
+    dynRange = std(alignedperf(:,5));
+    
     % copy performance information into segment cell array
     segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
         % performance dynamics as midi velocity
-        segments{ii,1}(:,5) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5);
+        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5);
+        segments{ii,1}(:,5) = segdyn;
         % performance timing
         segments{ii,1}(:,9) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),6);
         segments{ii,1}(:,10) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),7);
@@ -59,6 +63,12 @@ for piece = folderList'
         segments{ii,5} = segments{ii,4} - overall;
         % duration of segment in seconds
         segments{ii,7} = segments{ii,1}(end,9) + segments{ii,1}(end,10) - segments{ii,1}(1,9);
+        % alpha ((mean - overall) / range);
+        segments{ii,8} = segments{ii,5}./dynRange;
+        % beta (segment range (std) divided by piece range)
+        segments{ii,9} = std(segdyn)./dynRange;
+        % gamma (contour z-score)
+        segments{ii,10} = zscore(segdyn);
     end
     
     % segment velocity z-score
