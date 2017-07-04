@@ -6,7 +6,7 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% create expert database
-trainingSet = {'beethoven4_4E1', 0}; %; 'bachManual', 0; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
+trainingSet = {'beethoven4_4E1', 0; 'bachManual', 0; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
 expertDB = createExpertDB(trainingSet, 0);
 s = size(expertDB,1);
 
@@ -30,22 +30,27 @@ for i = 1:size(testSet, 1)
 end
 
 % load a cross-validation set
-[XVscore, XVperf] = exprFeat(['..' sep 'data' sep 'bachManual' sep 'input'], 0, 0);
+% [XVscore, XVperf] = exprFeat(['..' sep 'data' sep 'bachManual' sep 'input'], 0, 0);
+% 
+% % estimate dynamics for cross-validation set and choose parameters
+% cvals = [1e-6 1e-3 1 100 1e4];
+% kvals = [3 5 7 9 11];
+% for i = 1:5
+%     for j = 1:5
+%         pred = dynamicsEstimation(XVscore, expertDB, 'w-knn', kvals(i), cvals(j));
+%         errnotes = vertcat(pred{:,1});
+%         errnotes = (errnotes(:,5) - XVperf(:,5)).^2;
+%         sqerr(i,j) = median(errnotes);
+%     end
+% end
+% 
+% [aux, min_i] = min(sqerr);
+% [~, min_j] = min(aux);
+% k = kvals(min_i(min_j));
+% c = cvals(min_j);
 
-% estimate dynamics for cross-validation set and choose parameters
-for i = 1:6
-    for j = 1:5
-        pred = dynamicsEstimation(XVscore, expertDB, 'w-knn', i+5, 10^(j-9));
-        errnotes = vertcat(pred{:,1});
-        errnotes = errnotes(:,5) - XVperf(:,5);
-        sqerr(i,j) = errnotes'*errnotes;
-    end
-end
-
-[aux, min_i] = min(sqerr);
-[~, min_j] = min(min_i);
-k = min_i(min_j)+5;
-c = 10^(min_j-9);
+k = 5;
+c = 1e-6;
 
 %% estimate dynamics for target score
 
@@ -61,7 +66,7 @@ for i = 1:size(testSet,1)
     prednn = [prednn; nn]; %#ok<AGROW>
 end
 
-clear folderList training wknn knn qnn nn aux min_i min_j i j pred errnotes f p
+clear folderList training wknn knn qnn nn min_i min_j aux cvals kvals i j pred errnotes f p
 
 %% test quality of output according to original performance
 
@@ -69,6 +74,32 @@ clear folderList training wknn knn qnn nn aux min_i min_j i j pred errnotes f p
 
 % calculate overall mean level for comparison
 trivialLevel = mean([expertDB{:,4}]);
+
+% calculate O(n) and Ranges
+startind = 0;
+newnn = [];
+newknn = [];
+for i = 1:size(testSet,1)
+    p = score{i};
+    n = size(p,1);
+    O(i) = p(:,5)'*p(:,7)./sum(p(:,7));
+    
+    % compute piece dynamic range
+    R(i) = std(p(:,5));
+    j = 1;
+    while startind+j <= size(feats,1) && strcmp(testSet{i,1}, feats{startind+j,3})
+        newnni = O(i) + R(i).*(prednn{startind+j,3} + prednn{startind+j,5}.* ...
+            prednn{startind+j,4});
+        newknni = O(i) + R(i).*(predknn{startind+j,3} + predknn{startind+j,5}.* ...
+            predknn{startind+j,4});
+        newnn = [newnn; newnni];
+        newknn = [newknn; newknni];
+        j = j + 1;
+    end
+    startind = startind + j - 1;
+end
+
+clear newnni newknni startind endind p n
 
 % generate predicted dynamics curve from concatenation of all segments in
 % predictions and calculate mean squared error
@@ -126,3 +157,6 @@ title('Distribution of phrase level errors in dynamic salience predictions vs. t
 ylabel('Error in predicted loudness (dBFS)');
 
 clear performedSalience nnErr knnErr wknnErr
+
+
+
