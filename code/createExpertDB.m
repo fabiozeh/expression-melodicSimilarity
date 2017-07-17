@@ -69,7 +69,11 @@ for piece = folderList'
         % beta (segment range (std) divided by piece range)
         segments{ii,9} = std(segdyn(:,1),segdyn(:,3))./dynRange;
         % gamma (contour z-score)
-        segments{ii,10} = (segdyn(:,1) - segments{ii,4})./(dynRange.*segments{ii,9});
+        if size(segments{ii,1},1) < 2
+            segments{ii,10} = 0;
+        else
+            segments{ii,10} = (segdyn(:,1) - segments{ii,4})./(dynRange.*segments{ii,9});
+        end
     end
     
     % segment velocity z-score
