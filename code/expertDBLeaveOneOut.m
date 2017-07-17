@@ -9,10 +9,6 @@ addpath(genpath('miditoolbox'));
 dataSet = {'beethoven4_4E1', 0}; %; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
 [expertDB, dbData] = createExpertDB(dataSet, 0);
 
-% delete the segment with a single note
-expertDB(end,:) = []; 
-
-
 s = size(expertDB,1);
 
 % exclude small segments (2 notes)
@@ -60,10 +56,15 @@ for ii = 1:s
     % nearest-neighbor beta
     predictions{ii,4} = expertDB{ind,9};
     % nearest-neighbor gamma
-    predictions{ii,5} = lin_approx(expertDBxs{ii}, expertDBxs{ind}, expertDB{ind,10});
-    % nearest-neighbor gamma by quadratic approximation
-    predictions{ii,6} = quadCoef(ind,1).*expertDBxs{ii}.^2 + quadCoef(ind,2).* ...
-        expertDBxs{ii} + quadCoef(ind,3);
+    if size(expertDB{ii,1},1) < 2 % if single-note, gamma = 0
+        predictions{ii,5} = 0;
+        predictions{ii,6} = 0;
+    else
+        predictions{ii,5} = lin_approx(expertDBxs{ii}, expertDBxs{ind}, expertDB{ind,10});
+        % nearest-neighbor gamma by quadratic approximation
+        predictions{ii,6} = quadCoef(ind,1).*expertDBxs{ii}.^2 + quadCoef(ind,2).* ...
+            expertDBxs{ii} + quadCoef(ind,3);
+    end
     % 1-nn prediction
     predictions{ii,7} = dbData(1) + dbData(2).*(predictions{ii,3} + ...
         predictions{ii,4}.*predictions{ii,5});
@@ -101,8 +102,12 @@ predictions(:,11) = num2cell(w*vertcat(expertDB{:,9})./sum(w,2));
 
 for ii = 1:s
     % k-NN gamma
-    predictions{ii,12} = (expertDBxs{ii}.^2).*wCoef(ii,1) + ...
-        expertDBxs{ii}.*wCoef(ii,2) + wCoef(ii,3);
+    if size(expertDB{ii,1},1) < 2 % if single-note, gamma = 0
+        predictions{ii,12} = 0;
+    else
+        predictions{ii,12} = (expertDBxs{ii}.^2).*wCoef(ii,1) + ...
+            expertDBxs{ii}.*wCoef(ii,2) + wCoef(ii,3);
+    end
     % k-NN prediction
     predictions{ii,13} = dbData(1) + dbData(2).*(predictions{ii,10} + ...
         predictions{ii,11}.*predictions{ii,12});
@@ -122,20 +127,22 @@ performedDyn = performedDyn(:,5);
 % generate predicted dynamics curve from concatenation of all segments in
 % predictions and calculate mean squared error
 
-trivialErr = sqrt((performedDyn - trivialLevel).^2);
-nnErr = sqrt((vertcat(predictions{:,7}) - performedDyn).^2);
-nnqErr = sqrt((vertcat(predictions{:,8}) - performedDyn).^2);
-knnErr = sqrt((vertcat(predictions{:,13}) - performedDyn).^2);
+trivialErr = abs(performedDyn - trivialLevel);
+nnErr = abs(vertcat(predictions{:,7}) - performedDyn);
+nnqErr = abs(vertcat(predictions{:,8}) - performedDyn);
+knnErr = abs(vertcat(predictions{:,13}) - performedDyn);
 
 figure
 boxplot([trivialErr, nnErr, nnqErr, knnErr], ...
-    'Notch', 'on', 'Labels', ...
-    {'Baseline (mechanical)','1-NN', '1-NN (parabola)','k-NN'});
+    'Notch', 'off', 'Labels', ...
+    {'Baseline (mechanical)','k = 1', 'k = 1 (parabola)','k = 3'});
 title('Distribution of note level errors in dynamics predictions');
-ylabel('Error in predicted dynamics (0-127)');
+ylabel('Absolute error in predicted dynamics (0-127)');
 
-% p-value reported
-[~, knnPval, ~, ~] = ttest(trivialErr, knnErr);
+% p-value reported (H1 = knnMAE < trivialMAE)
+knnMAE = mean(knnErr);
+knnMAEpct = knnMAE / 127;
+[~, knnPval, ~, ~] = ttest(knnErr - trivialErr, 0, 'Tail', 'left');
 
 performedGamma = vertcat(expertDB{:,10});
 
@@ -156,6 +163,10 @@ performedAlpha = vertcat(expertDB{:,8});
 nnAlphaErr = abs(vertcat(predictions{:,3}) - performedAlpha);
 knnAlphaErr = abs(vertcat(predictions{:,10}) - performedAlpha);
 
+performedBeta = vertcat(expertDB{:,9});
+nnBetaErr = abs(vertcat(predictions{:,4}) - performedAlpha);
+knnBetaErr = abs(vertcat(predictions{:,11}) - performedAlpha);
+
 figure
 boxplot([abs(performedAlpha), nnAlphaErr, knnAlphaErr], ...
     'Notch', 'on', 'Labels', ...
@@ -168,10 +179,12 @@ tableResults = [ median(trivialErr), median(nnErr), median(nnqErr), median(knnEr
 % separating phrases with closest nn from those with farthest nn.
 maeseg = Inf(s,1);
 corrseg = Inf(s,1);
+gammamaeseg = Inf(s,1);
 for i=1:s
     perfseg = expertDB{i,1}(:,5);
     predseg = predictions{i,7};
     maeseg(i) = mean(abs(predseg - perfseg));
+    gammamaeseg(i) = mean(abs(expertDB{i,10} - predictions{i,5}));
     corrseg(i) = corr(perfseg, predseg);
 end
 [nnScoreOrd, sortorder] = sort(vertcat(predictions{:,2}));
