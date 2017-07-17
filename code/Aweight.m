@@ -4,9 +4,12 @@ function filtered = Aweight(wavfile, sRate)
     wavInF = fft(wavfile);
     n = length(wavInF);
     nyq = sRate/2;
-    aWeight = arrayfun(@(f) ...
-        12194^2*f^4/((f^2 + 20.6^2)*(f^2 + 12194^2)*sqrt((f^2 + 107.7^2)*(f^2 + 737.9^2))) ...
-        ,-nyq:2*nyq/n:nyq);
+    aWeight = -nyq:2*nyq/n:nyq;
+    aWeight = aWeight.^2;
+    aWeight = 12194^2.*aWeight.^2./((aWeight + 20.6^2).*(aWeight + 12194^2).*sqrt((aWeight + 107.7^2).*(aWeight + 737.9^2)));
+    %aWeight = arrayfun(@(f) ...
+    %    12194^2*f^4/((f^2 + 20.6^2)*(f^2 + 12194^2)*sqrt((f^2 + 107.7^2)*(f^2 + 737.9^2))) ...
+    %    ,-nyq:2*nyq/n:nyq);
     filteredWavInF = aWeight(1:end-1)' .* fftshift(wavInF);
     filtered = ifft(ifftshift(filteredWavInF));
 end

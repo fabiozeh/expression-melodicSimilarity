@@ -15,11 +15,14 @@
 %   folder names input in folderList.
 %   4: mean loudness level in segment.
 %   5: difference between mean loudness level in this segment and in the
-%   previous segment of its originating piece.
+%   entire piece.
+%   6: z-score of mean loudness level in segment, relative to piece mean
+%   7: duration of segment in seconds
 
 % column 1 = folder name. Column 2 = 1 to do automatic onset detection
-folderList = {'telmi_eulalie', 1; 'bachManual', 0};
-applyAweighting = 0;
+function [expertDB, params] = createExpertDB(folderList, applyAweighting)
+
+if nargin < 2, applyAweighting = 0; end
 
 if isunix(), sep = '/'; else sep = '\'; end
 
@@ -27,32 +30,58 @@ if isunix(), sep = '/'; else sep = '\'; end
 addpath(genpath('miditoolbox'));
 
 expertDB = {};
+params = [];
 for piece = folderList'
 
     folder = ['..' sep 'data' sep piece{1} sep 'input'];
+    
+    % collect score and expressive features for this piece
     [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting);
     
     % segment the score into melodic phrases
-    segments = findPhrases(score);
+    segments = findPhrases(score); % segmentOnMeasures(score, 4, 1, 2);
 
+    % compute piece overall mean dynamics
+    overall = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
+    
+    % compute piece dynamic range
+    dynRange = std(alignedperf(:,5), alignedperf(:,7));
+    
     % copy performance information into segment cell array
+    segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
-        segments{ii,1}(:,5) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5);
-        segments{ii,1}(:,9) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),6);
-        segments{ii,1}(:,10) = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),7);
+        % performance dynamics as midi velocity
+        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5:7);
+        segments{ii,1}(:,5) = segdyn(:,1);
+        % performance timing
+        segments{ii,1}(:,9) = segdyn(:,2);
+        segments{ii,1}(:,10) = segdyn(:,3);
+        % piece name
         segments{ii,3} = piece{1};
+        % mean velocity
+        segments{ii,4} = segdyn(:,1)'*segdyn(:,3)./sum(segdyn(:,3));
+        % mean velocity offset from piece mean (salience)
+        segments{ii,5} = segments{ii,4} - overall;
+        % duration of segment in seconds
+        segments{ii,7} = segments{ii,1}(end,9) + segments{ii,1}(end,10) - segments{ii,1}(1,9);
+        % alpha ((mean - overall) / range);
+        segments{ii,8} = segments{ii,5}./dynRange;
+        % beta (segment range (std) divided by piece range)
+        segments{ii,9} = std(segdyn(:,1),segdyn(:,3))./dynRange;
+        % gamma (contour z-score)
+        if size(segments{ii,1},1) < 2
+            segments{ii,10} = 0;
+        else
+            segments{ii,10} = (segdyn(:,1) - segments{ii,4})./(dynRange.*segments{ii,9});
+        end
     end
     
-    expertDB = [expertDB; segments];
+    % segment velocity z-score
+    segments(:,6) = num2cell(zscore([segments{:,4}]));
     
+    % include all computed data into expertDB output cell array
+    expertDB = [expertDB; segments]; %#ok<AGROW>
+    params = [params; overall, dynRange]; %#ok<AGROW>
 end
 
-% Compute useful information about each segment
-
-% segment mean loudness level
-expertDB(:,4) = num2cell(cellfun(@(x) mean(x(:,5)), expertDB(:,1)));
-% offset from previous segment
-expertDB(:,5) = num2cell([0; diff(vertcat(expertDB{:,4}))]);
-[expertDB{[expertDB{:,2}] == 1, 5}] = deal(0);
-
-clear ii segments piece score alignedperf folder sep folderList applyAweighting
+end
