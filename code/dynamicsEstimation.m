@@ -1,4 +1,12 @@
-% Perform dynamics estimation for a given score
+% Perform dynamics estimation for a given score.
+% Parameters:
+% L: the desired mean velocity level (0-127)
+% R: the desired dynamic range (0-127)
+% expertDB: the training set, created with createExpertDB.m
+% method: 'w-knn', 'knn', 'nn-quad', 'nn', or 'all'
+% k: number of neighbors for k-nn or w-knn (typical: 2-10)
+% c: RBF kernel parameter for w-knn (typically < 1e-3 but should be
+%    cross-validated for optimal results.
 function [output, outputB, outputC, outputD] = dynamicsEstimation(scoremidi, L, R, expertDB, method, k, c)
 
 allmethods = {'w-knn', 'knn', 'nn-quad', 'nn'};

@@ -1,7 +1,10 @@
 % Generates cell array 'expertDB' with melody segments and expressive 
-% features from a set of input files given by setting variable
-% folderList appropriately.
-% Structure of expertDB:
+% features from a set of input files given by variable folderList, which
+% should be a cell array indicating one piece per row, with columns:
+% 1: piece input folder name as string (assumed to be under ../data/)
+% 2: set 1 to detect onsets automatically or 0 to use an alignment file
+% provided
+% Structure of output expertDB:
 %   Each row has information on one melodic segment of a piece in the
 %   database. Columns contain the following data:
 %   1: array of midi notes (typical miditoolbox nmat) of the segment.
@@ -18,6 +21,14 @@
 %   entire piece.
 %   6: z-score of mean loudness level in segment, relative to piece mean
 %   7: duration of segment in seconds
+%   8: "alpha" component of dynamics model (relative phrase salience)
+%   9: "beta" component of dynamics model (relative phrase range)
+%  10: "Gamma" component of dynamics model (relative phrase contour)
+% Structure of output params:
+%   Each row contains measured parameters for one piece (a row of
+%   folderList). Columns are:
+%   1: mean overall dynamics level
+%   2: dynamic range measure (weighted standard deviation of note dynamics)
 
 % column 1 = folder name. Column 2 = 1 to do automatic onset detection
 function [expertDB, params] = createExpertDB(folderList, applyAweighting)

@@ -12,12 +12,8 @@ s = size(expertDB,1);
 
 if isunix(), sep = '/'; else sep = '\'; end
 
-%%%%% TODO: compute overall lvl and dynamic range of test/xval sets under
-%%%%% the premise that the model only has to guess the relative salience
-%%%%% and contours.
-
 % load score and calculate expressive features from performance
-testSet = {'beethoven4_3', 0}%; 'beethoven4_1', 0};
+testSet = {'beethoven4_3', 0};%; 'beethoven4_1', 0};
 performance = [];
 score = cell(size(testSet, 1), 3);
 feats = {};
