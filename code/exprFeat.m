@@ -27,13 +27,7 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
         wavfile = Aweight(wavfile, sRate);
     end
 
-    % do rms for every sRate/100 elements (441 in 44.1kHz wav file)
-    %step = floor(sRate/100);
-    %r = windowedRms(wavfile, step, step);
-    %r = [[0; (step/sRate)*(1:(length(r)-1))'], 20*log(r)]; % r in dBFS
-
     % compute average energy around each performed note
-    %perfmidi = computeVelocity(perfmidi, r);
     perfmidi = computeNoteLoudness(perfmidi, wavfile, sRate);
 
     % align the performance with the score
