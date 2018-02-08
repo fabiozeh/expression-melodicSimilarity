@@ -10,13 +10,14 @@ end
 f = lcm(sym(arrayfun(@(x) multFactor(x), nmat(:,1))));
 % multiply onset timing by factor
 nmat(:,1) = f.*nmat(:,1);
-fakeSig = zeros(int32(nmat(end,1)+ceil(nmat(end,2)*f)));
+%fakeSig = zeros(int32(nmat(end,1)+ceil(nmat(end,2)*f)),1);
 sigInd = 1;
 for ind = 1:(size(nmat,1)-1)
     %create samples of next note
     n = int32(nmat(ind+1,1) - nmat(ind,1));
-    fakeSig(sigInd:sigInd+n) = nmat(ind,4).*ones(n);
+    fakeSig(sigInd:sigInd+n-1) = nmat(ind,5).*ones(n,1);
+    sigInd = sigInd + n;
 end
 n = int32(ceil(nmat(end,2)*f));
-fakeSig(sigInd:sigInd+n) = nmat(end,4).*ones(n);
+fakeSig(sigInd:sigInd+n-1) = nmat(end,5).*ones(n,1);
 end

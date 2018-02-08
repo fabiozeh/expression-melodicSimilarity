@@ -21,7 +21,8 @@ else
     [t, ind] = max(zscore(bounds(3:end-1))); % bounds(1) is always largest
                                        % and we avoid splitting into
                                        % segments of only one note.
-    if t > 2 || length(midi) >= 1.5*max_notes, ind = ind + 2; else ind = 1; end
+    %if t > 2 || length(midi) >= 1.5*max_notes, ind = ind + 2; else ind = 1; end
+    if t > 2, ind = ind + 2; else ind = 1; end
     end
 end
 

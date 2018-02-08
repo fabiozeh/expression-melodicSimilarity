@@ -31,7 +31,7 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
     perfmidi = computeNoteLoudness(perfmidi, wavfile, sRate);
 
     % align the performance with the score
-    alignedperf = perfAlign(scoremidi, perfmidi);
+    [scoremidi, alignedperf] = perfAlign(scoremidi, perfmidi);
     % decide an artificial note for deletions
     % TODO
 end
