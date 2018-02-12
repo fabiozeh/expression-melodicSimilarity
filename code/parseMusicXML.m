@@ -12,7 +12,13 @@
 % slur start.
 function mxml = parseMusicXML(filename)
 
-dom = xmlread(filename);
+% Create the DocumentBuilder
+builder = javax.xml.parsers.DocumentBuilderFactory.newInstance;
+
+% Disable validation (because of MATLAB's xmlread bug)
+builder.setFeature('http://apache.org/xml/features/nonvalidating/load-external-dtd', false);
+
+dom = xmlread(filename, builder);
 beatCounter = 0;
 currBeats = NaN;
 currBeatType = NaN;
@@ -29,7 +35,7 @@ ind = 1; % note array index
 % parse first 'part'
 part = dom.getElementsByTagName('part').item(0);
 measures = part.getElementsByTagName('measure');
-
+mxml(measures.getLength, 19) = NaN; % minimal preallocation
 for i = 0:(measures.getLength()-1)
 
     % parse each measure
@@ -46,16 +52,29 @@ for i = 0:(measures.getLength()-1)
             case 'note'
                 [st, oc, d, a, v, o, s, ac] = parseNote(measure.item(j));
                 if (~isnan(ac))
+                    % Note indicated a change of accidentals.
                     currAccidentals = updateAccidentals(st, ac, currAccidentals);
                 end
-                if (o == 0)
-                    mxml(ind, 1:4) = [beatCounter, d, 0, midiPitch(st, oc, currAccidentals)];%, ...
-                    mxml(ind, 5:7) = [  80, beatCounter*60.0/currTempo, d*60.0/currTempo];%, ...
-                    mxml(ind, 8:11) = [   measureNum, currKey, currBeats, currBeatType];%, ...
-                    mxml(ind, 12:17) = [   currDyn, beatCounter - currDynOnset, currWedge, a, v, currOrnam];%, ...
-                    mxml(ind, 18:19) = [    (s == 1 || slurStarted == 1), isequal(s,1)];
-                    currOrnam = 0;
-                    ind = ind + 1;
+                if (o ~= 'g') % if the note isn't a grace note, include it in output
+                    p = midiPitch(st, oc, currAccidentals);
+                    if (o == '+' && a == 'l')
+                        % if this note is linked with a tie, change
+                        % duration of the previous note instead of
+                        % including a new one.
+                        mxml(ind-1, 2) = mxml(ind-1, 2) + d;
+                        mxml(ind-1, 7) = mxml(ind-1, 7) + d*60.0/currTempo;
+                    else
+                        if currOrnam == 0 % if there is no grace note to indicate
+                            currOrnam = o; % indicated ornamentation is as parsed
+                        end
+                        mxml(ind, 1:4) = [beatCounter, d, 0, p];%, ...
+                        mxml(ind, 5:7) = [  80, beatCounter*60.0/currTempo, d*60.0/currTempo];%, ...
+                        mxml(ind, 8:11) = [   measureNum, currKey, currBeats, currBeatType];%, ...
+                        mxml(ind, 12:17) = [   currDyn, beatCounter - currDynOnset, currWedge, a, v, currOrnam];%, ...
+                        mxml(ind, 18:19) = [    (s == 1 || slurStarted == 1), isequal(s,1)];
+                        currOrnam = 0;
+                        ind = ind + 1;
+                    end
                     beatCounter = beatCounter + d;
                     slurStarted = s + slurStarted;
                 else
@@ -203,6 +222,12 @@ function [step, octave, duration, art, vib, orn, slur, accid] = parseNote(note)
                 hasDot = 1;
             case 'rest'
                 step = 'rest';
+            case 'tie'
+                if (strcmpi('stop', ...
+                        elmt.getAttributes().getNamedItem('type'). ...
+                        getValue().toCharArray'))
+                    orn = '+';
+                end
             case 'type'
                 switch elmt.getFirstChild().getNodeValue().toCharArray'
                     case 'whole'
@@ -237,7 +262,7 @@ function [step, octave, duration, art, vib, orn, slur, accid] = parseNote(note)
                         accid = 0;
                 end
             case 'grace'
-                orn = 1; % todo: accacciatura or appogiatura
+                orn = 'g'; % todo: accacciatura or appogiatura
             case 'notations'
                 nots = elmt.getChildNodes();
                 for j = 0:(nots.getLength()-1)
@@ -263,6 +288,11 @@ function [step, octave, duration, art, vib, orn, slur, accid] = parseNote(note)
                             end
                         case 'technical'
                             % todo
+                        case 'ornaments'
+                            ornmt = nots.item(j).getChildNodes();
+                            if (ornmt.getElementsByTagName('trill-mark').getLength() > 0)
+                                orn = 't';
+                            end
                     end
                 end    
         end   
