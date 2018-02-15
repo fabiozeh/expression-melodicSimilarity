@@ -1,3 +1,6 @@
 [submodule "code/miditoolbox"]
 	path = code/miditoolbox
 	url = https://github.com/miditoolbox/1.1.git
+[submodule "code/util/musicxml"]
+	path = code/util/musicxml
+	url = https://gist.github.com/62018d04ee9f507bf800d157e89c579f.git
