@@ -6,9 +6,11 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% List input folders desired
-inputFolders = {'haydn'; 'beethoven4_1'; 'beethoven4_4E1'; 'borodin2_1'; 
-    'beethoven4_3'; 'meditacion'; 'bachManual'; 'ev01'; 'ev09'};
+%inputFolders = {'haydn'; 'beethoven4_1'; 'beethoven4_4E1'; 'borodin2_1'; 
+    %'beethoven4_3'; 'meditacion'; 'bachManual'; 'ev01'; 'ev09'};
 
+    inputFolders = {'ev01'; 'ev02'; 'ev03'; 'ev06'; 'ev09'};
+    
 %% Generate models for all folders with a leave-one-out training set
 for i = 1:length(inputFolders)
     % create expert database
