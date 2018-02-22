@@ -9,7 +9,7 @@ addpath(genpath('miditoolbox'));
 %inputFolders = {'haydn'; 'beethoven4_1'; 'beethoven4_4E1'; 'borodin2_1'; 
     %'beethoven4_3'; 'meditacion'; 'bachManual'; 'ev01'; 'ev09'};
 
-    inputFolders = {'ev01'; 'ev02'; 'ev03'; 'ev06'; 'ev09'};
+    inputFolders = {'ev01'; 'ev02'; 'ev03'; 'ev04'; 'ev05'; 'ev06'; 'ev07'; 'ev09'};
     
 %% Generate models for all folders with a leave-one-out training set
 for i = 1:length(inputFolders)

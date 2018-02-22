@@ -1,5 +1,7 @@
-function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detectOnsets, applyAweighting)
-    
+function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detectOnsets, applyAweighting, useVel)
+
+    if nargin < 4, useVel = 1; end
+
     if isunix(), sep = '/'; else sep = '\'; end
 
     if detectOnsets
@@ -28,7 +30,7 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
     end
 
     % compute average energy around each performed note
-    perfmidi = computeNoteLoudness(perfmidi, wavfile, sRate);
+    perfmidi = computeNoteLoudness(perfmidi, wavfile, sRate, useVel);
 
     % align the performance with the score
     [scoremidi, alignedperf] = perfAlign(scoremidi, perfmidi);
