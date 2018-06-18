@@ -6,8 +6,15 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% Load Expert Database
-dataSet = {'beethoven4_4E1', 0}; %; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
+dataSet = {'ev01', 0; 'ev02', 0; 'ev03', 0; 'ev06', 0; 'ev09', 0};%{'beethoven4_4E1', 0; 'beethoven4_3', 0; 'beethoven4_1', 0; 'bachManual', 0}%; 'meditacion', 0; 'borodin2_1', 0; 'haydn', 0};
 [expertDB, dbData] = createExpertDB(dataSet, 0);
+
+% separating only different phrases in beethoven4_4 first violin
+% filtered = [expertDB(1:4,:); expertDB(9:12,:); expertDB(17:20,:); ...
+%     expertDB(25:27,:); expertDB(29:30,:); expertDB(41:44,:); ...
+%     expertDB(52:55,:); expertDB(81:90,:)];
+% exdbBig = expertDB;
+% expertDB = filtered;
 
 s = size(expertDB,1);
 

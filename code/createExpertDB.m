@@ -34,9 +34,10 @@ params = [];
 for piece = folderList'
 
     folder = ['..' sep 'data' sep piece{1} sep 'input'];
+    %folder = piece{1}; % for usage with testAlf
     
     % collect score and expressive features for this piece
-    [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting);
+    [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting, 1);
     
     % segment the score into melodic phrases
     segments = findPhrases(score); % segmentOnMeasures(score, 4, 1, 2);
@@ -45,17 +46,16 @@ for piece = folderList'
     overall = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
     
     % compute piece dynamic range
-    dynRange = std(alignedperf(:,5), alignedperf(:,7));
+    dynRange = max(alignedperf(:,5)) - min(alignedperf(:,5));%std(alignedperf(:,5), alignedperf(:,7));
     
     % copy performance information into segment cell array
     segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
         % performance dynamics as midi velocity
-        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),5:7);
+        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),[5,6,7,1,2]);
         segments{ii,1}(:,5) = segdyn(:,1);
         % performance timing
-        segments{ii,1}(:,9) = segdyn(:,2);
-        segments{ii,1}(:,10) = segdyn(:,3);
+        segments{ii,1}(:,9:12) = segdyn(:,2:5);
         % piece name
         segments{ii,3} = piece{1};
         % mean velocity
@@ -67,7 +67,7 @@ for piece = folderList'
         % alpha ((mean - overall) / range);
         segments{ii,8} = segments{ii,5}./dynRange;
         % beta (segment range (std) divided by piece range)
-        segments{ii,9} = std(segdyn(:,1),segdyn(:,3))./dynRange;
+        segments{ii,9} = (max(segdyn(:,1))-min(segdyn(:,1)))./dynRange;%std(segdyn(:,1),segdyn(:,3))./dynRange;
         % gamma (contour z-score)
         if size(segments{ii,1},1) < 2
             segments{ii,10} = 0;
