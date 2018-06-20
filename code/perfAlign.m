@@ -5,7 +5,7 @@ function [aligneds, alignedp] = perfAlign(scoremidi, perfmidi)
     ixS = 1; %score midi index
     ixP = 1; %perf midi index
     ix3 = 1; %aligned arrays index
-    alignedp = NaN(size(scoremidi));
+    alignedp = NaN(size(scoremidi,1),size(perfmidi,2));
     aligneds = NaN(size(scoremidi));
     for ixal = 1:size(alignment,1)
         if alignment(ixal,1) - ix1 == 0

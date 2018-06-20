@@ -31,7 +31,7 @@ for i = 1:length(inputFolders)
     trainingSet = inputFolders;
     trainingSet(i,:) = []; % leave this out
     trainingSet(:,2) = {0};
-    expertDB = createExpertDB(trainingSet, 0);
+    expertDB = createExpertDB(trainingSet, 0, 1);
     s = size(expertDB,1);
 
     if isunix(), sep = '/'; else sep = '\'; end
@@ -39,9 +39,10 @@ for i = 1:length(inputFolders)
     % load score and calculate expressive features from performance
     testSet = {inputFolders{i}, 0};
     score = cell(1, 3);
-    [feats, fData] = createExpertDB(testSet, 0);
+    [feats, fData] = createExpertDB(testSet, 0, 0);
     performance = vertcat(feats{:,1});
     score{1} = performance(:,1:7);
+    score{1}(:,5) = 80; % neutralize velocities for fairness (TODO test if makes difference)
     % compute piece overall mean dynamics
     score{2} = fData(1,1);
     % compute piece dynamic range
@@ -54,24 +55,27 @@ for i = 1:length(inputFolders)
     predknn = {};
     predqnn = {};
     prednn = {};
-    for j = 1:size(testSet,1)
-        [wknn, knn, qnn, nn] = dynamicsEstimation(score{1}, 64, 100, expertDB, 'all', k, c);
-        predwknn = [predwknn; wknn]; %#ok<AGROW>
-        predknn = [predknn; knn]; %#ok<AGROW>
-        predqnn = [predqnn; qnn]; %#ok<AGROW>
-        prednn = [prednn; nn]; %#ok<AGROW>
-    end
+    
+    [wknn, knn, qnn, nn] = dynamicsEstimation(score{1}, 64, 100, expertDB, 'all', k, c);
+    predwknn = [predwknn; wknn]; %#ok<AGROW>
+    predknn = [predknn; knn]; %#ok<AGROW>
+    predqnn = [predqnn; qnn]; %#ok<AGROW>
+    prednn = [prednn; nn]; %#ok<AGROW>
 
+    score{1}(:,6:7) = score{1}(:,1:2) ./ mean(performance(:,13)) * 60; % tempo adjustment
+    out_est = onsetDevEstimation(score{1}, fData(1,3), fData(1,4), expertDB);
+    onsetEst = vertcat(out_est{:,1});
+    
     % midi generation for perceptual test
     predmid = vertcat(predqnn{:,1});
     predmid = predmid(:,1:7);
-    predmid(:,1:2) = performance(:,11:12);
-    predmid(:,6:7) = performance(:,9:10);
+    predmid(:,1:2) = score{1}(:,1:2);
+    predmid(:,6:7) = onsetEst(:,6:7);
     perfmid = performance(:,1:7);
     perfmid(:,1:2) = performance(:,11:12);
     perfmid(:,6:7) = performance(:,9:10);
     
-    deadpmid = perfmid;
+    deadpmid = score{1};
     deadpmid(:,5) = score{2};
     
     da(i) = num2cell(perfmid, [1 2]);

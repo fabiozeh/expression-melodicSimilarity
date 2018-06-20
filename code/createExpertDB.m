@@ -20,14 +20,18 @@
 %   7: duration of segment in seconds
 
 % column 1 = folder name. Column 2 = 1 to do automatic onset detection
-function [expertDB, params] = createExpertDB(folderList, applyAweighting)
+function [expertDB, params] = createExpertDB(folderList, applyAweighting, isTrainingSet)
 
 if nargin < 2, applyAweighting = 0; end
+if nargin < 3, isTrainingSet = 0; end
 
 if isunix(), sep = '/'; else sep = '\'; end
 
 % Load the miditoolbox library
 addpath(genpath('miditoolbox'));
+
+% Load the musicxml parser
+
 
 expertDB = {};
 params = [];
@@ -38,21 +42,33 @@ for piece = folderList'
     
     % collect score and expressive features for this piece
     [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting, 1);
+    scorefeats = score(:,8:end);
+    score = score(:,1:7);
+    alignedperf(isnan(alignedperf(:,9)),9) = 0; % default onset deviation = 0
     
     % segment the score into melodic phrases
-    segments = findPhrases(score); % segmentOnMeasures(score, 4, 1, 2);
+    if (isTrainingSet)
+        % segment according to performance timing (for better results)
+        segments = findPhrases(score, 10, 0, boundary(alignedperf), 1); % segmentOnMeasures(score, 4, 1, 2);
+    else
+        % if it's a test set, we want the segments as they are obtained from
+        % score
+        segments = findPhrases(score);
+    end
 
-    % compute piece overall mean dynamics
-    overall = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
+    % compute piece overall mean dynamics and onset-dev.
+    overall_dyn = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
+    overall_odev = mean(alignedperf(:,9));
     
-    % compute piece dynamic range
+    % compute piece dynamic range and onset-dev. std.
     dynRange = max(alignedperf(:,5)) - min(alignedperf(:,5));%std(alignedperf(:,5), alignedperf(:,7));
+    odevStd = std(alignedperf(:,9));
     
     % copy performance information into segment cell array
     segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
         % performance dynamics as midi velocity
-        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),[5,6,7,1,2]);
+        segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),[5,6,7,1,2,9,8]);
         segments{ii,1}(:,5) = segdyn(:,1);
         % performance timing
         segments{ii,1}(:,9:12) = segdyn(:,2:5);
@@ -61,7 +77,7 @@ for piece = folderList'
         % mean velocity
         segments{ii,4} = segdyn(:,1)'*segdyn(:,3)./sum(segdyn(:,3));
         % mean velocity offset from piece mean (salience)
-        segments{ii,5} = segments{ii,4} - overall;
+        segments{ii,5} = segments{ii,4} - overall_dyn;
         % duration of segment in seconds
         segments{ii,7} = segments{ii,1}(end,9) + segments{ii,1}(end,10) - segments{ii,1}(1,9);
         % alpha ((mean - overall) / range);
@@ -74,6 +90,10 @@ for piece = folderList'
         else
             segments{ii,10} = (segdyn(:,1) - segments{ii,4})./(dynRange.*segments{ii,9});
         end
+        % normalized onset deviations
+        segments{ii,11} = (segdyn(:,6) - overall_odev) ./ odevStd;
+        % local tempo
+        segments{ii,1}(:,13) = segdyn(:,7);
     end
     
     % segment velocity z-score
@@ -81,7 +101,7 @@ for piece = folderList'
     
     % include all computed data into expertDB output cell array
     expertDB = [expertDB; segments]; %#ok<AGROW>
-    params = [params; overall, dynRange]; %#ok<AGROW>
+    params = [params; overall_dyn, dynRange, overall_odev, odevStd]; %#ok<AGROW>
 end
 
 end
