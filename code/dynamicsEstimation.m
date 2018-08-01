@@ -103,6 +103,7 @@ if method(idxnn) || method(idxnnq)
         output_nnq(:,3) = nn_calc(:,4); % alpha (salience coeff.)
         output_nnq(:,4) = nn_calc(:,5); % beta (std. coeff.)
         output_nnq(:,5) = nn_calc(:,7); % gamma (note contour coeff.)
+        output_nnq(:,6) = nn_calc(:,3); % normalized melodic distance
         for i = 1:s
             output_nnq{i,1}(:,5) = L + R.*(output_nnq{i,3} + ...
                 output_nnq{i,4}.*output_nnq{i,5});
@@ -114,6 +115,7 @@ if method(idxnn) || method(idxnnq)
         output_nn(:,3) = nn_calc(:,4); % alpha (salience coeff.)
         output_nn(:,4) = nn_calc(:,5); % beta (std. coeff.)
         output_nn(:,5) = nn_calc(:,6); % gamma (note contour coeff.)
+        output_nn(:,6) = nn_calc(:,3); % normalized melodic distance
         for i = 1:s
             output_nn{i,1}(:,5) = L + R.*(output_nn{i,3} + ...
                 output_nn{i,4}.*output_nn{i,5});
@@ -166,7 +168,7 @@ if method(idxknn) || method(idxwknn)
             output_knn{i,1}(:,5) = L + R.*(output_knn{i,3} + ...
                 output_knn{i,4}.*output_knn{i,5});
         end
-        
+
     end
     
     if method(idxwknn)

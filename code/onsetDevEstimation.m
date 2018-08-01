@@ -19,12 +19,10 @@ for i = 1:s
         [H, tbk] = dtwSig2(segments{i,1}, expertDB{j,1}, 0, 1, 0, 1, 'no');
         scores(i,j) = H(tbk(end,1),tbk(end,2));
     end
-    % durations of segments in secs
-    segments{i,3} = segments{i,1}(end,6) + segments{i,1}(end,7) - segments{i,1}(1,6);
     x0 = segments{i,1}(1,1);
     x1 = segments{i,1}(end,1) + segments{i,1}(end,2);
     % normalized x points for output curve reading
-    segments{i,4} = lin_interpolation(segments{i,1}(:,1) + 0.5*segments{i,1}(:,2), ...
+    segments{i,3} = lin_interpolation(segments{i,1}(:,1) + 0.5*segments{i,1}(:,2), ...
         0, x0, 10, x1);
 end
 
@@ -58,20 +56,18 @@ for i = 1:s
             nn_calc{i,2} = [nn_calc{i,2}; j];
         end
     end
-    nn_calc{i,3} = nn_calc{i,1}/size(segments{i,1},1); % normalized mel. dist.
-    matchSeg = expertDB(nn_calc{i,2}(1),:); % nearest neighbor
     C = quadCoef(nn_calc{i,2}(1),:); % nearest neighbor quad coefficients
-    nn_calc{i,4} = C(1).*segments{i,4}.^2 + C(2).*segments{i,4} + C(3); % contour
+    nn_calc{i,3} = C(1).*segments{i,3}.^2 + C(2).*segments{i,3} + C(3); % contour
 end
 
 clear i j matchSeg x x0 x1
 
 % prepare output
 output = segments;
-output(:,3) = nn_calc(:,4);
+output(:,3) = nn_calc(:,3);
 for i = 1:s
-    output{i,1}(:,6) = output{i,1}(:,6) + m + d.*(output{i,3});
-    output{i,1}(:,7) = output{i,1}(:,7) - m - d.*(output{i,3});
+    output{i,1}(:,6) = output{i,1}(:,6) + d .*(m + output{i,3});
+    output{i,1}(:,7) = output{i,1}(:,7) - d .*(m + output{i,3});
 end
 
 

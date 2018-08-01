@@ -31,7 +31,7 @@ if isunix(), sep = '/'; else sep = '\'; end
 addpath(genpath('miditoolbox'));
 
 % Load the musicxml parser
-
+addpath(genpath('util/musicxml'));
 
 expertDB = {};
 params = [];
@@ -64,6 +64,9 @@ for piece = folderList'
     dynRange = max(alignedperf(:,5)) - min(alignedperf(:,5));%std(alignedperf(:,5), alignedperf(:,7));
     odevStd = std(alignedperf(:,9));
     
+    % get piece tempo
+    tempo = mean(alignedperf(:,8));
+    
     % copy performance information into segment cell array
     segments(:,3:7) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
@@ -93,7 +96,7 @@ for piece = folderList'
         % normalized onset deviations
         segments{ii,11} = (segdyn(:,6) - overall_odev) ./ odevStd;
         % local tempo
-        segments{ii,1}(:,13) = segdyn(:,7);
+        segments{ii,1}(:,13) = segdyn(:,7)./tempo;
     end
     
     % segment velocity z-score

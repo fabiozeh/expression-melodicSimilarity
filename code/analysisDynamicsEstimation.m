@@ -6,14 +6,14 @@ clear
 addpath(genpath('miditoolbox'));
 
 %% create expert database
-trainingSet = {'ev01', 0; 'ev02',0; 'ev03', 0; 'ev04',0; 'ev05',0; 'ev06',0; 'ev07',0; 'ev09', 0; 'haydn', 0; 'beethoven4_1', 0; 'beethoven4_4E1', 0; 'beethoven4_3', 0; 'meditacion', 0}; %; 'bachManual', 0}; 
+trainingSet = {'ev02', 0; 'ev03', 0; 'ev04',0; 'ev05',0; 'ev06',0; 'ev07',0; 'ev09', 0; };%'haydn', 0; 'beethoven4_1', 0; 'beethoven4_4E1', 0; 'beethoven4_3', 0; 'meditacion', 0}; %; 'bachManual', 0}; 
 expertDB = createExpertDB(trainingSet, 0);
 s = size(expertDB,1);
 
 if isunix(), sep = '/'; else sep = '\'; end
 
 % load score and calculate expressive features from performance
-testSet = {'bachManual', 0};
+testSet = {'ev01', 0};
 performance = [];
 score = cell(size(testSet, 1), 3);
 feats = {};

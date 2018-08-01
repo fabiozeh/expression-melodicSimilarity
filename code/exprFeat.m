@@ -17,6 +17,26 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
     if exist([inputFolder sep 'score.xml'], 'file')
         scoremidi = parseMusicXML([inputFolder sep 'score.xml']);
         scoremidi = scoremidi(scoremidi(:,4) ~= 0,:); % delete rests
+        aux = scoremidi;
+        ptr = 1;
+        for l = 1:size(aux,1);
+           if (aux(l,17) == 'g') % grace note
+               scoremidi = [scoremidi(1:ptr-1,:); scoremidi(ptr,:); scoremidi(ptr:end,:)];
+               dur = 0;
+               if (scoremidi(ptr,2) >= 0.5)
+                   dur = 0.25;
+               else
+                   dur = scoremidi(ptr,2)/2;
+               end
+                   lcltmp = scoremidi(ptr,7)/scoremidi(ptr,2);
+                   scoremidi(ptr-1,[2,7]) = [scoremidi(ptr-1,2)-dur, scoremidi(ptr-1,7)-dur*lcltmp];
+                   scoremidi(ptr,[1,2,4,6,7]) = [scoremidi(ptr,1)-dur, dur, scoremidi(ptr,4)+2, ...
+                       scoremidi(ptr,6) - dur*lcltmp, dur*lcltmp];
+               ptr = ptr + 2;
+           else
+               ptr = ptr + 1;
+           end
+        end
     elseif exist([inputFolder sep 'score.mid'], 'file')
         scoremidi = readmidi([inputFolder sep 'score.mid']);
     else
@@ -42,8 +62,16 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(inputFolder, detect
     % decide an artificial note for deletions
     % TODO
     
+    % tempo adjustments
+    %scoremidi(:,1) = scoremidi(:,1) + alignedperf(1,1) - scoremidi(1,1);
+    %scoremidi(:,6) = scoremidi(:,6) + alignedperf(1,6) - scoremidi(1,6);
+    alignedperf(:,1:2) = scoremidi(:,1:2);
+    
     % compute local tempo
-    alignedperf(:,8) = scoremidi(:,2).*60./alignedperf(:,7);
+    alignedperf(:,8) = alignedperf(:,2).*60./alignedperf(:,7);
+    
+    % adjust score tempo according to performance
+    scoremidi = settempo(scoremidi, gettempo(alignedperf));
     
     % compute timing deviation
     alignedperf(:,9) = timing(alignedperf, scoremidi);
