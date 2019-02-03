@@ -32,9 +32,9 @@ system([exportCommand sonicAnnotatorPath sep platFolder sep 'sonic-annotator -t 
      transformFilePath ' -w midi ' wavFileFolder sep wavFileName]);
 
 if nargin >= 3
-    if ~exist(outputFilePath, 'file')
+    if ~exist(outputFilePath, 'dir')
         system([mdCommand outputFilePath]);
     end
-    system([moveCommand wavFileFolder sep 'performance.mid ' ...
+    system([moveCommand wavFileFolder sep wavFileName(1:end-3) 'mid ' ...
         outputFilePath sep outputFileName]);
 end

@@ -5,8 +5,13 @@ clear
 
 addpath(genpath('miditoolbox'));
 
-%% List input folders desired
-inputFolders = {'ev01'; 'ev02'; 'ev03'; 'ev04'; 'ev05'; 'ev06'; 'ev07'; 'ev09'};
+%% Get desired input folder
+if isunix(), sep = '/'; else sep = '\'; end
+inputFolder = uigetdir(['.' sep], 'Select input data folder:');
+d = dir(inputFolder);
+d = d(contains({d.name},'.wav'));
+pieceList = {d.name};
+pieceList = strcat([inputFolder sep], pieceList');
 
 %% Statistics tables
 base1 = [];
@@ -31,18 +36,17 @@ timing = [];
 timingBase = [];
 
 %% Generate models for all folders with a leave-one-out training set
-for i = 1:length(inputFolders)
+for i = 1:length(pieceList)
     % create expert database
-    trainingSet = inputFolders;
+    trainingSet = pieceList;
     trainingSet(i,:) = []; % leave this out
-    trainingSet(:,2) = {0};
     expertDB = createExpertDB(trainingSet, 0, 1);
     s = size(expertDB,1);
 
     if isunix(), sep = '/'; else sep = '\'; end
 
     % load score and calculate expressive features from performance
-    testSet = {inputFolders{i}, 0};
+    testSet = pieceList(i);
     score = cell(1, 3);
     [feats, fData] = createExpertDB(testSet, 0, 0);
     performance = vertcat(feats{:,1});
@@ -68,7 +72,7 @@ for i = 1:length(inputFolders)
     prednn = [prednn; nn]; %#ok<AGROW>
 
     out_est = localTempoEstimation(score{1}, expertDB, gettempo(performance));
-    out_est(:,5) = deal(inputFolders(i));
+    out_est(:,5) = deal(pieceList(i));
     onsetEst = vertcat(out_est{:,1});
     
     allPreds = vertcat(allPreds, out_est);
@@ -90,9 +94,10 @@ for i = 1:length(inputFolders)
     db(i) = num2cell(predmid, [1 2]);
     dc(i) = num2cell(deadpmid, [1 2]);
     
-    writemidi(deadpmid, [inputFolders{i} '_deadpan.mid']);
-    writemidi(perfmid, [inputFolders{i} '_performed.mid']);
-    writemidi(predmid, [inputFolders{i} '_predicted.mid']);
+    name = pieceList{i};
+%     writemidi(deadpmid, [name(1:end-3) '_deadpan.mid']);
+%     writemidi(perfmid, [name(1:end-3) '_performed.mid']);
+%     writemidi(predmid, [name(1:end-3) '_predicted.mid']);
 
     % data analysis
     % generate predicted dynamics curve from concatenation of all segments in
@@ -162,35 +167,35 @@ for i = 1:1:size(allPreds,1)
     allPreds{i,6} = size(allPreds{i,1},1);
 end
 
-scoresSamples = ...
-    {11, [1,2]; 12, [3,4,5,6]; 13,[7,8,9]; ...
-     21, [10,11;5,5]; 22,[11,12;6,12]; 23,[11;6]; ...
-     31, [13,14;11,15]; 32,[14,15,16,17,18;3,10,8,2,8]; 33,[18,19;2,14]; ...
-     41, [20,21,22,23]; 42,[24,25,26,27,28,29]; 43,[30,31,32,33]; ...
-     51, [35,36,37]; 52,[38]; 53,[39,40,41,42]; ...
-     61, [43,44,45]; 62,[46,47,48,49;7,6,4,3]; 63,[49,50,51,52;3,3,5,6]; ...
-     71, [53,54]; 72,[55,56]; 73,[57,58]; ...
-     81, [59,60,61,62,63,64,65]; 82,[66,67,68;16,4,8]; 83, [68:73;1,2,5,2,4,16];
-     };
-
-for i = 1:size(scoresSamples,1)
-    range = scoresSamples{i,2}(1,:);
-    weights = [];
-    if size(scoresSamples{i,2},1) > 1
-        weights = scoresSamples{i,2}(2,:);
-    else
-        weights = [allPreds{scoresSamples{i,2}(1,:),6}];
-    end
-    scoresSamples{i,3} = [allPreds{range,2}]*weights'/sum(weights);
-end
+% scoresSamples = ...
+%     {11, [1,2]; 12, [3,4,5,6]; 13,[7,8,9]; ...
+%      21, [10,11;5,5]; 22,[11,12;6,12]; 23,[11;6]; ...
+%      31, [13,14;11,15]; 32,[14,15,16,17,18;3,10,8,2,8]; 33,[18,19;2,14]; ...
+%      41, [20,21,22,23]; 42,[24,25,26,27,28,29]; 43,[30,31,32,33]; ...
+%      51, [35,36,37]; 52,[38]; 53,[39,40,41,42]; ...
+%      61, [43,44,45]; 62,[46,47,48,49;7,6,4,3]; 63,[49,50,51,52;3,3,5,6]; ...
+%      71, [53,54]; 72,[55,56]; 73,[57,58]; ...
+%      81, [59,60,61,62,63,64,65]; 82,[66,67,68;16,4,8]; 83, [68:73;1,2,5,2,4,16];
+%      };
+% 
+% for i = 1:size(scoresSamples,1)
+%     range = scoresSamples{i,2}(1,:);
+%     weights = [];
+%     if size(scoresSamples{i,2},1) > 1
+%         weights = scoresSamples{i,2}(2,:);
+%     else
+%         weights = [allPreds{scoresSamples{i,2}(1,:),6}];
+%     end
+%     scoresSamples{i,3} = [allPreds{range,2}]*weights'/sum(weights);
+% end
 
 
 
 figure
 boxplot([(base1), (nn1), (qnn1), (knn1)], ...
     'Notch', 'off', 'Labels', ...
-    {'Baseline (mechanical)','kNN (exact, k=1)', 'kNN (parabola, k=1)','kNN (k=3)'});
-title('Distribution of note level errors in dynamics predictions vs. baseline');
+    {'Baseline (deadpan)','kNN (exact, k=1)', 'kNN (parabola, k=1)','kNN (k=3)'});
+title('Distribution of note level errors in dynamics predictions');
 ylabel('Error in predicted note velocity (1-127)');
 
 %figure

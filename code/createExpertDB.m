@@ -19,8 +19,8 @@
 %   6: z-score of mean loudness level in segment, relative to piece mean
 %   7: duration of segment in seconds
 
-% column 1 = folder name. Column 2 = 1 to do automatic onset detection
-function [expertDB, params] = createExpertDB(folderList, applyAweighting, isTrainingSet)
+% input can be a cell array of wav file names or a single folder name.
+function [expertDB, params] = createExpertDB(input, applyAweighting, isTrainingSet)
 
 if nargin < 2, applyAweighting = 0; end
 if nargin < 3, isTrainingSet = 0; end
@@ -35,13 +35,19 @@ addpath(genpath('util/musicxml'));
 
 expertDB = {};
 params = [];
-for piece = folderList'
 
-    folder = ['..' sep 'data' sep piece{1} sep 'input'];
-    %folder = piece{1}; % for usage with testAlf
-    
+if (~iscell(input))
+    d = dir(folder);
+    d = d(contains({d.name},'.wav'));
+    pieceList = {d.name};
+    pieceList = strcat([folder sep], pieceList);
+else
+    pieceList = input;
+end
+for piece = pieceList
+
     % collect score and expressive features for this piece
-    [score, alignedperf] = exprFeat(folder, piece{2}, applyAweighting, 1);
+    [score, alignedperf] = exprFeat(piece{1}, applyAweighting, 1);
     scorefeats = score(:,8:end);
     score = score(:,1:7);
     alignedperf(isnan(alignedperf(:,9)),9) = 0; % default onset deviation = 0
@@ -76,7 +82,7 @@ for piece = folderList'
         % performance timing
         segments{ii,1}(:,9:12) = segdyn(:,2:5);
         % piece name
-        segments{ii,3} = piece{1};
+        segments{ii,3} = piece;
         % mean velocity
         segments{ii,4} = segdyn(:,1)'*segdyn(:,3)./sum(segdyn(:,3));
         % mean velocity offset from piece mean (salience)

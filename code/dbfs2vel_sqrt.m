@@ -6,11 +6,14 @@ function midiout = dbfs2vel_sqrt(midiin)
 
 midiout = midiin;
 
-lo = -38;
+lo = -36;
 hi = -6;
 
 x0 = 10^(lo/40);
 x1 = 10^(hi/40);
-midiout(:,5) = lin_interpolation(10.^(midiin(:,5)./40), 1, x0, 120, x1);
+midiout(:,5) = min(horzcat(127 + zeros(size(midiin,1),1), ...
+  max(horzcat(10 + zeros(size(midiin,1),1), ...
+  lin_interpolation(10.^(midiin(:,5)./40), 10, x0, 120, x1)), [], 2)), [], 2);
+
 
 end
