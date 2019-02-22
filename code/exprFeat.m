@@ -4,37 +4,28 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(filename, applyAwei
 
     if nargin < 3, useVel = 1; end
 
-    if ~exist([filename(1:end-3) 'mid'], 'file')
-        % Automatic note onset detection with pYin vamp plugin (running script)
-        pYinNotes('.', filename);
+    % remove filename extension
+    if (filename(end-3) == '.')
+        filename = filename(1:end-3);
     end
     
-    perfmidi = readmidi([filename(1:end-3) 'mid']);
+    if ~exist([filename 'mid'], 'file')
+        if ~exist([filename 'midi'], 'file')
+            % Automatic note onset detection with pYin vamp plugin (running script)
+            % pYinNotes('.', filename);
+            % perfmidi = readmidi([filename 'mid']);
+            error('No performance alignment found.');
+        else
+            perfmidi = readmidi([filename 'midi']);
+        end
+    else
+        perfmidi = readmidi([filename 'mid']);
+    end
     
-    if exist([filename(1:end-3) 'xml'], 'file')
-        scoremidi = parseMusicXML([filename(1:end-3) 'xml']);
+    
+    if exist([filename 'xml'], 'file')
+        scoremidi = parseMusicXML([filename 'xml']);
         scoremidi = scoremidi(scoremidi(:,4) ~= 0,:); % delete rests
-        % grace note inclusion
-%         aux = scoremidi;
-%         ptr = 1;
-%         for l = 1:size(aux,1);
-%            if (aux(l,17) == 'g') % grace note
-%                scoremidi = [scoremidi(1:ptr-1,:); scoremidi(ptr,:); scoremidi(ptr:end,:)];
-%                dur = 0;
-%                if (scoremidi(ptr,2) >= 0.5)
-%                    dur = 0.25;
-%                else
-%                    dur = scoremidi(ptr,2)/2;
-%                end
-%                    lcltmp = scoremidi(ptr,7)/scoremidi(ptr,2);
-%                    scoremidi(ptr-1,[2,7]) = [scoremidi(ptr-1,2)-dur, scoremidi(ptr-1,7)-dur*lcltmp];
-%                    scoremidi(ptr,[1,2,4,6,7]) = [scoremidi(ptr,1)-dur, dur, scoremidi(ptr,4)+2, ...
-%                        scoremidi(ptr,6) - dur*lcltmp, dur*lcltmp];
-%                ptr = ptr + 2;
-%            else
-%                ptr = ptr + 1;
-%            end
-%         end
     else
         scoremidi = perfmidi;
     end
@@ -42,7 +33,7 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(filename, applyAwei
     %% Calculate dynamics of expert performances
 
     % load the performance audio signal
-    [wavfile, sRate] = audioread(filename);
+    [wavfile, sRate] = audioread([filename 'wav']);
 
     % filter it for more realistic loudness calculation from an auditory
     % perspective
@@ -69,7 +60,9 @@ function [scoremidi, alignedperf, wavfile, sRate] = exprFeat(filename, applyAwei
     % adjust score tempo according to performance
     scoremidi = settempo(scoremidi, gettempo(alignedperf));
     
-    % compute timing deviation
-    alignedperf(:,9) = timing(alignedperf, scoremidi);
+    % compute timing deviation (if score came from xml)
+    if (size(scoremidi,2) > 7)
+        alignedperf(:,9) = timing(alignedperf, scoremidi);
+    end
     
 end
