@@ -36,7 +36,7 @@ for i = 1:length(seq1)
 end
 k = 2;
 path(1,:) = [i, j];
-while (i > 1 || j > 1)
+while (i > 1 && j > 1)
     d = score(i-1,j-1);
     u = score(i,j-1);
     l = score(i-1,j);

@@ -9,7 +9,7 @@ indexEnd = min(size(wavfile,1), ceil(end_time .* sRate) + tolerance);
 s = min(size(indexStart,1),size(indexEnd,1));
 l = zeros(s,1);
 for i = 1:s
-    l(i) = 20*log(rms(wavfile(indexStart(i):indexEnd(i))));
+    l(i) = 20*log10(rms(wavfile(indexStart(i):indexEnd(i))));
 end
 
 end

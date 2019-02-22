@@ -5,9 +5,11 @@ for i = 1:size(newx,1)
 x0 = max(x(x <= newx(i)));
 if isempty(x0), x0 = x(1); end
 y0 = fx(x == x0);
+if size(y0,1) > 1, y0 = mean(y0); end
 x1 = min(x(x >= newx(i)));
 if isempty(x1), x1 = x(end); end
 y1 = fx(x == x1);
+if size(y1,1) > 1, y1 = mean(y1); end
 
 if x0 == x1
     y(i) = y0;
