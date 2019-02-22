@@ -3,10 +3,11 @@
 clear
 %% Load the required libraries
 
-addpath(genpath('miditoolbox'));
+addpath(genpath('../miditoolbox'));
+addpath(genpath('../'));
 
 %% Get desired input folder
-if isunix(), sep = '/'; else sep = '\'; end
+if isunix(), sep = '/'; else, sep = '\'; end
 inputFolder = uigetdir(['.' sep], 'Select input data folder:');
 d = dir(inputFolder);
 d = d(contains({d.name},'.wav'));
@@ -36,6 +37,9 @@ timing = [];
 timingBase = [];
 
 %% Generate models for all folders with a leave-one-out training set
+da = cell(length(pieceList),1); %preallocation
+db = cell(length(pieceList),1); %preallocation
+dc = cell(length(pieceList),1); %preallocation
 for i = 1:length(pieceList)
     % create expert database
     trainingSet = pieceList;
@@ -43,20 +47,17 @@ for i = 1:length(pieceList)
     expertDB = createExpertDB(trainingSet, 0, 1);
     s = size(expertDB,1);
 
-    if isunix(), sep = '/'; else sep = '\'; end
-
     % load score and calculate expressive features from performance
     testSet = pieceList(i);
     score = cell(1, 3);
     [feats, fData] = createExpertDB(testSet, 0, 0);
     performance = vertcat(feats{:,1});
+    performance = dbfs2vel_sqrt(performance);
     score{1} = performance(:,1:7);
     score{1}(:,5) = 80; % neutralize velocities for fairness (TODO test if makes difference)
     % compute piece overall mean dynamics
-    score{2} = fData(1,1);
-    % compute piece dynamic range
-    score{3} = fData(1,2);
-
+    score{2} = dbfs2vel_sqrt(fData(1,1));
+    
     % estimate dynamics for target score
     k = 3;
     c = 1e-6;
@@ -65,7 +66,7 @@ for i = 1:length(pieceList)
     predqnn = {};
     prednn = {};
     
-    [wknn, knn, qnn, nn] = dynamicsEstimation(score{1}, 64, 100, expertDB, 'all', k, c);
+    [wknn, knn, qnn, nn] = dynamicsEstimation(score{1}, fData(1,1), 30, expertDB, 'all', k, c);
     predwknn = [predwknn; wknn]; %#ok<AGROW>
     predknn = [predknn; knn]; %#ok<AGROW>
     predqnn = [predqnn; qnn]; %#ok<AGROW>
@@ -75,11 +76,11 @@ for i = 1:length(pieceList)
     out_est(:,5) = deal(pieceList(i));
     onsetEst = vertcat(out_est{:,1});
     
-    allPreds = vertcat(allPreds, out_est);
+    allPreds = vertcat(allPreds, out_est); %#ok<AGROW>
         
     % midi generation for perceptual test
     predmid = vertcat(predqnn{:,1});
-    predmid(predmid(:,5) < 1,5) = deal(1);
+    %predmid(predmid(:,5) < 1,5) = deal(1);
     predmid = predmid(:,1:7);
     predmid(:,1:2) = score{1}(:,1:2);
     predmid(:,6:7) = onsetEst(:,6:7);
@@ -118,8 +119,8 @@ for i = 1:length(pieceList)
     wknnSqErr = abs(wknnDyn - performance(:,5));
 
     performedContour = [];
-    for i = 1:size(feats,1)
-        performedContour = vertcat(performedContour, feats{i,10}); %#ok<AGROW>
+    for ii = 1:size(feats,1)
+        performedContour = vertcat(performedContour, feats{ii,10}); %#ok<AGROW>
     end
 
     nnContourErr = abs(vertcat(prednn{:,5}) - performedContour);
@@ -133,8 +134,8 @@ for i = 1:length(pieceList)
     knnSalErr = abs(vertcat(predknn{:,3}) - performedSalience);
     wknnSalErr = abs(vertcat(predwknn{:,3}) - performedSalience);
 
-    timing = [timing; abs(predmid(:,7) - perfmid(:,7))];
-    timingBase = [timingBase; abs(deadpmid(:,7) - perfmid(:,7))];
+    timing = [timing; abs(predmid(:,7) - perfmid(:,7))]; %#ok<AGROW>
+    timingBase = [timingBase; abs(deadpmid(:,7) - perfmid(:,7))]; %#ok<AGROW>
     
     base1 = [base1; trivialSqErr]; %#ok<AGROW>
     nn1 = [nn1; nnSqErr];%#ok<AGROW>
@@ -155,16 +156,16 @@ for i = 1:length(pieceList)
     wknn3 = [wknn3; wknnSalErr];%#ok<AGROW>
 
     qnn(:,7) = feats(:,1);
-    allqnn = [allqnn; qnn];
+    allqnn = [allqnn; qnn]; %#ok<AGROW>
 end
 dda = vertcat(da{1,:});
 ddb = vertcat(db{1,:});
 ddc = vertcat(dc{1,:});
 
 
-
+allPreds(:,6) = num2cell(deal(0)); %preallocation
 for i = 1:1:size(allPreds,1)
-    allPreds{i,6} = size(allPreds{i,1},1);
+    allPreds{i,6} = size(allPreds{i,1},1); 
 end
 
 % scoresSamples = ...
@@ -195,7 +196,7 @@ figure
 boxplot([(base1), (nn1), (qnn1), (knn1)], ...
     'Notch', 'off', 'Labels', ...
     {'Baseline (deadpan)','kNN (exact, k=1)', 'kNN (parabola, k=1)','kNN (k=3)'});
-title('Distribution of note level errors in dynamics predictions');
+title('Distribution of errors in dynamics predictions');
 ylabel('Error in predicted note velocity (1-127)');
 
 %figure
@@ -212,6 +213,7 @@ ylabel('Error in predicted note velocity (1-127)');
 %title('Distribution of phrase level errors in dynamic salience predictions vs. trivial approach');
 %ylabel('Error in predicted loudness (????)');
 
+allqnn(:,8) = num2cell(deal(0)); % preallocation
 for i = 1:size(allqnn,1)
     allqnn{i,8} = size(allqnn{i,1},1);
 end

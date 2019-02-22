@@ -25,7 +25,7 @@ function [expertDB, params] = createExpertDB(input, applyAweighting, isTrainingS
 if nargin < 2, applyAweighting = 0; end
 if nargin < 3, isTrainingSet = 0; end
 
-if isunix(), sep = '/'; else sep = '\'; end
+if isunix(), sep = '/'; else, sep = '\'; end
 
 % Load the miditoolbox library
 addpath(genpath('miditoolbox'));
@@ -37,20 +37,26 @@ expertDB = {};
 params = [];
 
 if (~iscell(input))
-    d = dir(folder);
+    d = dir(input);
     d = d(contains({d.name},'.wav'));
     pieceList = {d.name};
-    pieceList = strcat([folder sep], pieceList);
+    pieceList = strcat([input sep], pieceList);
 else
     pieceList = input;
 end
+
 for piece = pieceList
 
     % collect score and expressive features for this piece
-    [score, alignedperf] = exprFeat(piece{1}, applyAweighting, 1);
-    scorefeats = score(:,8:end);
+    [score, alignedperf] = exprFeat(piece{1}, applyAweighting, 0);
+    %scorefeats = score(:,8:end);
     score = score(:,1:7);
-    alignedperf(isnan(alignedperf(:,9)),9) = 0; % default onset deviation = 0
+    hasScoreData = size(alignedperf, 2) > 8;
+    if hasScoreData
+        alignedperf(isnan(alignedperf(:,9)),9) = 0; % default onset deviation = 0
+    else
+        alignedperf(:,9) = deal(NaN);
+    end
     
     % segment the score into melodic phrases
     if (isTrainingSet)
@@ -65,7 +71,7 @@ for piece = pieceList
     % compute piece overall mean dynamics and onset-dev.
     overall_dyn = alignedperf(:,5)'*alignedperf(:,7)./sum(alignedperf(:,7));
     overall_odev = mean(alignedperf(:,9));
-    
+        
     % compute piece dynamic range and onset-dev. std.
     dynRange = max(alignedperf(:,5)) - min(alignedperf(:,5));%std(alignedperf(:,5), alignedperf(:,7));
     odevStd = std(alignedperf(:,9));
@@ -74,7 +80,7 @@ for piece = pieceList
     tempo = mean(alignedperf(:,8));
     
     % copy performance information into segment cell array
-    segments(:,3:7) = num2cell(deal(0)); % preallocation
+    segments(:,3:17) = num2cell(deal(0)); % preallocation
     for ii = 1:size(segments,1)
         % performance dynamics as midi velocity
         segdyn = alignedperf(segments{ii,2}:(segments{ii,2} + size(segments{ii,1},1) - 1),[5,6,7,1,2,9,8]);
@@ -92,7 +98,7 @@ for piece = pieceList
         % alpha ((mean - overall) / range);
         segments{ii,8} = segments{ii,5}./dynRange;
         % beta (segment range (std) divided by piece range)
-        segments{ii,9} = (max(segdyn(:,1))-min(segdyn(:,1)))./dynRange;%std(segdyn(:,1),segdyn(:,3))./dynRange;
+        segments{ii,9} = max(1e-9,(max(segdyn(:,1))-min(segdyn(:,1)))./dynRange);%std(segdyn(:,1),segdyn(:,3))./dynRange;
         % gamma (contour z-score)
         if size(segments{ii,1},1) < 2
             segments{ii,10} = 0;
@@ -103,13 +109,33 @@ for piece = pieceList
         segments{ii,11} = (segdyn(:,6) - overall_odev) ./ odevStd;
         % local tempo
         segments{ii,1}(:,13) = segdyn(:,7)./tempo;
+        % least-squares parabolic coefficients of gamma
+        segments{ii,16} = polyfit( ...
+            lin_interpolation(segments{ii,1}(:,1)+0.5.*segments{ii,1}(:,2), ...
+              0, segments{ii,1}(1,1), ...
+              10, segments{ii,1}(end,1)+segments{ii,1}(end,2)), ...
+            segments{ii,10}, 2);
+        % segment too short
+        segments{ii,17} = sum(segments{ii,1}(:,7)) >= 0.4;
     end
     
     % segment velocity z-score
     segments(:,6) = num2cell(zscore([segments{:,4}]));
     
+    % piece mean dynamics level
+    segments(:,12) = num2cell(deal(overall_dyn));
+    
+    % piece dynamic range
+    segments(:,13) = num2cell(deal(dynRange));
+    
+    % piece mean onset deviation
+    segments(:,14) = num2cell(deal(overall_odev));
+    
+    % piece onset deviation std
+    segments(:,15) = num2cell(deal(odevStd));
+    
     % include all computed data into expertDB output cell array
-    expertDB = [expertDB; segments]; %#ok<AGROW>
+    expertDB = [expertDB; segments([segments{:,17}],1:16)]; %#ok<AGROW>
     params = [params; overall_dyn, dynRange, overall_odev, odevStd]; %#ok<AGROW>
 end
 

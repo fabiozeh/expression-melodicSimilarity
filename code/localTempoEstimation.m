@@ -1,14 +1,22 @@
 % Perform local tempo estimation for a given score.
 % Parameters:
 % expertDB: the training set, created with createExpertDB.m
-function output = localTempoEstimation(scoremidi,expertDB,tempo)
+function output = localTempoEstimation(score,expertDB,tempo)
 
 if nargin < 3
-    tempo = gettempo(scoremidi);
+    if ~iscell(score)
+        tempo = gettempo(score);
+    else
+        tempo = gettempo(vertcat(score{:,1}));
+    end
 end
 
 %% segment the score into melodic phrases
-segments = findPhrases(scoremidi);
+if ~iscell(score)
+    segments = findPhrases(score);
+else
+    segments = score;
+end
 S = size(expertDB, 1);
 s = size(segments,1);
 
