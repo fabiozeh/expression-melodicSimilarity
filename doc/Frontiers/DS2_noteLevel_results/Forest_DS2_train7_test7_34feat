@@ -1,0 +1,121 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     arff/7train.arff-weka.filters.unsupervised.attribute.Remove-R4-12,45-49
+Instances:    1575
+Attributes:   35
+              duration_beats
+              pitch
+              duration_s
+              prev_dur_beats
+              prev_pitch
+              prev_dur_s
+              interval_prev
+              next_dur_beats
+              next_pitch
+              next_dur_s
+              interval_next
+              pitch_in_oct
+              pitch_in_key
+              tonic_chord_tone
+              dominant_chord_tone
+              prob_chord_I
+              prob_chord_ii
+              prob_chord_iii
+              prob_chord_IV
+              prob_chord_V
+              prob_chord_vi
+              prob_chord_vii
+              chord
+              pitch_in_chord
+              current_chord_tone
+              nar_rd
+              nar_rr
+              nar_id
+              nar_cl
+              nar_pr
+              nar_co
+              beat_in_measure
+              metric_strength
+              phrase_num
+              velocity
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 1.15 seconds
+
+=== Predictions on test set ===
+
+inst#,actual,predicted,error
+1,39.55,44.092,4.542
+2,59.736,54.701,-5.035
+3,77.079,44.388,-32.692
+4,58.163,54.835,-3.328
+5,45.119,40.944,-4.175
+6,45.846,37.606,-8.241
+7,83.752,47.663,-36.089
+8,74.604,45.226,-29.378
+9,49.733,50.229,0.496
+10,46.04,50.211,4.171
+11,45.151,42.355,-2.796
+12,53.834,55.017,1.183
+13,63.149,45.004,-18.145
+14,63.924,53.255,-10.668
+15,70.673,53.807,-16.867
+16,88.299,47.808,-40.491
+17,57.908,46.789,-11.12
+18,72.436,41.995,-30.441
+19,89.643,43.032,-46.611
+20,45.215,44.988,-0.227
+21,16.099,45.008,28.908
+22,28.994,51.36,22.365
+23,28.392,42.819,14.427
+24,45.813,43.337,-2.475
+25,31.54,42.272,10.732
+26,47.512,42.552,-4.959
+27,36.457,48.719,12.262
+28,37.005,43.581,6.576
+29,62.214,51.46,-10.755
+30,50.731,42.819,-7.912
+31,83.187,43.337,-39.85
+32,61.623,42.272,-19.351
+33,88.437,42.552,-45.884
+34,61.313,51.43,-9.883
+35,31.335,44.789,13.454
+36,48.863,55.017,6.155
+37,66.455,43.436,-23.019
+38,53.081,54.468,1.386
+39,45.609,46.712,1.104
+40,40.849,42.194,1.345
+41,66.933,48.602,-18.331
+42,47.549,49.147,1.598
+43,35.565,43.857,8.292
+44,58.967,41.249,-17.718
+45,85.715,53.09,-32.625
+46,60.411,58.673,-1.738
+47,43.978,47.932,3.954
+48,49.309,45.808,-3.501
+49,53.226,47.005,-6.221
+50,47.816,47.771,-0.045
+51,45.975,43.524,-2.451
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.01 seconds
+
+=== Summary ===
+
+Correlation coefficient                  0.1341
+Mean absolute error                     13.4504
+Root mean squared error                 18.7008
+Relative absolute error                 69.249  %
+Root relative squared error             77.1831 %
+Total Number of Instances               51     
+

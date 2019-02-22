@@ -1,0 +1,4735 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.MultilayerPerceptron -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a
+Relation:     arff/all.arff-weka.filters.unsupervised.attribute.Remove-R4,45-49-weka.filters.unsupervised.attribute.Remove-R4-11
+Instances:    1626
+Attributes:   35
+              duration_beats
+              pitch
+              duration_s
+              prev_dur_beats
+              prev_pitch
+              prev_dur_s
+              interval_prev
+              next_dur_beats
+              next_pitch
+              next_dur_s
+              interval_next
+              pitch_in_oct
+              pitch_in_key
+              tonic_chord_tone
+              dominant_chord_tone
+              prob_chord_I
+              prob_chord_ii
+              prob_chord_iii
+              prob_chord_IV
+              prob_chord_V
+              prob_chord_vi
+              prob_chord_vii
+              chord
+              pitch_in_chord
+              current_chord_tone
+              nar_rd
+              nar_rr
+              nar_id
+              nar_cl
+              nar_pr
+              nar_co
+              beat_in_measure
+              metric_strength
+              phrase_num
+              velocity
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Linear Node 0
+    Inputs    Weights
+    Threshold    0.40702080534138524
+    Node 1    -0.9212094489973827
+    Node 2    -0.5667552062749995
+    Node 3    -0.901381519177141
+    Node 4    -0.18380048842837532
+    Node 5    -0.6081073517307869
+    Node 6    -0.7648689692683932
+    Node 7    -0.5444649593557849
+    Node 8    -0.3350995760017157
+    Node 9    -0.8419588559437193
+    Node 10    -0.8468658290080694
+    Node 11    -0.7110468596106413
+    Node 12    -1.04314669338284
+    Node 13    -0.6532208212555257
+    Node 14    -0.47075484249372673
+    Node 15    -1.2591999337083075
+    Node 16    -0.9389198561454023
+    Node 17    -1.3254147860878456
+    Node 18    -0.6523166620854723
+    Node 19    0.7924503143591042
+    Node 20    -0.40710457850553955
+    Node 21    0.52418696809724
+    Node 22    -0.7878365621584955
+    Node 23    -0.7506949241136719
+    Node 24    -0.6498447585999774
+    Node 25    -0.9079516775233285
+    Node 26    -0.3401613266298758
+    Node 27    -0.7264400392053909
+    Node 28    -0.6602449778827798
+    Node 29    -0.19350583400001262
+    Node 30    -0.8422021930197937
+    Node 31    -0.8145580509543721
+    Node 32    -1.2087385635563757
+    Node 33    -1.2609702382821193
+    Node 34    -1.12431309204973
+    Node 35    0.8882608846154291
+    Node 36    -0.6942317127523668
+    Node 37    -1.0499974749913175
+    Node 38    -0.22176778319890986
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    -0.6792458194152596
+    Attrib duration_beats    3.1173014618911563
+    Attrib pitch    -1.662127267079684
+    Attrib duration_s    0.8207533979284173
+    Attrib prev_dur_beats    -0.5654881752895738
+    Attrib prev_pitch    1.2149303837374914
+    Attrib prev_dur_s    -2.914066774455074
+    Attrib interval_prev    -2.0157769140231334
+    Attrib next_dur_beats    3.102565392134643
+    Attrib next_pitch    -1.5749736033954889
+    Attrib next_dur_s    -0.15503143729434
+    Attrib interval_next    -0.2208868966496095
+    Attrib pitch_in_oct=0    -2.4548382414154397
+    Attrib pitch_in_oct=1    -0.8590861586488588
+    Attrib pitch_in_oct=2    -0.7335254391603776
+    Attrib pitch_in_oct=3    -1.858118611491264
+    Attrib pitch_in_oct=4    4.283254022690865
+    Attrib pitch_in_oct=5    0.30694513972885806
+    Attrib pitch_in_oct=6    -0.8243937426655497
+    Attrib pitch_in_oct=7    5.542561146914026
+    Attrib pitch_in_oct=8    -3.6651286729746664
+    Attrib pitch_in_oct=9    1.4113398948330296
+    Attrib pitch_in_oct=10    1.0893574806540887
+    Attrib pitch_in_oct=11    4.843078802395921
+    Attrib pitch_in_key=0    0.8528479500284544
+    Attrib pitch_in_key=1    2.281480942213419
+    Attrib pitch_in_key=2    0.3222362174828542
+    Attrib pitch_in_key=3    0.6502304680180203
+    Attrib pitch_in_key=4    0.8337465029766485
+    Attrib pitch_in_key=5    -0.9097035345693094
+    Attrib pitch_in_key=6    1.3116771323265655
+    Attrib pitch_in_key=7    -0.4548406403122709
+    Attrib pitch_in_key=8    0.4052667821382442
+    Attrib pitch_in_key=9    1.0296364479586726
+    Attrib pitch_in_key=10    0.9670614023467893
+    Attrib pitch_in_key=11    -0.32261030889470854
+    Attrib tonic_chord_tone=1    0.12496246417819198
+    Attrib dominant_chord_tone=1    -1.849238489933397
+    Attrib prob_chord_I    1.0844088667506122
+    Attrib prob_chord_ii    -2.6271486681246548
+    Attrib prob_chord_iii    1.7430593583517908
+    Attrib prob_chord_IV    -1.8955251499765329
+    Attrib prob_chord_V    -4.06288032669455
+    Attrib prob_chord_vi    -1.0609980206581588
+    Attrib prob_chord_vii    -1.1334343056468565
+    Attrib chord=0    2.2984794561586135
+    Attrib chord=1    0.40940787367526216
+    Attrib chord=2    -2.8126416856146608
+    Attrib chord=3    0.37101460244087436
+    Attrib chord=4    3.009870445121169
+    Attrib chord=5    0.038768003000373336
+    Attrib chord=6    0.1715737491449795
+    Attrib pitch_in_chord=0    1.2706341903100835
+    Attrib pitch_in_chord=1    1.3998566113902444
+    Attrib pitch_in_chord=2    2.8585517066469968
+    Attrib pitch_in_chord=3    0.31028880007398546
+    Attrib pitch_in_chord=4    -2.112379843680684
+    Attrib pitch_in_chord=5    -0.622331566255338
+    Attrib pitch_in_chord=6    2.1343391816685426
+    Attrib pitch_in_chord=7    -0.0655009941111283
+    Attrib pitch_in_chord=8    2.0517054825271956
+    Attrib pitch_in_chord=9    0.3203078015506715
+    Attrib pitch_in_chord=10    -0.31873305583274947
+    Attrib pitch_in_chord=11    -0.12772657663031983
+    Attrib current_chord_tone=1    -2.78504298103895
+    Attrib nar_rd    -1.1200301763140146
+    Attrib nar_rr    -0.7812401876148127
+    Attrib nar_id    -1.0170361804284647
+    Attrib nar_cl    -3.7750332585752577
+    Attrib nar_pr    -0.16778978778022138
+    Attrib nar_co    -6.986999827480642
+    Attrib beat_in_measure    -3.8482892152178394
+    Attrib metric_strength=0    0.4440858774887539
+    Attrib metric_strength=1    -0.23327112368707223
+    Attrib metric_strength=2    0.7244681641953721
+    Attrib metric_strength=3    0.3655698403678433
+    Attrib phrase_num    0.8080521175397736
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    -0.33705578017955895
+    Attrib duration_beats    -0.2307407815146562
+    Attrib pitch    1.1183905445755529
+    Attrib duration_s    -0.0074103186016652115
+    Attrib prev_dur_beats    0.4690601639271476
+    Attrib prev_pitch    2.520401757818695
+    Attrib prev_dur_s    1.0019877504849608
+    Attrib interval_prev    -0.9489253729896893
+    Attrib next_dur_beats    0.12406580364168016
+    Attrib next_pitch    -0.7390570671206412
+    Attrib next_dur_s    0.16979530861820868
+    Attrib interval_next    -1.090641282880111
+    Attrib pitch_in_oct=0    3.66085523185953
+    Attrib pitch_in_oct=1    -1.3891165655749003
+    Attrib pitch_in_oct=2    0.15118648760204234
+    Attrib pitch_in_oct=3    -0.9541920915546835
+    Attrib pitch_in_oct=4    -0.7594740433366747
+    Attrib pitch_in_oct=5    0.27136620140427503
+    Attrib pitch_in_oct=6    1.0024487542108993
+    Attrib pitch_in_oct=7    -1.5270441824401346
+    Attrib pitch_in_oct=8    2.4544695298329895
+    Attrib pitch_in_oct=9    -1.6160262989016767
+    Attrib pitch_in_oct=10    0.04303842463673542
+    Attrib pitch_in_oct=11    2.0421795836063277
+    Attrib pitch_in_key=0    -1.4628035010604816
+    Attrib pitch_in_key=1    0.10818365289904788
+    Attrib pitch_in_key=2    -0.3726219715635598
+    Attrib pitch_in_key=3    0.14027766615557152
+    Attrib pitch_in_key=4    -0.22072559320501653
+    Attrib pitch_in_key=5    -0.7779798638188601
+    Attrib pitch_in_key=6    0.029086162802594875
+    Attrib pitch_in_key=7    0.029885330895108687
+    Attrib pitch_in_key=8    0.8888462800281036
+    Attrib pitch_in_key=9    3.1507127704357765
+    Attrib pitch_in_key=10    0.07593289185561541
+    Attrib pitch_in_key=11    1.884055577089644
+    Attrib tonic_chord_tone=1    0.4762076050667386
+    Attrib dominant_chord_tone=1    0.8041652745612405
+    Attrib prob_chord_I    3.3147354118818777
+    Attrib prob_chord_ii    1.9864284764105575
+    Attrib prob_chord_iii    1.6079312930432113
+    Attrib prob_chord_IV    1.823253966270506
+    Attrib prob_chord_V    -0.5011573725018449
+    Attrib prob_chord_vi    1.1790881183084367
+    Attrib prob_chord_vii    -0.5139301484551309
+    Attrib chord=0    0.7746114804588139
+    Attrib chord=1    -0.2100327175630016
+    Attrib chord=2    0.3033249007913549
+    Attrib chord=3    1.8748395746851645
+    Attrib chord=4    -0.8797994505580744
+    Attrib chord=5    -0.3391362144926465
+    Attrib chord=6    0.21019300776686756
+    Attrib pitch_in_chord=0    -0.3594302853264104
+    Attrib pitch_in_chord=1    -0.1171445989287604
+    Attrib pitch_in_chord=2    -0.09996478092164979
+    Attrib pitch_in_chord=3    0.009151312201820085
+    Attrib pitch_in_chord=4    -1.4051440299164868
+    Attrib pitch_in_chord=5    0.25133687441241914
+    Attrib pitch_in_chord=6    0.2853017568670739
+    Attrib pitch_in_chord=7    -1.1015604144267976
+    Attrib pitch_in_chord=8    2.8116092068256386
+    Attrib pitch_in_chord=9    2.5958939473091704
+    Attrib pitch_in_chord=10    -0.23398885640714065
+    Attrib pitch_in_chord=11    0.8822210651670783
+    Attrib current_chord_tone=1    -2.400505455622922
+    Attrib nar_rd    0.47971586305220393
+    Attrib nar_rr    0.4249797411223488
+    Attrib nar_id    -2.857740126399815
+    Attrib nar_cl    -0.3928890064444702
+    Attrib nar_pr    0.7998049409322318
+    Attrib nar_co    1.126942791784916
+    Attrib beat_in_measure    -1.3311591523711737
+    Attrib metric_strength=0    3.146183855349131
+    Attrib metric_strength=1    0.7459997334638885
+    Attrib metric_strength=2    -1.5412330329120514
+    Attrib metric_strength=3    -1.5977490613796763
+    Attrib phrase_num    -0.5297102407936619
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    -0.5021667443594713
+    Attrib duration_beats    0.5479119713289498
+    Attrib pitch    2.1206936040780784
+    Attrib duration_s    0.7177459804070446
+    Attrib prev_dur_beats    -1.7267948041380003
+    Attrib prev_pitch    -1.9397788636199982
+    Attrib prev_dur_s    2.3572923436252062
+    Attrib interval_prev    2.003719052467658
+    Attrib next_dur_beats    -2.5593816099466085
+    Attrib next_pitch    0.40168612083498134
+    Attrib next_dur_s    -1.98174963576653
+    Attrib interval_next    -1.4012254622211018
+    Attrib pitch_in_oct=0    -1.426438633119395
+    Attrib pitch_in_oct=1    -0.03269015097222831
+    Attrib pitch_in_oct=2    1.0938811684522787
+    Attrib pitch_in_oct=3    2.00168412346683
+    Attrib pitch_in_oct=4    1.0931257397963552
+    Attrib pitch_in_oct=5    0.7214001871601684
+    Attrib pitch_in_oct=6    0.16245145035551822
+    Attrib pitch_in_oct=7    -1.6315124168845692
+    Attrib pitch_in_oct=8    0.4735938671428892
+    Attrib pitch_in_oct=9    0.8683542200142982
+    Attrib pitch_in_oct=10    -0.030830814806127944
+    Attrib pitch_in_oct=11    1.5301388352809584
+    Attrib pitch_in_key=0    1.6448358798020228
+    Attrib pitch_in_key=1    0.7570118639536572
+    Attrib pitch_in_key=2    0.7756072421034188
+    Attrib pitch_in_key=3    0.19824984402417684
+    Attrib pitch_in_key=4    0.35055034669527624
+    Attrib pitch_in_key=5    0.5204677703637205
+    Attrib pitch_in_key=6    1.1257802012774234
+    Attrib pitch_in_key=7    -0.19508399740851373
+    Attrib pitch_in_key=8    1.0106407457659885
+    Attrib pitch_in_key=9    0.0876633110887171
+    Attrib pitch_in_key=10    -0.7778278452746942
+    Attrib pitch_in_key=11    -0.6311477348263193
+    Attrib tonic_chord_tone=1    0.44003274250395785
+    Attrib dominant_chord_tone=1    -1.0455235292748721
+    Attrib prob_chord_I    1.5380533978159088
+    Attrib prob_chord_ii    -2.360029560957079
+    Attrib prob_chord_iii    1.021642438639876
+    Attrib prob_chord_IV    -0.48259089706245617
+    Attrib prob_chord_V    -0.7002966102705093
+    Attrib prob_chord_vi    0.9223840130407635
+    Attrib prob_chord_vii    -2.118139994902234
+    Attrib chord=0    -1.6543538283139563
+    Attrib chord=1    1.350083649022146
+    Attrib chord=2    -0.9931524492159216
+    Attrib chord=3    1.3506378473119023
+    Attrib chord=4    1.964441321799028
+    Attrib chord=5    0.3094640666686945
+    Attrib chord=6    0.056034352547110464
+    Attrib pitch_in_chord=0    2.413769313633505
+    Attrib pitch_in_chord=1    0.09126826003103639
+    Attrib pitch_in_chord=2    1.121334969571152
+    Attrib pitch_in_chord=3    -2.132091897412299
+    Attrib pitch_in_chord=4    -0.8361887589046312
+    Attrib pitch_in_chord=5    1.1750743922301479
+    Attrib pitch_in_chord=6    -0.3027606682250365
+    Attrib pitch_in_chord=7    0.9740792042766914
+    Attrib pitch_in_chord=8    0.31322232887953916
+    Attrib pitch_in_chord=9    -0.15728682799121316
+    Attrib pitch_in_chord=10    0.20529020023903227
+    Attrib pitch_in_chord=11    2.045419210800114
+    Attrib current_chord_tone=1    -0.680974843273724
+    Attrib nar_rd    -0.28158734262887736
+    Attrib nar_rr    2.7477385475716907
+    Attrib nar_id    -1.902149390290498
+    Attrib nar_cl    -2.0961675620537092
+    Attrib nar_pr    1.877021705853963
+    Attrib nar_co    3.142050849003238
+    Attrib beat_in_measure    0.39023669267746325
+    Attrib metric_strength=0    1.0199998501122929
+    Attrib metric_strength=1    -1.4581000620483868
+    Attrib metric_strength=2    -0.3682440857593047
+    Attrib metric_strength=3    1.7748236754842028
+    Attrib phrase_num    -1.7842701510480896
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    -0.3081992103335627
+    Attrib duration_beats    -0.5277354353118614
+    Attrib pitch    3.959473082371493
+    Attrib duration_s    -0.05600880477860988
+    Attrib prev_dur_beats    1.2372948100458798
+    Attrib prev_pitch    2.4142231033892467
+    Attrib prev_dur_s    1.2638469760465496
+    Attrib interval_prev    0.8832325252629459
+    Attrib next_dur_beats    2.1203740879123263
+    Attrib next_pitch    -0.9739784452293521
+    Attrib next_dur_s    1.1710191556979246
+    Attrib interval_next    -3.2462145182830127
+    Attrib pitch_in_oct=0    -1.3578165360448973
+    Attrib pitch_in_oct=1    2.560328346175194
+    Attrib pitch_in_oct=2    -0.12220827537635724
+    Attrib pitch_in_oct=3    -1.6131565956504805
+    Attrib pitch_in_oct=4    0.6055606196001145
+    Attrib pitch_in_oct=5    -0.35535059774443645
+    Attrib pitch_in_oct=6    0.3549022257036587
+    Attrib pitch_in_oct=7    1.3110873400840932
+    Attrib pitch_in_oct=8    2.4667714900575812
+    Attrib pitch_in_oct=9    0.704348588167799
+    Attrib pitch_in_oct=10    0.048374686921056856
+    Attrib pitch_in_oct=11    -1.9931177523178651
+    Attrib pitch_in_key=0    8.234786684021881E-4
+    Attrib pitch_in_key=1    2.1152610143262525
+    Attrib pitch_in_key=2    0.2699620079376735
+    Attrib pitch_in_key=3    -0.7902347756472379
+    Attrib pitch_in_key=4    2.2913895890347287
+    Attrib pitch_in_key=5    -2.5861283126487016
+    Attrib pitch_in_key=6    -1.3896924808499644
+    Attrib pitch_in_key=7    -0.2992540913015964
+    Attrib pitch_in_key=8    -0.5464427049884159
+    Attrib pitch_in_key=9    0.383917994363809
+    Attrib pitch_in_key=10    2.9383082241524074
+    Attrib pitch_in_key=11    0.1608909770852898
+    Attrib tonic_chord_tone=1    1.6648995683276924
+    Attrib dominant_chord_tone=1    -0.36639875706218056
+    Attrib prob_chord_I    0.032364232114355726
+    Attrib prob_chord_ii    2.5231184884623974
+    Attrib prob_chord_iii    2.239410808795084
+    Attrib prob_chord_IV    2.9801553734274755
+    Attrib prob_chord_V    1.4298494320284572
+    Attrib prob_chord_vi    0.8300968570851855
+    Attrib prob_chord_vii    1.0713197335343545
+    Attrib chord=0    0.1474266789999182
+    Attrib chord=1    -3.7847358036891996
+    Attrib chord=2    2.479357559683257
+    Attrib chord=3    2.0837454262443895
+    Attrib chord=4    0.1835026581897036
+    Attrib chord=5    0.7549832683879705
+    Attrib chord=6    -0.5814787267464657
+    Attrib pitch_in_chord=0    -0.18747432941209444
+    Attrib pitch_in_chord=1    1.3284281340663908
+    Attrib pitch_in_chord=2    -0.36317738239345904
+    Attrib pitch_in_chord=3    1.4178148739231216
+    Attrib pitch_in_chord=4    -1.6782340107825309
+    Attrib pitch_in_chord=5    -1.9690957563440015
+    Attrib pitch_in_chord=6    1.2470380265190113
+    Attrib pitch_in_chord=7    0.6190838621571316
+    Attrib pitch_in_chord=8    0.3895450704758512
+    Attrib pitch_in_chord=9    1.4220555234454946
+    Attrib pitch_in_chord=10    2.321357069982024
+    Attrib pitch_in_chord=11    -1.6971993458448844
+    Attrib current_chord_tone=1    -2.244887920690977
+    Attrib nar_rd    3.440164160831374
+    Attrib nar_rr    -0.7426890377391252
+    Attrib nar_id    2.848164205001611
+    Attrib nar_cl    0.663697559951861
+    Attrib nar_pr    1.1145835403275308
+    Attrib nar_co    1.8927825116927806
+    Attrib beat_in_measure    -5.453228969986511
+    Attrib metric_strength=0    2.072505901624361
+    Attrib metric_strength=1    -0.1967132915055458
+    Attrib metric_strength=2    -1.9337633802214853
+    Attrib metric_strength=3    0.5600605022053815
+    Attrib phrase_num    0.09520749434272383
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    -0.474139354497258
+    Attrib duration_beats    0.4878409727243458
+    Attrib pitch    0.784754309041285
+    Attrib duration_s    0.03539715340897209
+    Attrib prev_dur_beats    0.42635506134833423
+    Attrib prev_pitch    1.9580496428920813
+    Attrib prev_dur_s    -1.3325912214053985
+    Attrib interval_prev    -0.7243516183637965
+    Attrib next_dur_beats    2.3129041063364775
+    Attrib next_pitch    1.0577182732180268
+    Attrib next_dur_s    1.5960334751704843
+    Attrib interval_next    -0.10745016859776299
+    Attrib pitch_in_oct=0    -1.4550588301488616E-4
+    Attrib pitch_in_oct=1    0.594581263478654
+    Attrib pitch_in_oct=2    3.691487513712371
+    Attrib pitch_in_oct=3    -0.3721971389872112
+    Attrib pitch_in_oct=4    0.04676126303458846
+    Attrib pitch_in_oct=5    -0.10716344129532053
+    Attrib pitch_in_oct=6    -1.1222961957184083
+    Attrib pitch_in_oct=7    1.36081589496185
+    Attrib pitch_in_oct=8    -0.3441923003836967
+    Attrib pitch_in_oct=9    0.8752920103383479
+    Attrib pitch_in_oct=10    -0.5099442505317181
+    Attrib pitch_in_oct=11    0.17899059663417155
+    Attrib pitch_in_key=0    -1.0116324004130215
+    Attrib pitch_in_key=1    0.18732846357313654
+    Attrib pitch_in_key=2    1.045573000425672
+    Attrib pitch_in_key=3    0.5855820893124192
+    Attrib pitch_in_key=4    1.0536981708169901
+    Attrib pitch_in_key=5    0.8175677577895368
+    Attrib pitch_in_key=6    0.19759126348382536
+    Attrib pitch_in_key=7    0.6022859106854523
+    Attrib pitch_in_key=8    -0.3815562875898318
+    Attrib pitch_in_key=9    0.13501063932107768
+    Attrib pitch_in_key=10    0.9280254736043646
+    Attrib pitch_in_key=11    0.3465821724709351
+    Attrib tonic_chord_tone=1    -0.544430081287268
+    Attrib dominant_chord_tone=1    1.0193939521396562
+    Attrib prob_chord_I    -1.16543865414173
+    Attrib prob_chord_ii    -2.510273179349663
+    Attrib prob_chord_iii    -1.6544676941450218
+    Attrib prob_chord_IV    0.13221731387710442
+    Attrib prob_chord_V    1.5567531558269112
+    Attrib prob_chord_vi    -2.3359439731717546
+    Attrib prob_chord_vii    1.8025286187500582
+    Attrib chord=0    0.5855591839311493
+    Attrib chord=1    -0.9176256899055344
+    Attrib chord=2    -0.08128433629823446
+    Attrib chord=3    1.9331698585183599
+    Attrib chord=4    0.4499707517355665
+    Attrib chord=5    -0.3407773580263872
+    Attrib chord=6    0.4955917322273533
+    Attrib pitch_in_chord=0    0.05895805702157879
+    Attrib pitch_in_chord=1    1.0542477060791922
+    Attrib pitch_in_chord=2    1.2619145663670681
+    Attrib pitch_in_chord=3    -0.040557059044673646
+    Attrib pitch_in_chord=4    0.829496898339836
+    Attrib pitch_in_chord=5    -0.18175761157030917
+    Attrib pitch_in_chord=6    -0.26844438829804457
+    Attrib pitch_in_chord=7    1.2671361162764072
+    Attrib pitch_in_chord=8    0.10895970419976139
+    Attrib pitch_in_chord=9    -0.46535867402024156
+    Attrib pitch_in_chord=10    0.14987098715002656
+    Attrib pitch_in_chord=11    0.710675889511175
+    Attrib current_chord_tone=1    0.5014290802337624
+    Attrib nar_rd    1.7563251363828674
+    Attrib nar_rr    -2.818199482945014
+    Attrib nar_id    0.10616878487477045
+    Attrib nar_cl    0.06451323011142997
+    Attrib nar_pr    -1.1005520347306204
+    Attrib nar_co    -4.5655055776864435
+    Attrib beat_in_measure    -2.008698985637231
+    Attrib metric_strength=0    -1.2784720159299077
+    Attrib metric_strength=1    -0.661159258933303
+    Attrib metric_strength=2    1.4451757467558608
+    Attrib metric_strength=3    1.356998883464206
+    Attrib phrase_num    -0.1324755019460175
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    -0.5850268986195556
+    Attrib duration_beats    -0.2811738943185066
+    Attrib pitch    1.7734107350001107
+    Attrib duration_s    -0.39332687161525703
+    Attrib prev_dur_beats    0.5142631751820053
+    Attrib prev_pitch    -2.2948424851352387
+    Attrib prev_dur_s    -0.8129295856900148
+    Attrib interval_prev    2.355675547904341
+    Attrib next_dur_beats    1.6079901023634464
+    Attrib next_pitch    0.6870411088529763
+    Attrib next_dur_s    0.24969195418964438
+    Attrib interval_next    -0.7547069314147922
+    Attrib pitch_in_oct=0    -0.03165014485334763
+    Attrib pitch_in_oct=1    -0.7477474864118314
+    Attrib pitch_in_oct=2    5.122245324234307
+    Attrib pitch_in_oct=3    0.5108303289474444
+    Attrib pitch_in_oct=4    0.5682626367411677
+    Attrib pitch_in_oct=5    0.4628098073793838
+    Attrib pitch_in_oct=6    0.6603969368733166
+    Attrib pitch_in_oct=7    2.504394686769355
+    Attrib pitch_in_oct=8    -0.9927940597149821
+    Attrib pitch_in_oct=9    -1.963213070304344
+    Attrib pitch_in_oct=10    0.4683532177659819
+    Attrib pitch_in_oct=11    -0.3122640687343398
+    Attrib pitch_in_key=0    -0.9444639484382484
+    Attrib pitch_in_key=1    -0.0415147735537666
+    Attrib pitch_in_key=2    -1.0772152075027872
+    Attrib pitch_in_key=3    1.6236141769558456
+    Attrib pitch_in_key=4    1.6713214540322054
+    Attrib pitch_in_key=5    0.05015367560974194
+    Attrib pitch_in_key=6    0.5907953971149192
+    Attrib pitch_in_key=7    -0.1751647438353074
+    Attrib pitch_in_key=8    1.2269515806775217
+    Attrib pitch_in_key=9    0.4766106818723013
+    Attrib pitch_in_key=10    0.9792453272785804
+    Attrib pitch_in_key=11    1.7975252381106641
+    Attrib tonic_chord_tone=1    -0.9125043938026882
+    Attrib dominant_chord_tone=1    -0.7960440137808416
+    Attrib prob_chord_I    -0.18324664461260465
+    Attrib prob_chord_ii    -0.3896550873252289
+    Attrib prob_chord_iii    0.7963299252383444
+    Attrib prob_chord_IV    1.2296806160174594
+    Attrib prob_chord_V    3.2390450871078205
+    Attrib prob_chord_vi    0.2623787329411662
+    Attrib prob_chord_vii    0.5834794614996748
+    Attrib chord=0    -1.5484183374193743
+    Attrib chord=1    1.27875765776997
+    Attrib chord=2    1.5633659988976636
+    Attrib chord=3    0.06979273232562344
+    Attrib chord=4    -0.004376133903924251
+    Attrib chord=5    1.8763364274855088
+    Attrib chord=6    -0.09877464802576964
+    Attrib pitch_in_chord=0    3.014257296141981E-4
+    Attrib pitch_in_chord=1    0.29975527387866346
+    Attrib pitch_in_chord=2    0.7196835487444971
+    Attrib pitch_in_chord=3    0.20617547096081482
+    Attrib pitch_in_chord=4    0.5220457590041911
+    Attrib pitch_in_chord=5    -0.17151783106533877
+    Attrib pitch_in_chord=6    0.2193977656302696
+    Attrib pitch_in_chord=7    0.4802601105797809
+    Attrib pitch_in_chord=8    0.7865706787499266
+    Attrib pitch_in_chord=9    1.2648712540262492
+    Attrib pitch_in_chord=10    0.25989122893728717
+    Attrib pitch_in_chord=11    1.6549295703784193
+    Attrib current_chord_tone=1    -1.1573175326033904
+    Attrib nar_rd    0.26731246904797495
+    Attrib nar_rr    -2.0228631026637514
+    Attrib nar_id    1.531567572323103
+    Attrib nar_cl    -2.5965529414718658
+    Attrib nar_pr    -1.8923194528602958
+    Attrib nar_co    -4.8346640613100185
+    Attrib beat_in_measure    -0.25771118493262196
+    Attrib metric_strength=0    0.790673836523563
+    Attrib metric_strength=1    0.012661630649187386
+    Attrib metric_strength=2    2.0226324943837404
+    Attrib metric_strength=3    -1.7070463629075692
+    Attrib phrase_num    0.6397389347931874
+Sigmoid Node 7
+    Inputs    Weights
+    Threshold    -0.46380691535803475
+    Attrib duration_beats    1.5317169121390755
+    Attrib pitch    -4.421645512123539
+    Attrib duration_s    -0.19982731484818633
+    Attrib prev_dur_beats    1.4840945179843796
+    Attrib prev_pitch    -2.757797808296724
+    Attrib prev_dur_s    -0.5022275779101502
+    Attrib interval_prev    -1.156000905751636
+    Attrib next_dur_beats    -0.08146330333708031
+    Attrib next_pitch    -3.201687491337387
+    Attrib next_dur_s    -1.3080378842661347
+    Attrib interval_next    0.3812488654103193
+    Attrib pitch_in_oct=0    0.44933707372470866
+    Attrib pitch_in_oct=1    1.8606385678053246
+    Attrib pitch_in_oct=2    2.333363398595009
+    Attrib pitch_in_oct=3    1.7107140476845715
+    Attrib pitch_in_oct=4    2.9946056830113736
+    Attrib pitch_in_oct=5    1.1666804134308333
+    Attrib pitch_in_oct=6    -0.004038614041787091
+    Attrib pitch_in_oct=7    -0.8310876473172126
+    Attrib pitch_in_oct=8    -2.0198164100019764
+    Attrib pitch_in_oct=9    -2.3044315875844363
+    Attrib pitch_in_oct=10    0.15049180707091742
+    Attrib pitch_in_oct=11    -0.4643460716803617
+    Attrib pitch_in_key=0    -0.17034408858137076
+    Attrib pitch_in_key=1    -0.2180684170338652
+    Attrib pitch_in_key=2    0.36382329232248106
+    Attrib pitch_in_key=3    0.41286658442432356
+    Attrib pitch_in_key=4    2.0775334940444803
+    Attrib pitch_in_key=5    -0.855625715567857
+    Attrib pitch_in_key=6    0.3896471334231545
+    Attrib pitch_in_key=7    -0.23579738900510006
+    Attrib pitch_in_key=8    3.132491723316521
+    Attrib pitch_in_key=9    -0.18078102184776604
+    Attrib pitch_in_key=10    -0.5179234950745606
+    Attrib pitch_in_key=11    0.8881263273218047
+    Attrib tonic_chord_tone=1    0.00664770438004181
+    Attrib dominant_chord_tone=1    0.0665866130016688
+    Attrib prob_chord_I    0.9358190714767467
+    Attrib prob_chord_ii    0.5309286764910104
+    Attrib prob_chord_iii    -0.06634185112050142
+    Attrib prob_chord_IV    1.0063014500559269
+    Attrib prob_chord_V    0.20070020452407847
+    Attrib prob_chord_vi    0.9086088567367702
+    Attrib prob_chord_vii    1.533531441995558
+    Attrib chord=0    1.51064299046497
+    Attrib chord=1    2.4778723917357803
+    Attrib chord=2    0.7142371758871645
+    Attrib chord=3    -0.1688872471396801
+    Attrib chord=4    -1.7057522784993362
+    Attrib chord=5    -0.6935584585168719
+    Attrib chord=6    0.3450713095423493
+    Attrib pitch_in_chord=0    -1.4336001433415497
+    Attrib pitch_in_chord=1    2.126612618629234
+    Attrib pitch_in_chord=2    1.9888285885062418
+    Attrib pitch_in_chord=3    -0.15684518276731205
+    Attrib pitch_in_chord=4    0.22200642339418067
+    Attrib pitch_in_chord=5    -1.3593535950278977
+    Attrib pitch_in_chord=6    0.8455805384482864
+    Attrib pitch_in_chord=7    1.1868689737215268
+    Attrib pitch_in_chord=8    2.081877343848741
+    Attrib pitch_in_chord=9    0.8579200274057674
+    Attrib pitch_in_chord=10    0.9919795914134539
+    Attrib pitch_in_chord=11    -2.1698471314735026
+    Attrib current_chord_tone=1    0.10841143720427114
+    Attrib nar_rd    -0.1129322110027863
+    Attrib nar_rr    -0.17353115590617493
+    Attrib nar_id    -0.11301641049424084
+    Attrib nar_cl    1.0236291037915295
+    Attrib nar_pr    -1.432000930441142
+    Attrib nar_co    -2.473103177654123
+    Attrib beat_in_measure    -0.2683432172567477
+    Attrib metric_strength=0    3.2462990644483467
+    Attrib metric_strength=1    -1.7084408440648282
+    Attrib metric_strength=2    0.05113421104341926
+    Attrib metric_strength=3    -0.5401488238888223
+    Attrib phrase_num    0.5892117504393214
+Sigmoid Node 8
+    Inputs    Weights
+    Threshold    -0.515228247708846
+    Attrib duration_beats    1.121995745303902
+    Attrib pitch    1.7656660715162498
+    Attrib duration_s    0.8287467485498476
+    Attrib prev_dur_beats    -0.745419083418562
+    Attrib prev_pitch    1.702105408673111
+    Attrib prev_dur_s    -1.2278410036370822
+    Attrib interval_prev    -0.03545526516078712
+    Attrib next_dur_beats    0.03790339567590886
+    Attrib next_pitch    3.608051533458239
+    Attrib next_dur_s    -0.7816480027781026
+    Attrib interval_next    0.8425194611687388
+    Attrib pitch_in_oct=0    0.47995150643961143
+    Attrib pitch_in_oct=1    0.6738190438994756
+    Attrib pitch_in_oct=2    2.9207965207628135
+    Attrib pitch_in_oct=3    0.9838790621848442
+    Attrib pitch_in_oct=4    -0.12542203978145777
+    Attrib pitch_in_oct=5    -0.5640791941277358
+    Attrib pitch_in_oct=6    -1.9598383489710873
+    Attrib pitch_in_oct=7    1.750531377512046
+    Attrib pitch_in_oct=8    -1.8885372959584175
+    Attrib pitch_in_oct=9    -1.2538729567688276
+    Attrib pitch_in_oct=10    0.22194775203796158
+    Attrib pitch_in_oct=11    4.341129534379355
+    Attrib pitch_in_key=0    0.344264468487561
+    Attrib pitch_in_key=1    0.030741817389056562
+    Attrib pitch_in_key=2    1.3613595879824882
+    Attrib pitch_in_key=3    0.3792548434994059
+    Attrib pitch_in_key=4    0.3537309990423097
+    Attrib pitch_in_key=5    1.1090003119765113
+    Attrib pitch_in_key=6    0.5749138472932446
+    Attrib pitch_in_key=7    -0.48217577551678115
+    Attrib pitch_in_key=8    1.2626167292864485
+    Attrib pitch_in_key=9    -1.3457324211257362
+    Attrib pitch_in_key=10    0.511117156630667
+    Attrib pitch_in_key=11    1.4771563735210902
+    Attrib tonic_chord_tone=1    -2.780235636290533
+    Attrib dominant_chord_tone=1    1.1843518986793677
+    Attrib prob_chord_I    4.532348123723602
+    Attrib prob_chord_ii    0.34792852519353495
+    Attrib prob_chord_iii    -0.8416004510849031
+    Attrib prob_chord_IV    2.138329140279231
+    Attrib prob_chord_V    1.7123108151014117
+    Attrib prob_chord_vi    1.3896633993440182
+    Attrib prob_chord_vii    0.1449907412974724
+    Attrib chord=0    -2.2816690377847855
+    Attrib chord=1    1.9738881809847095
+    Attrib chord=2    1.4495855461235827
+    Attrib chord=3    -0.5278118743007011
+    Attrib chord=4    -0.07286245316568403
+    Attrib chord=5    1.7592016705552211
+    Attrib chord=6    0.5936236180152924
+    Attrib pitch_in_chord=0    0.437231178602231
+    Attrib pitch_in_chord=1    1.1254873148732711
+    Attrib pitch_in_chord=2    0.5343838624401327
+    Attrib pitch_in_chord=3    2.3174769040685694
+    Attrib pitch_in_chord=4    -0.3610677945267496
+    Attrib pitch_in_chord=5    -1.17758329447162
+    Attrib pitch_in_chord=6    0.3865870299311525
+    Attrib pitch_in_chord=7    -0.41004625225923075
+    Attrib pitch_in_chord=8    0.7181809631670018
+    Attrib pitch_in_chord=9    0.6314920279202874
+    Attrib pitch_in_chord=10    0.49216589593225846
+    Attrib pitch_in_chord=11    0.94469501746239
+    Attrib current_chord_tone=1    0.6692782263127323
+    Attrib nar_rd    -0.9800847640822007
+    Attrib nar_rr    2.061988678272087
+    Attrib nar_id    2.52993220672086
+    Attrib nar_cl    0.02494261719993411
+    Attrib nar_pr    0.22439081582015497
+    Attrib nar_co    3.676726538324743
+    Attrib beat_in_measure    -0.5969519386166894
+    Attrib metric_strength=0    2.4101768972265587
+    Attrib metric_strength=1    -2.3465437488624437
+    Attrib metric_strength=2    -0.16754913398491728
+    Attrib metric_strength=3    1.1373964023866328
+    Attrib phrase_num    0.3977810961383598
+Sigmoid Node 9
+    Inputs    Weights
+    Threshold    -0.6294644945944978
+    Attrib duration_beats    0.5841524749908886
+    Attrib pitch    -1.0609371749055017
+    Attrib duration_s    0.5199953783565
+    Attrib prev_dur_beats    1.4567445242329686
+    Attrib prev_pitch    -3.637991521023209
+    Attrib prev_dur_s    0.9651522852777598
+    Attrib interval_prev    1.4909553525005783
+    Attrib next_dur_beats    -0.5488387166875659
+    Attrib next_pitch    -3.7923874334051138
+    Attrib next_dur_s    0.06891512511642874
+    Attrib interval_next    -1.8563734244874843
+    Attrib pitch_in_oct=0    0.5509932944921695
+    Attrib pitch_in_oct=1    2.0107879756369638
+    Attrib pitch_in_oct=2    3.0646028790716455
+    Attrib pitch_in_oct=3    -0.897975420904944
+    Attrib pitch_in_oct=4    1.3718582618170003
+    Attrib pitch_in_oct=5    0.3827941567636563
+    Attrib pitch_in_oct=6    1.3472235052818502
+    Attrib pitch_in_oct=7    0.6509854724191328
+    Attrib pitch_in_oct=8    -1.9402866623036898
+    Attrib pitch_in_oct=9    -0.3580107744652733
+    Attrib pitch_in_oct=10    -0.3245790784439761
+    Attrib pitch_in_oct=11    0.09988942640169668
+    Attrib pitch_in_key=0    0.8326600653222639
+    Attrib pitch_in_key=1    -0.763157787498181
+    Attrib pitch_in_key=2    -0.925921632063043
+    Attrib pitch_in_key=3    -0.3915730958690687
+    Attrib pitch_in_key=4    0.016903571377293435
+    Attrib pitch_in_key=5    1.6737484174336221
+    Attrib pitch_in_key=6    0.8415812952809688
+    Attrib pitch_in_key=7    0.2653191430195837
+    Attrib pitch_in_key=8    2.615556820249255
+    Attrib pitch_in_key=9    0.3669356951713447
+    Attrib pitch_in_key=10    0.9542872185722503
+    Attrib pitch_in_key=11    0.43705908180925085
+    Attrib tonic_chord_tone=1    -0.3806233884402817
+    Attrib dominant_chord_tone=1    -1.3634122076379398
+    Attrib prob_chord_I    -1.414142303025332
+    Attrib prob_chord_ii    -3.149860143771277
+    Attrib prob_chord_iii    -1.078459714551983
+    Attrib prob_chord_IV    -1.1135473034211647
+    Attrib prob_chord_V    -1.3610991506060566
+    Attrib prob_chord_vi    0.08882100692167438
+    Attrib prob_chord_vii    -1.9106988377743905
+    Attrib chord=0    -0.04335489501778466
+    Attrib chord=1    2.873702916060791
+    Attrib chord=2    -1.3884444064587584
+    Attrib chord=3    1.886774282557818
+    Attrib chord=4    0.47072346431819245
+    Attrib chord=5    -1.242380148532469
+    Attrib chord=6    0.40122578373678275
+    Attrib pitch_in_chord=0    -1.0023465607241107
+    Attrib pitch_in_chord=1    1.2971025840571295
+    Attrib pitch_in_chord=2    -0.09714597043412605
+    Attrib pitch_in_chord=3    0.2775898626544699
+    Attrib pitch_in_chord=4    -1.5119722415033776
+    Attrib pitch_in_chord=5    0.43523784249171593
+    Attrib pitch_in_chord=6    -0.0023393702134257687
+    Attrib pitch_in_chord=7    3.054736020856721
+    Attrib pitch_in_chord=8    3.5159829334410166
+    Attrib pitch_in_chord=9    0.5781781000032747
+    Attrib pitch_in_chord=10    -0.4154908665637675
+    Attrib pitch_in_chord=11    -0.334362059767249
+    Attrib current_chord_tone=1    0.13026659940885565
+    Attrib nar_rd    -0.178315658735298
+    Attrib nar_rr    3.8902582224321285
+    Attrib nar_id    0.6092364147069818
+    Attrib nar_cl    -3.033381699619418
+    Attrib nar_pr    0.33727166687204346
+    Attrib nar_co    -1.2087350213718209
+    Attrib beat_in_measure    -0.3124661133694492
+    Attrib metric_strength=0    -0.20013603718204348
+    Attrib metric_strength=1    0.6808579454368987
+    Attrib metric_strength=2    2.814393863300445
+    Attrib metric_strength=3    -2.1881109798268152
+    Attrib phrase_num    0.6306432027537682
+Sigmoid Node 10
+    Inputs    Weights
+    Threshold    -0.24781106107078832
+    Attrib duration_beats    0.983346717842948
+    Attrib pitch    -3.481811342369244
+    Attrib duration_s    -0.17859605734200912
+    Attrib prev_dur_beats    3.8160272653990917
+    Attrib prev_pitch    -1.5576061040209834
+    Attrib prev_dur_s    0.7001305636853962
+    Attrib interval_prev    -1.2365466169802541
+    Attrib next_dur_beats    0.7894529683388944
+    Attrib next_pitch    1.1086294971906907
+    Attrib next_dur_s    -0.31457250087249405
+    Attrib interval_next    2.823188845342214
+    Attrib pitch_in_oct=0    -0.4011536993583998
+    Attrib pitch_in_oct=1    1.6479285176731937
+    Attrib pitch_in_oct=2    -1.029300923819535
+    Attrib pitch_in_oct=3    -1.8090582310510053
+    Attrib pitch_in_oct=4    -0.2601648554851431
+    Attrib pitch_in_oct=5    -2.6039980418066966
+    Attrib pitch_in_oct=6    2.40967241282768
+    Attrib pitch_in_oct=7    -0.8651789445465631
+    Attrib pitch_in_oct=8    5.61500012884041
+    Attrib pitch_in_oct=9    -0.3920810704908652
+    Attrib pitch_in_oct=10    0.26610859448480534
+    Attrib pitch_in_oct=11    -0.6364393030027742
+    Attrib pitch_in_key=0    -0.4884529966579429
+    Attrib pitch_in_key=1    0.5502455467947781
+    Attrib pitch_in_key=2    -0.14306898269640825
+    Attrib pitch_in_key=3    3.18756560697828
+    Attrib pitch_in_key=4    -0.050940516450842376
+    Attrib pitch_in_key=5    0.2722415576145607
+    Attrib pitch_in_key=6    -0.4147518022975854
+    Attrib pitch_in_key=7    0.5847501140590458
+    Attrib pitch_in_key=8    0.39082225579021995
+    Attrib pitch_in_key=9    -0.0023854535851691823
+    Attrib pitch_in_key=10    -0.56307313693073
+    Attrib pitch_in_key=11    -1.2309106739240183
+    Attrib tonic_chord_tone=1    -0.49413525118171386
+    Attrib dominant_chord_tone=1    -1.1764537886963662
+    Attrib prob_chord_I    -0.05166979491691393
+    Attrib prob_chord_ii    4.175945827055569
+    Attrib prob_chord_iii    1.8996127083549448
+    Attrib prob_chord_IV    0.9966957108630193
+    Attrib prob_chord_V    1.1726935039979216
+    Attrib prob_chord_vi    0.5502781232460874
+    Attrib prob_chord_vii    4.112689112278183
+    Attrib chord=0    1.385857163493091
+    Attrib chord=1    -0.549684209437882
+    Attrib chord=2    0.6667074068687181
+    Attrib chord=3    -0.7347124876559047
+    Attrib chord=4    0.4230682571101196
+    Attrib chord=5    -0.21521501257368006
+    Attrib chord=6    0.11127212311626224
+    Attrib pitch_in_chord=0    -2.1075099302562657
+    Attrib pitch_in_chord=1    0.6770047970240145
+    Attrib pitch_in_chord=2    -0.7424383716124405
+    Attrib pitch_in_chord=3    1.3788418585630184
+    Attrib pitch_in_chord=4    0.5680339551595307
+    Attrib pitch_in_chord=5    1.3226944307626687
+    Attrib pitch_in_chord=6    2.228746664811985
+    Attrib pitch_in_chord=7    -0.03741377574478912
+    Attrib pitch_in_chord=8    -0.897010950372027
+    Attrib pitch_in_chord=9    -1.0206219873109919
+    Attrib pitch_in_chord=10    0.006146771920727894
+    Attrib pitch_in_chord=11    0.80877211111148
+    Attrib current_chord_tone=1    -1.8675909634722856
+    Attrib nar_rd    5.350393793333721
+    Attrib nar_rr    1.894189074815577
+    Attrib nar_id    1.342375903624448
+    Attrib nar_cl    -0.15576255870270653
+    Attrib nar_pr    0.9828266984384586
+    Attrib nar_co    3.9719711678332477
+    Attrib beat_in_measure    -0.06120748530026872
+    Attrib metric_strength=0    -0.9463780193543162
+    Attrib metric_strength=1    2.4404341738790047
+    Attrib metric_strength=2    -1.9576175857830889
+    Attrib metric_strength=3    0.8896912949265747
+    Attrib phrase_num    0.22237490865056753
+Sigmoid Node 11
+    Inputs    Weights
+    Threshold    -0.1602045718111616
+    Attrib duration_beats    -0.12451232946421097
+    Attrib pitch    1.5278156585839449
+    Attrib duration_s    -0.19094706734164663
+    Attrib prev_dur_beats    2.5446170381167166
+    Attrib prev_pitch    2.9068497837292915
+    Attrib prev_dur_s    1.0567006474928564
+    Attrib interval_prev    -0.9109012516365342
+    Attrib next_dur_beats    2.1074898240413957
+    Attrib next_pitch    2.931438261145506
+    Attrib next_dur_s    0.17348551037441762
+    Attrib interval_next    0.7388791163788111
+    Attrib pitch_in_oct=0    -2.3558920814647837
+    Attrib pitch_in_oct=1    0.6230807884552885
+    Attrib pitch_in_oct=2    -0.5263662858719443
+    Attrib pitch_in_oct=3    1.147129660190715
+    Attrib pitch_in_oct=4    -0.3792286068065577
+    Attrib pitch_in_oct=5    -0.38300381512349874
+    Attrib pitch_in_oct=6    -0.7166470358262923
+    Attrib pitch_in_oct=7    2.963229154377815
+    Attrib pitch_in_oct=8    2.901674345964729
+    Attrib pitch_in_oct=9    0.5295809905075911
+    Attrib pitch_in_oct=10    -0.7488523143573028
+    Attrib pitch_in_oct=11    -1.7671016043100556
+    Attrib pitch_in_key=0    -1.1714057310989752
+    Attrib pitch_in_key=1    0.6039564158796202
+    Attrib pitch_in_key=2    -0.44106505909351745
+    Attrib pitch_in_key=3    -0.1338483051683138
+    Attrib pitch_in_key=4    -1.0574028064350798
+    Attrib pitch_in_key=5    2.011904892646022
+    Attrib pitch_in_key=6    -0.24322870462543233
+    Attrib pitch_in_key=7    1.337277412753054
+    Attrib pitch_in_key=8    -0.04993954497861661
+    Attrib pitch_in_key=9    0.9929114031787888
+    Attrib pitch_in_key=10    0.3056326770723896
+    Attrib pitch_in_key=11    -0.9587582541437925
+    Attrib tonic_chord_tone=1    -0.22871703445494923
+    Attrib dominant_chord_tone=1    -0.36573145586055644
+    Attrib prob_chord_I    1.200432716911645
+    Attrib prob_chord_ii    -0.5984141804989803
+    Attrib prob_chord_iii    -2.0206839364266207
+    Attrib prob_chord_IV    -0.13804122447956896
+    Attrib prob_chord_V    2.7858276274334406
+    Attrib prob_chord_vi    -0.7695993068441902
+    Attrib prob_chord_vii    0.5004103304018593
+    Attrib chord=0    -2.0402884537405805
+    Attrib chord=1    -3.594399941027388
+    Attrib chord=2    -0.4485934081087666
+    Attrib chord=3    1.087611465965588
+    Attrib chord=4    1.645791463010135
+    Attrib chord=5    3.546066944443355
+    Attrib chord=6    0.4234280909741462
+    Attrib pitch_in_chord=0    0.6131850824944823
+    Attrib pitch_in_chord=1    0.0011492081700932048
+    Attrib pitch_in_chord=2    -0.4973183003049991
+    Attrib pitch_in_chord=3    0.9424666175607879
+    Attrib pitch_in_chord=4    0.4631309029619981
+    Attrib pitch_in_chord=5    -0.423897978173387
+    Attrib pitch_in_chord=6    2.110973688960139
+    Attrib pitch_in_chord=7    -0.8921850719748863
+    Attrib pitch_in_chord=8    -0.4264805370760151
+    Attrib pitch_in_chord=9    0.049461172890221214
+    Attrib pitch_in_chord=10    -0.0026444624067107152
+    Attrib pitch_in_chord=11    -0.585781630355234
+    Attrib current_chord_tone=1    1.8244795185818445
+    Attrib nar_rd    -1.7037564886094188
+    Attrib nar_rr    -0.6520542825951412
+    Attrib nar_id    -0.5243219994206336
+    Attrib nar_cl    3.528653673599442
+    Attrib nar_pr    -0.46380596823892073
+    Attrib nar_co    1.1073299111576014
+    Attrib beat_in_measure    1.0450220144790663
+    Attrib metric_strength=0    1.9953498004851655
+    Attrib metric_strength=1    -2.191186520443911
+    Attrib metric_strength=2    0.7632627163898421
+    Attrib metric_strength=3    -0.23392691762955325
+    Attrib phrase_num    0.1782217318616878
+Sigmoid Node 12
+    Inputs    Weights
+    Threshold    -0.4625797713059449
+    Attrib duration_beats    -0.05017047182027754
+    Attrib pitch    0.4674530304785173
+    Attrib duration_s    0.08417285444686559
+    Attrib prev_dur_beats    0.6447047717281029
+    Attrib prev_pitch    1.053287377840246
+    Attrib prev_dur_s    -0.055930643192107894
+    Attrib interval_prev    -0.3350960591382466
+    Attrib next_dur_beats    -0.723116838821069
+    Attrib next_pitch    -0.5684521678339747
+    Attrib next_dur_s    -0.5597276472850377
+    Attrib interval_next    -0.7200846843804556
+    Attrib pitch_in_oct=0    -0.6023564830415459
+    Attrib pitch_in_oct=1    0.8803878432620403
+    Attrib pitch_in_oct=2    -0.26910397907934325
+    Attrib pitch_in_oct=3    1.9121791667062247
+    Attrib pitch_in_oct=4    2.2511979689164052
+    Attrib pitch_in_oct=5    0.8211605621331238
+    Attrib pitch_in_oct=6    -0.7853543142025741
+    Attrib pitch_in_oct=7    1.1042901416375475
+    Attrib pitch_in_oct=8    -0.6084319129152559
+    Attrib pitch_in_oct=9    -0.05497083156929433
+    Attrib pitch_in_oct=10    -0.20262834397211565
+    Attrib pitch_in_oct=11    -0.269075785311518
+    Attrib pitch_in_key=0    -0.38416392321480874
+    Attrib pitch_in_key=1    0.328986737738042
+    Attrib pitch_in_key=2    0.2447838831210037
+    Attrib pitch_in_key=3    0.6631149644333257
+    Attrib pitch_in_key=4    0.4439429004908551
+    Attrib pitch_in_key=5    0.2738191396929132
+    Attrib pitch_in_key=6    0.29874667860323195
+    Attrib pitch_in_key=7    -0.042507535095314096
+    Attrib pitch_in_key=8    1.0351072872915013
+    Attrib pitch_in_key=9    0.606706315095523
+    Attrib pitch_in_key=10    0.49460499754570453
+    Attrib pitch_in_key=11    0.1000982373061103
+    Attrib tonic_chord_tone=1    -0.6243320740633804
+    Attrib dominant_chord_tone=1    -0.583677575592037
+    Attrib prob_chord_I    -0.43818209411982495
+    Attrib prob_chord_ii    -1.2631434262289454
+    Attrib prob_chord_iii    -1.553332157050037
+    Attrib prob_chord_IV    0.15538731090451843
+    Attrib prob_chord_V    0.378331646751464
+    Attrib prob_chord_vi    -0.4933026066608878
+    Attrib prob_chord_vii    -0.8368969658200784
+    Attrib chord=0    -0.3462112334409768
+    Attrib chord=1    1.8571354918216683
+    Attrib chord=2    -0.12488652450384516
+    Attrib chord=3    0.04091805392947573
+    Attrib chord=4    -0.1803588367786864
+    Attrib chord=5    1.241755314492091
+    Attrib chord=6    -0.2813668472125656
+    Attrib pitch_in_chord=0    0.2170718505118181
+    Attrib pitch_in_chord=1    0.2267551346466477
+    Attrib pitch_in_chord=2    0.5583519951295903
+    Attrib pitch_in_chord=3    -0.2784400445218995
+    Attrib pitch_in_chord=4    -0.20245561427804779
+    Attrib pitch_in_chord=5    -0.07029015594267504
+    Attrib pitch_in_chord=6    -0.19232777722444835
+    Attrib pitch_in_chord=7    0.7481418972375503
+    Attrib pitch_in_chord=8    0.289119548286983
+    Attrib pitch_in_chord=9    0.7047266916015492
+    Attrib pitch_in_chord=10    0.9815272279657027
+    Attrib pitch_in_chord=11    1.1433084968679914
+    Attrib current_chord_tone=1    -0.8383620189016253
+    Attrib nar_rd    -0.2512977161312909
+    Attrib nar_rr    0.42446353572651757
+    Attrib nar_id    0.3931066927045179
+    Attrib nar_cl    1.3229728910232401
+    Attrib nar_pr    -0.08196106770765887
+    Attrib nar_co    -0.5237024805279732
+    Attrib beat_in_measure    0.7154711124216705
+    Attrib metric_strength=0    -0.7973030933477832
+    Attrib metric_strength=1    0.15162967428851545
+    Attrib metric_strength=2    1.3880463185477374
+    Attrib metric_strength=3    0.052590851335701946
+    Attrib phrase_num    0.35734731122515906
+Sigmoid Node 13
+    Inputs    Weights
+    Threshold    -0.4412437139899376
+    Attrib duration_beats    0.7114035118908245
+    Attrib pitch    2.399294656567353
+    Attrib duration_s    1.2016761486081382
+    Attrib prev_dur_beats    -0.5698621099581699
+    Attrib prev_pitch    1.890936950247508
+    Attrib prev_dur_s    -0.32486201838204803
+    Attrib interval_prev    0.2356785342179961
+    Attrib next_dur_beats    0.19308436021269573
+    Attrib next_pitch    3.640152032370294
+    Attrib next_dur_s    -0.3724174340213375
+    Attrib interval_next    0.3050508184876244
+    Attrib pitch_in_oct=0    -0.5139823642422446
+    Attrib pitch_in_oct=1    1.481964775209957
+    Attrib pitch_in_oct=2    -0.0458707985298083
+    Attrib pitch_in_oct=3    0.2186065030522099
+    Attrib pitch_in_oct=4    0.2522717284423413
+    Attrib pitch_in_oct=5    -0.022961956362013387
+    Attrib pitch_in_oct=6    -1.3678714589731549
+    Attrib pitch_in_oct=7    1.698435691507569
+    Attrib pitch_in_oct=8    -1.9681633618238963
+    Attrib pitch_in_oct=9    1.136584216167295
+    Attrib pitch_in_oct=10    -0.7141592223035357
+    Attrib pitch_in_oct=11    3.7312234619325237
+    Attrib pitch_in_key=0    0.11693784259080421
+    Attrib pitch_in_key=1    -0.6768865975301613
+    Attrib pitch_in_key=2    0.558234442907573
+    Attrib pitch_in_key=3    0.3921335452012722
+    Attrib pitch_in_key=4    1.758976976080416
+    Attrib pitch_in_key=5    1.3120021842497471
+    Attrib pitch_in_key=6    0.37923291788174024
+    Attrib pitch_in_key=7    -1.1676645567564818
+    Attrib pitch_in_key=8    0.16597854559629052
+    Attrib pitch_in_key=9    -0.43799230265069716
+    Attrib pitch_in_key=10    0.708309416779584
+    Attrib pitch_in_key=11    0.7679864371109745
+    Attrib tonic_chord_tone=1    -0.8703308338025894
+    Attrib dominant_chord_tone=1    -0.5886595594125021
+    Attrib prob_chord_I    -0.593583548552984
+    Attrib prob_chord_ii    2.283817782057109
+    Attrib prob_chord_iii    1.12277935481366
+    Attrib prob_chord_IV    -3.4697821538297067
+    Attrib prob_chord_V    2.610299206442011
+    Attrib prob_chord_vi    -0.4964064996537485
+    Attrib prob_chord_vii    1.528174470473941
+    Attrib chord=0    -2.232633644313113
+    Attrib chord=1    0.3723195526871044
+    Attrib chord=2    -0.33436279344798114
+    Attrib chord=3    0.8417215229331027
+    Attrib chord=4    1.7864471539203821
+    Attrib chord=5    2.1504696262165464
+    Attrib chord=6    -0.6974712456939713
+    Attrib pitch_in_chord=0    -1.3122714469290189
+    Attrib pitch_in_chord=1    -0.007813678517975273
+    Attrib pitch_in_chord=2    0.8368627018822042
+    Attrib pitch_in_chord=3    2.8124376524786228
+    Attrib pitch_in_chord=4    -1.1406346610668927
+    Attrib pitch_in_chord=5    0.10708107159934442
+    Attrib pitch_in_chord=6    -0.7358964868565252
+    Attrib pitch_in_chord=7    2.921159191124768
+    Attrib pitch_in_chord=8    -0.8025300626273406
+    Attrib pitch_in_chord=9    -0.019152572424870406
+    Attrib pitch_in_chord=10    0.8109636140649096
+    Attrib pitch_in_chord=11    0.320646568865906
+    Attrib current_chord_tone=1    1.27580072046182
+    Attrib nar_rd    1.7068248587094448
+    Attrib nar_rr    2.0662554820115737
+    Attrib nar_id    0.10015618454170061
+    Attrib nar_cl    -0.22866173554171518
+    Attrib nar_pr    -0.3503508919168626
+    Attrib nar_co    0.9144632967439498
+    Attrib beat_in_measure    0.701181895975401
+    Attrib metric_strength=0    -2.8209071540629016
+    Attrib metric_strength=1    3.9724509700134063
+    Attrib metric_strength=2    1.01961012130024
+    Attrib metric_strength=3    -1.4242078910928777
+    Attrib phrase_num    -0.3082254653149417
+Sigmoid Node 14
+    Inputs    Weights
+    Threshold    -0.7050762198479172
+    Attrib duration_beats    2.0270391447813116
+    Attrib pitch    -0.8898382866706014
+    Attrib duration_s    -0.5424533175253116
+    Attrib prev_dur_beats    0.24012657447938135
+    Attrib prev_pitch    -0.49010450941598666
+    Attrib prev_dur_s    -1.9991364704216739
+    Attrib interval_prev    -0.40306212658920676
+    Attrib next_dur_beats    -0.7760811743500067
+    Attrib next_pitch    -3.6027913545360324
+    Attrib next_dur_s    -3.1856134391581543
+    Attrib interval_next    -1.8537731299103217
+    Attrib pitch_in_oct=0    2.8025050441919834
+    Attrib pitch_in_oct=1    -0.8674903639630076
+    Attrib pitch_in_oct=2    -0.6148885637760215
+    Attrib pitch_in_oct=3    5.497830746439
+    Attrib pitch_in_oct=4    3.6674128695281687
+    Attrib pitch_in_oct=5    1.0034962740921172
+    Attrib pitch_in_oct=6    3.166428022988233
+    Attrib pitch_in_oct=7    -4.36479560282291
+    Attrib pitch_in_oct=8    -0.034038725474637745
+    Attrib pitch_in_oct=9    -0.20301931330500947
+    Attrib pitch_in_oct=10    -1.7187782675211543
+    Attrib pitch_in_oct=11    -0.8514795317438544
+    Attrib pitch_in_key=0    2.186241963756432
+    Attrib pitch_in_key=1    0.6659264268100823
+    Attrib pitch_in_key=2    -0.8718995227023753
+    Attrib pitch_in_key=3    -0.14295852873789588
+    Attrib pitch_in_key=4    -0.4657008436618567
+    Attrib pitch_in_key=5    -0.6439145227233849
+    Attrib pitch_in_key=6    0.7280237986935744
+    Attrib pitch_in_key=7    2.192909795279089
+    Attrib pitch_in_key=8    0.6294047049502101
+    Attrib pitch_in_key=9    0.7586207865107965
+    Attrib pitch_in_key=10    0.8292863308744713
+    Attrib pitch_in_key=11    1.6013936710601697
+    Attrib tonic_chord_tone=1    2.5042728084354606
+    Attrib dominant_chord_tone=1    1.4305236672842223
+    Attrib prob_chord_I    0.8371948499880196
+    Attrib prob_chord_ii    -0.41728935333720846
+    Attrib prob_chord_iii    -2.7765395035238734
+    Attrib prob_chord_IV    0.8221930872426356
+    Attrib prob_chord_V    4.262760638950481
+    Attrib prob_chord_vi    0.12918991338032257
+    Attrib prob_chord_vii    3.0147079479753143
+    Attrib chord=0    1.852987982370646
+    Attrib chord=1    2.625582056193906
+    Attrib chord=2    0.47563108676457616
+    Attrib chord=3    0.2551090761118319
+    Attrib chord=4    -0.3713618264335657
+    Attrib chord=5    -0.6887755243187321
+    Attrib chord=6    -0.39797758149964724
+    Attrib pitch_in_chord=0    -1.0559113146935628
+    Attrib pitch_in_chord=1    0.2716417820461136
+    Attrib pitch_in_chord=2    1.020572668350689
+    Attrib pitch_in_chord=3    0.23438635614208939
+    Attrib pitch_in_chord=4    1.7552774024835234
+    Attrib pitch_in_chord=5    0.9713712157961699
+    Attrib pitch_in_chord=6    1.1045360754727362
+    Attrib pitch_in_chord=7    2.0078331205241717
+    Attrib pitch_in_chord=8    -3.0295064102702733
+    Attrib pitch_in_chord=9    -0.08354619301255423
+    Attrib pitch_in_chord=10    4.729109800603294
+    Attrib pitch_in_chord=11    -0.4647103406428092
+    Attrib current_chord_tone=1    2.0134793782084146
+    Attrib nar_rd    1.481140941326271
+    Attrib nar_rr    -6.14631623672586
+    Attrib nar_id    0.13205659487390956
+    Attrib nar_cl    -0.32601524182885616
+    Attrib nar_pr    -1.8307058438515762
+    Attrib nar_co    0.7991341885010635
+    Attrib beat_in_measure    1.182686551376622
+    Attrib metric_strength=0    1.8744949767857468
+    Attrib metric_strength=1    1.5254988563709069
+    Attrib metric_strength=2    0.17265759633156483
+    Attrib metric_strength=3    -1.9713214063889424
+    Attrib phrase_num    -1.4801066816751554
+Sigmoid Node 15
+    Inputs    Weights
+    Threshold    -0.5578958082387856
+    Attrib duration_beats    2.192233504277304
+    Attrib pitch    -3.4418906153858018
+    Attrib duration_s    1.298791634484095
+    Attrib prev_dur_beats    0.515874614669791
+    Attrib prev_pitch    -0.531661810067978
+    Attrib prev_dur_s    -1.5578892525819428
+    Attrib interval_prev    -1.9285705633543617
+    Attrib next_dur_beats    -0.4163545222681008
+    Attrib next_pitch    -4.591486037070531
+    Attrib next_dur_s    -1.5724350076500584
+    Attrib interval_next    -1.0605511862943973
+    Attrib pitch_in_oct=0    -1.2091482389341641
+    Attrib pitch_in_oct=1    -0.468073908705875
+    Attrib pitch_in_oct=2    0.78558438198358
+    Attrib pitch_in_oct=3    0.25951031907748584
+    Attrib pitch_in_oct=4    -0.29442119019392127
+    Attrib pitch_in_oct=5    1.4925682762192676
+    Attrib pitch_in_oct=6    1.7714186043453315
+    Attrib pitch_in_oct=7    1.3550957262772676
+    Attrib pitch_in_oct=8    2.1094933176134867
+    Attrib pitch_in_oct=9    0.3743394919240281
+    Attrib pitch_in_oct=10    -0.6844002829708755
+    Attrib pitch_in_oct=11    0.4309228262804524
+    Attrib pitch_in_key=0    -0.34913525755527797
+    Attrib pitch_in_key=1    0.42563539371588804
+    Attrib pitch_in_key=2    0.49083800325982074
+    Attrib pitch_in_key=3    -0.6700623775235377
+    Attrib pitch_in_key=4    1.6536545603681196
+    Attrib pitch_in_key=5    1.562559594702115
+    Attrib pitch_in_key=6    2.2782630567767517
+    Attrib pitch_in_key=7    -0.9608335322651275
+    Attrib pitch_in_key=8    -0.8061121006171442
+    Attrib pitch_in_key=9    1.402476020279448
+    Attrib pitch_in_key=10    0.48424561134299504
+    Attrib pitch_in_key=11    0.5630514330419978
+    Attrib tonic_chord_tone=1    -0.10186333733164049
+    Attrib dominant_chord_tone=1    -1.1258165024802043
+    Attrib prob_chord_I    -0.17260219417776326
+    Attrib prob_chord_ii    -1.1205659632444365
+    Attrib prob_chord_iii    3.401100990381667
+    Attrib prob_chord_IV    -0.08143544012929349
+    Attrib prob_chord_V    0.5814271385996089
+    Attrib prob_chord_vi    0.4007574114854859
+    Attrib prob_chord_vii    -0.9621079285533034
+    Attrib chord=0    -0.7326272029554806
+    Attrib chord=1    0.6711434558149353
+    Attrib chord=2    1.060772244095758
+    Attrib chord=3    1.0063537476520565
+    Attrib chord=4    1.3268333769354448
+    Attrib chord=5    -0.37668124907226874
+    Attrib chord=6    0.07417911512584455
+    Attrib pitch_in_chord=0    -1.1108209794802608
+    Attrib pitch_in_chord=1    0.26995348833731503
+    Attrib pitch_in_chord=2    1.9283065973021454
+    Attrib pitch_in_chord=3    1.1427234034620086
+    Attrib pitch_in_chord=4    0.20087875682116058
+    Attrib pitch_in_chord=5    1.1927065393896892
+    Attrib pitch_in_chord=6    -0.688970238334016
+    Attrib pitch_in_chord=7    0.8698175005740018
+    Attrib pitch_in_chord=8    1.1901337448568543
+    Attrib pitch_in_chord=9    0.5437952491440068
+    Attrib pitch_in_chord=10    -0.02474959683427458
+    Attrib pitch_in_chord=11    0.5541731716922341
+    Attrib current_chord_tone=1    0.583889113220746
+    Attrib nar_rd    -0.5645325651796357
+    Attrib nar_rr    -1.7542011447443422
+    Attrib nar_id    -1.6953664868218985
+    Attrib nar_cl    0.9004272471326735
+    Attrib nar_pr    -1.5526641380775252
+    Attrib nar_co    -2.8401697288732946
+    Attrib beat_in_measure    0.14239901669954727
+    Attrib metric_strength=0    3.56598132260625
+    Attrib metric_strength=1    -1.968673916573059
+    Attrib metric_strength=2    0.483408196958362
+    Attrib metric_strength=3    -0.9268718266605296
+    Attrib phrase_num    0.7127093356785963
+Sigmoid Node 16
+    Inputs    Weights
+    Threshold    -0.4854123676238776
+    Attrib duration_beats    1.4250439041701293
+    Attrib pitch    -4.127000591341167
+    Attrib duration_s    -0.3800350668020667
+    Attrib prev_dur_beats    0.9505630241457145
+    Attrib prev_pitch    -1.43149939429837
+    Attrib prev_dur_s    -1.0492509716448857
+    Attrib interval_prev    -1.7453858639815887
+    Attrib next_dur_beats    0.9688076797640357
+    Attrib next_pitch    -4.494044678006686
+    Attrib next_dur_s    -0.4573167752846088
+    Attrib interval_next    -0.6524824020486536
+    Attrib pitch_in_oct=0    0.92499220723388
+    Attrib pitch_in_oct=1    1.0378870948587795
+    Attrib pitch_in_oct=2    -1.6171852829553146
+    Attrib pitch_in_oct=3    1.5817504037066368
+    Attrib pitch_in_oct=4    0.11568193641643038
+    Attrib pitch_in_oct=5    0.6159263876925248
+    Attrib pitch_in_oct=6    2.4918011879067787
+    Attrib pitch_in_oct=7    5.3295899753501885
+    Attrib pitch_in_oct=8    -2.9690212780640524
+    Attrib pitch_in_oct=9    -0.2804062644529098
+    Attrib pitch_in_oct=10    0.01826008095980547
+    Attrib pitch_in_oct=11    -2.1095850203777715
+    Attrib pitch_in_key=0    -1.3310322246391468
+    Attrib pitch_in_key=1    0.8062819721010805
+    Attrib pitch_in_key=2    -0.10643561362968826
+    Attrib pitch_in_key=3    2.6871896851185446
+    Attrib pitch_in_key=4    0.8963589866855395
+    Attrib pitch_in_key=5    0.6099514023030144
+    Attrib pitch_in_key=6    0.11564857828654934
+    Attrib pitch_in_key=7    -0.22467955143810778
+    Attrib pitch_in_key=8    0.29516005613721785
+    Attrib pitch_in_key=9    0.7269876776787673
+    Attrib pitch_in_key=10    0.27990642129251486
+    Attrib pitch_in_key=11    0.25349851207822166
+    Attrib tonic_chord_tone=1    -1.4222308761779818
+    Attrib dominant_chord_tone=1    -1.0675939551832505
+    Attrib prob_chord_I    0.526712825488715
+    Attrib prob_chord_ii    1.1075373419443304
+    Attrib prob_chord_iii    2.892014550802334
+    Attrib prob_chord_IV    0.8854406760471567
+    Attrib prob_chord_V    0.0985113913377896
+    Attrib prob_chord_vi    -0.18250997393766502
+    Attrib prob_chord_vii    -0.12898407502201625
+    Attrib chord=0    0.7064290489613084
+    Attrib chord=1    1.1302236724399721
+    Attrib chord=2    0.2681809912272786
+    Attrib chord=3    -0.44713953963244174
+    Attrib chord=4    0.24946913854490385
+    Attrib chord=5    0.3168234069976869
+    Attrib chord=6    0.2939436660055302
+    Attrib pitch_in_chord=0    0.10560361073098062
+    Attrib pitch_in_chord=1    2.664654454880792
+    Attrib pitch_in_chord=2    -1.0159333426642863
+    Attrib pitch_in_chord=3    0.1571157870415357
+    Attrib pitch_in_chord=4    2.5864093404652957
+    Attrib pitch_in_chord=5    -0.15162951965919264
+    Attrib pitch_in_chord=6    0.23346612771658432
+    Attrib pitch_in_chord=7    -1.3669859043690114
+    Attrib pitch_in_chord=8    0.15383288374807058
+    Attrib pitch_in_chord=9    -0.013181765771500665
+    Attrib pitch_in_chord=10    0.7031569610271529
+    Attrib pitch_in_chord=11    1.1289112927223761
+    Attrib current_chord_tone=1    0.2542643365515713
+    Attrib nar_rd    0.11719904201227208
+    Attrib nar_rr    0.23740038327242352
+    Attrib nar_id    -0.723735017771076
+    Attrib nar_cl    -0.12241233525564843
+    Attrib nar_pr    -0.8600653779997957
+    Attrib nar_co    -2.1559765041356327
+    Attrib beat_in_measure    -0.5023102255133611
+    Attrib metric_strength=0    -1.9059463704456348
+    Attrib metric_strength=1    0.6521974428684564
+    Attrib metric_strength=2    -1.4077769472489627
+    Attrib metric_strength=3    3.748901488538522
+    Attrib phrase_num    0.31995513797968017
+Sigmoid Node 17
+    Inputs    Weights
+    Threshold    -0.6458147530398162
+    Attrib duration_beats    -0.4210993560281984
+    Attrib pitch    0.7719190912306592
+    Attrib duration_s    -0.8631086831356385
+    Attrib prev_dur_beats    2.013668073476105
+    Attrib prev_pitch    -1.0277551049155547
+    Attrib prev_dur_s    0.8428551765468134
+    Attrib interval_prev    0.956574638770369
+    Attrib next_dur_beats    0.03524053915749802
+    Attrib next_pitch    1.9557819284968967
+    Attrib next_dur_s    -1.2080439374688796
+    Attrib interval_next    0.5569378568238477
+    Attrib pitch_in_oct=0    0.04384549660499248
+    Attrib pitch_in_oct=1    2.03216220947702
+    Attrib pitch_in_oct=2    -0.11735174424924613
+    Attrib pitch_in_oct=3    0.2624923213132813
+    Attrib pitch_in_oct=4    -1.3172267183477624
+    Attrib pitch_in_oct=5    5.192607419032163
+    Attrib pitch_in_oct=6    -0.9935133276218576
+    Attrib pitch_in_oct=7    0.7375855639024864
+    Attrib pitch_in_oct=8    -1.2890404360049421
+    Attrib pitch_in_oct=9    0.7352931838209892
+    Attrib pitch_in_oct=10    -0.8194607467031887
+    Attrib pitch_in_oct=11    1.4392856843435315
+    Attrib pitch_in_key=0    0.0341944935298649
+    Attrib pitch_in_key=1    2.663728746518309
+    Attrib pitch_in_key=2    2.4833706634705566
+    Attrib pitch_in_key=3    -0.6829094988402479
+    Attrib pitch_in_key=4    0.5141425996942866
+    Attrib pitch_in_key=5    0.33215631257726647
+    Attrib pitch_in_key=6    0.4227308682269686
+    Attrib pitch_in_key=7    0.08873209188062765
+    Attrib pitch_in_key=8    0.021433567435262424
+    Attrib pitch_in_key=9    0.26373651091233713
+    Attrib pitch_in_key=10    0.6617485344746133
+    Attrib pitch_in_key=11    -0.8389340592220381
+    Attrib tonic_chord_tone=1    -0.940903188201861
+    Attrib dominant_chord_tone=1    0.5686144699163587
+    Attrib prob_chord_I    -1.965859801780996
+    Attrib prob_chord_ii    -0.7339320015530312
+    Attrib prob_chord_iii    -0.12916771345083108
+    Attrib prob_chord_IV    -0.3484402601647106
+    Attrib prob_chord_V    -1.9218235463056053
+    Attrib prob_chord_vi    0.0749004647215566
+    Attrib prob_chord_vii    -1.7576849150914235
+    Attrib chord=0    -0.00704242314209668
+    Attrib chord=1    1.9010065253601918
+    Attrib chord=2    -0.6389749008538338
+    Attrib chord=3    3.452954252818626
+    Attrib chord=4    -0.5060593032595337
+    Attrib chord=5    -0.8135246325369844
+    Attrib chord=6    -0.4459670580342054
+    Attrib pitch_in_chord=0    1.9112293752192986
+    Attrib pitch_in_chord=1    -0.7193401539952152
+    Attrib pitch_in_chord=2    -0.32991961353450555
+    Attrib pitch_in_chord=3    -0.6664911686465044
+    Attrib pitch_in_chord=4    0.3153013972791925
+    Attrib pitch_in_chord=5    -0.8830057924476055
+    Attrib pitch_in_chord=6    0.7196767549023056
+    Attrib pitch_in_chord=7    -0.8234919285739781
+    Attrib pitch_in_chord=8    1.8471667356456258
+    Attrib pitch_in_chord=9    1.796529863081517
+    Attrib pitch_in_chord=10    0.06849017058793022
+    Attrib pitch_in_chord=11    2.8475962956412126
+    Attrib current_chord_tone=1    -1.610193622741793
+    Attrib nar_rd    0.6629503010774468
+    Attrib nar_rr    -3.6225398936902473
+    Attrib nar_id    -0.01082302978614122
+    Attrib nar_cl    2.4414940219009575
+    Attrib nar_pr    -1.0320682442866105
+    Attrib nar_co    1.1673991040246046
+    Attrib beat_in_measure    1.0889843005342448
+    Attrib metric_strength=0    -0.4680684431719434
+    Attrib metric_strength=1    0.267672028814546
+    Attrib metric_strength=2    -1.1690604836059062
+    Attrib metric_strength=3    2.5991898425418447
+    Attrib phrase_num    0.25504831722992755
+Sigmoid Node 18
+    Inputs    Weights
+    Threshold    -0.4479476955756911
+    Attrib duration_beats    1.0785783251428034
+    Attrib pitch    2.428550084100664
+    Attrib duration_s    -0.3682086736806675
+    Attrib prev_dur_beats    1.9196360087274924
+    Attrib prev_pitch    0.6608235699477176
+    Attrib prev_dur_s    1.1392439080931278
+    Attrib interval_prev    1.0176230028910098
+    Attrib next_dur_beats    -0.2602343619700055
+    Attrib next_pitch    3.8580841621147854
+    Attrib next_dur_s    -3.069443292918369
+    Attrib interval_next    0.4572345380804923
+    Attrib pitch_in_oct=0    -0.949691004901387
+    Attrib pitch_in_oct=1    0.517762054861569
+    Attrib pitch_in_oct=2    0.4564756002864537
+    Attrib pitch_in_oct=3    5.837218181773418
+    Attrib pitch_in_oct=4    -0.1455296843634053
+    Attrib pitch_in_oct=5    0.8892473220867737
+    Attrib pitch_in_oct=6    2.2400589981634673
+    Attrib pitch_in_oct=7    -2.04476830236064
+    Attrib pitch_in_oct=8    1.0679735638570609
+    Attrib pitch_in_oct=9    0.9811217629626071
+    Attrib pitch_in_oct=10    -3.0796953189687555
+    Attrib pitch_in_oct=11    -1.3103542032893272
+    Attrib pitch_in_key=0    0.6643758280435328
+    Attrib pitch_in_key=1    0.7653358611411358
+    Attrib pitch_in_key=2    -0.283988892206199
+    Attrib pitch_in_key=3    0.9326998441212521
+    Attrib pitch_in_key=4    0.08238367949019672
+    Attrib pitch_in_key=5    0.8709109921659484
+    Attrib pitch_in_key=6    0.4081448232110498
+    Attrib pitch_in_key=7    0.5831762978603092
+    Attrib pitch_in_key=8    0.36752159351131775
+    Attrib pitch_in_key=9    -0.2768304874681394
+    Attrib pitch_in_key=10    1.279596422416829
+    Attrib pitch_in_key=11    -0.6793368955722132
+    Attrib tonic_chord_tone=1    -0.339063354572899
+    Attrib dominant_chord_tone=1    -1.3417605371387404
+    Attrib prob_chord_I    -0.11821938666059978
+    Attrib prob_chord_ii    6.147481615806266
+    Attrib prob_chord_iii    0.8587684328830447
+    Attrib prob_chord_IV    2.99105090290765
+    Attrib prob_chord_V    -0.5697921648947616
+    Attrib prob_chord_vi    0.539497714856839
+    Attrib prob_chord_vii    5.307272634325505
+    Attrib chord=0    -1.2002403605249214
+    Attrib chord=1    -1.8771555456800597
+    Attrib chord=2    0.24814462753805927
+    Attrib chord=3    0.919805649762383
+    Attrib chord=4    2.267002666545372
+    Attrib chord=5    1.6169562310358152
+    Attrib chord=6    0.2773623719885967
+    Attrib pitch_in_chord=0    1.6621774985341322
+    Attrib pitch_in_chord=1    -0.7531008331969797
+    Attrib pitch_in_chord=2    -1.476623083375295
+    Attrib pitch_in_chord=3    4.294241537456207
+    Attrib pitch_in_chord=4    -0.9189967631467757
+    Attrib pitch_in_chord=5    0.5214332480088766
+    Attrib pitch_in_chord=6    0.2431946120660444
+    Attrib pitch_in_chord=7    -1.1443722528638687
+    Attrib pitch_in_chord=8    2.4287820828813222
+    Attrib pitch_in_chord=9    0.7429143348415406
+    Attrib pitch_in_chord=10    0.05057091110463698
+    Attrib pitch_in_chord=11    -0.9998189918590944
+    Attrib current_chord_tone=1    -1.106866607411103
+    Attrib nar_rd    2.669632823671066
+    Attrib nar_rr    0.5801400719078328
+    Attrib nar_id    4.080225919648783
+    Attrib nar_cl    -2.4952287766025307
+    Attrib nar_pr    0.8019765506161461
+    Attrib nar_co    3.5318411862360795
+    Attrib beat_in_measure    0.22778074727731498
+    Attrib metric_strength=0    2.6981726538312962
+    Attrib metric_strength=1    -1.991411349161573
+    Attrib metric_strength=2    -1.6463410381554393
+    Attrib metric_strength=3    1.8687422499379784
+    Attrib phrase_num    0.058074436406786396
+Sigmoid Node 19
+    Inputs    Weights
+    Threshold    -0.5726210547039485
+    Attrib duration_beats    0.865197414053086
+    Attrib pitch    0.7699180312651617
+    Attrib duration_s    0.6886333615184643
+    Attrib prev_dur_beats    -1.6871730699639542
+    Attrib prev_pitch    -1.853752678627323
+    Attrib prev_dur_s    -0.6843513831143647
+    Attrib interval_prev    1.4987998989577698
+    Attrib next_dur_beats    1.6549060763157741
+    Attrib next_pitch    -0.9835658188825772
+    Attrib next_dur_s    1.0627014945203712
+    Attrib interval_next    -1.1130435519283939
+    Attrib pitch_in_oct=0    0.3688541854436183
+    Attrib pitch_in_oct=1    0.7666881508264081
+    Attrib pitch_in_oct=2    -0.5340018375117457
+    Attrib pitch_in_oct=3    -0.2330811401348855
+    Attrib pitch_in_oct=4    -0.20753624761148065
+    Attrib pitch_in_oct=5    -0.24414117312486774
+    Attrib pitch_in_oct=6    0.3850014333842393
+    Attrib pitch_in_oct=7    -2.205412113019665
+    Attrib pitch_in_oct=8    -0.1231599600310036
+    Attrib pitch_in_oct=9    1.9501440206421903
+    Attrib pitch_in_oct=10    2.96258929642192
+    Attrib pitch_in_oct=11    2.6356776671146247
+    Attrib pitch_in_key=0    -0.11256860568878209
+    Attrib pitch_in_key=1    1.2010896575236136
+    Attrib pitch_in_key=2    0.36961101248115813
+    Attrib pitch_in_key=3    0.54005359854657
+    Attrib pitch_in_key=4    0.273933035078078
+    Attrib pitch_in_key=5    1.7506796690383366
+    Attrib pitch_in_key=6    3.2444894760064087
+    Attrib pitch_in_key=7    0.7061338451821119
+    Attrib pitch_in_key=8    0.00568096457577778
+    Attrib pitch_in_key=9    -0.06925408743956607
+    Attrib pitch_in_key=10    -1.378873988351687
+    Attrib pitch_in_key=11    -0.8742589951035962
+    Attrib tonic_chord_tone=1    -0.9453218431271377
+    Attrib dominant_chord_tone=1    -0.8431358471892667
+    Attrib prob_chord_I    -2.8924156769427176
+    Attrib prob_chord_ii    -1.5561397882194998
+    Attrib prob_chord_iii    -0.05323971316885251
+    Attrib prob_chord_IV    -3.478756509582804
+    Attrib prob_chord_V    -0.4778474095460005
+    Attrib prob_chord_vi    -1.574922471567906
+    Attrib prob_chord_vii    -1.8883621982210694
+    Attrib chord=0    2.1124507658190415
+    Attrib chord=1    -1.8219080002227688
+    Attrib chord=2    -0.2382821413998964
+    Attrib chord=3    0.9176115532807256
+    Attrib chord=4    0.8001857258396353
+    Attrib chord=5    -0.12209781942321768
+    Attrib chord=6    1.1843190793149707
+    Attrib pitch_in_chord=0    0.29222174022216274
+    Attrib pitch_in_chord=1    0.7254053409370134
+    Attrib pitch_in_chord=2    -0.9617172758503136
+    Attrib pitch_in_chord=3    -1.4319149897267518
+    Attrib pitch_in_chord=4    2.2889502717558825
+    Attrib pitch_in_chord=5    0.9691934217081516
+    Attrib pitch_in_chord=6    2.5530933085356877
+    Attrib pitch_in_chord=7    -0.9359283902137643
+    Attrib pitch_in_chord=8    0.5190064004350344
+    Attrib pitch_in_chord=9    0.8707722233502573
+    Attrib pitch_in_chord=10    0.8002307679961604
+    Attrib pitch_in_chord=11    -0.2393809601656006
+    Attrib current_chord_tone=1    -0.1546352382749769
+    Attrib nar_rd    0.4978002581323211
+    Attrib nar_rr    0.4036011513824428
+    Attrib nar_id    -2.153318368508905
+    Attrib nar_cl    1.273639651192632
+    Attrib nar_pr    2.03219714139219
+    Attrib nar_co    1.1986562574867348
+    Attrib beat_in_measure    -1.417796075469625
+    Attrib metric_strength=0    -1.676560798561642
+    Attrib metric_strength=1    4.718523425900422
+    Attrib metric_strength=2    0.06371986843512184
+    Attrib metric_strength=3    -2.0162571357878485
+    Attrib phrase_num    0.33301021520510965
+Sigmoid Node 20
+    Inputs    Weights
+    Threshold    -0.40329539751769594
+    Attrib duration_beats    0.7548814102262758
+    Attrib pitch    1.3397730963263468
+    Attrib duration_s    0.7597087755753555
+    Attrib prev_dur_beats    0.31048303667759125
+    Attrib prev_pitch    0.1893251314585773
+    Attrib prev_dur_s    -0.2657274908465912
+    Attrib interval_prev    0.6922973110006293
+    Attrib next_dur_beats    0.5821574129879983
+    Attrib next_pitch    -0.08462111168699414
+    Attrib next_dur_s    0.10759362339775537
+    Attrib interval_next    -1.183033388728396
+    Attrib pitch_in_oct=0    0.6189758598559312
+    Attrib pitch_in_oct=1    0.7162119965733166
+    Attrib pitch_in_oct=2    -0.05289734291381339
+    Attrib pitch_in_oct=3    0.20037692187478773
+    Attrib pitch_in_oct=4    1.1506500323206688
+    Attrib pitch_in_oct=5    2.277055987700639
+    Attrib pitch_in_oct=6    -1.1873346164083003
+    Attrib pitch_in_oct=7    2.28869434452688
+    Attrib pitch_in_oct=8    -0.41096867483758187
+    Attrib pitch_in_oct=9    -1.1294411502166712
+    Attrib pitch_in_oct=10    -0.17768574483967955
+    Attrib pitch_in_oct=11    -0.25453484600537457
+    Attrib pitch_in_key=0    -0.400973675829045
+    Attrib pitch_in_key=1    0.11749830904202939
+    Attrib pitch_in_key=2    0.6609562051636358
+    Attrib pitch_in_key=3    -0.546470118248821
+    Attrib pitch_in_key=4    0.06803910549400101
+    Attrib pitch_in_key=5    2.4045157871984677
+    Attrib pitch_in_key=6    0.3626278277875613
+    Attrib pitch_in_key=7    -0.30155475519140523
+    Attrib pitch_in_key=8    0.6416327453000381
+    Attrib pitch_in_key=9    0.6823955378098986
+    Attrib pitch_in_key=10    -0.2269661582486305
+    Attrib pitch_in_key=11    0.4015169573107641
+    Attrib tonic_chord_tone=1    -1.0719573408971614
+    Attrib dominant_chord_tone=1    0.01110306944473912
+    Attrib prob_chord_I    -0.2795425386677424
+    Attrib prob_chord_ii    0.5786561895610055
+    Attrib prob_chord_iii    -0.37630423520722206
+    Attrib prob_chord_IV    -0.8272731624955126
+    Attrib prob_chord_V    0.03928949855839018
+    Attrib prob_chord_vi    -0.35907028768970056
+    Attrib prob_chord_vii    0.5356900439110925
+    Attrib chord=0    -0.18037183283151112
+    Attrib chord=1    1.0232869972126666
+    Attrib chord=2    0.8589163095342625
+    Attrib chord=3    0.15845834855518987
+    Attrib chord=4    1.0411962748402268
+    Attrib chord=5    -0.9309784324326404
+    Attrib chord=6    0.026782366353692542
+    Attrib pitch_in_chord=0    -1.4402107304288534
+    Attrib pitch_in_chord=1    1.1833545932252028
+    Attrib pitch_in_chord=2    0.21654623124866593
+    Attrib pitch_in_chord=3    -0.6129702975430877
+    Attrib pitch_in_chord=4    -0.3354484453338591
+    Attrib pitch_in_chord=5    -0.019348569560752
+    Attrib pitch_in_chord=6    -0.12929092606795098
+    Attrib pitch_in_chord=7    1.3153305927874277
+    Attrib pitch_in_chord=8    0.7254449379690886
+    Attrib pitch_in_chord=9    0.6557549182326846
+    Attrib pitch_in_chord=10    1.581011065622913
+    Attrib pitch_in_chord=11    0.78032592419388
+    Attrib current_chord_tone=1    -2.057942291296449
+    Attrib nar_rd    0.2691623660203251
+    Attrib nar_rr    2.549600418417776
+    Attrib nar_id    0.35636380472549734
+    Attrib nar_cl    -0.3416521070938938
+    Attrib nar_pr    0.07108970073122128
+    Attrib nar_co    -1.0104253825100542
+    Attrib beat_in_measure    -0.06493271042555165
+    Attrib metric_strength=0    0.6866575214121532
+    Attrib metric_strength=1    0.26721675405109246
+    Attrib metric_strength=2    0.48786563702316516
+    Attrib metric_strength=3    -0.6653216797320843
+    Attrib phrase_num    0.2137427334274585
+Sigmoid Node 21
+    Inputs    Weights
+    Threshold    -0.9058127417492212
+    Attrib duration_beats    -2.4027347648737596
+    Attrib pitch    4.344657460761437
+    Attrib duration_s    -0.5891287418659562
+    Attrib prev_dur_beats    -0.5205268312603718
+    Attrib prev_pitch    1.1954237779664179
+    Attrib prev_dur_s    0.5581797735180662
+    Attrib interval_prev    1.7555825923680062
+    Attrib next_dur_beats    -1.581759523219593
+    Attrib next_pitch    3.2527169889411782
+    Attrib next_dur_s    0.3897104875274926
+    Attrib interval_next    -0.6350921344626911
+    Attrib pitch_in_oct=0    1.3174974425523347
+    Attrib pitch_in_oct=1    0.5451809779028909
+    Attrib pitch_in_oct=2    1.7846370393773006
+    Attrib pitch_in_oct=3    0.5009687012788395
+    Attrib pitch_in_oct=4    2.8957019045398162
+    Attrib pitch_in_oct=5    0.7573647240410011
+    Attrib pitch_in_oct=6    -0.8400685921638485
+    Attrib pitch_in_oct=7    0.7989030525063568
+    Attrib pitch_in_oct=8    0.2243083483453247
+    Attrib pitch_in_oct=9    3.2423084770499924
+    Attrib pitch_in_oct=10    0.39981212737834426
+    Attrib pitch_in_oct=11    -2.9434021286434024
+    Attrib pitch_in_key=0    1.9263016980339336
+    Attrib pitch_in_key=1    -0.8878602028329372
+    Attrib pitch_in_key=2    3.68029955228079
+    Attrib pitch_in_key=3    0.9570080443759176
+    Attrib pitch_in_key=4    2.632257729851586
+    Attrib pitch_in_key=5    0.8627754472917831
+    Attrib pitch_in_key=6    -0.5140721151685365
+    Attrib pitch_in_key=7    -0.7607921856088629
+    Attrib pitch_in_key=8    1.0454666005885147
+    Attrib pitch_in_key=9    0.7635037423624932
+    Attrib pitch_in_key=10    -1.09507719768524
+    Attrib pitch_in_key=11    0.3990922938599967
+    Attrib tonic_chord_tone=1    1.8573871023393336
+    Attrib dominant_chord_tone=1    1.5837504494399153
+    Attrib prob_chord_I    0.731745116119068
+    Attrib prob_chord_ii    -7.02567829245999
+    Attrib prob_chord_iii    1.455810381027917
+    Attrib prob_chord_IV    -5.996847317209636
+    Attrib prob_chord_V    -0.3303386195820336
+    Attrib prob_chord_vi    -2.71755811015379
+    Attrib prob_chord_vii    -5.439576417172546
+    Attrib chord=0    -0.5715485544789417
+    Attrib chord=1    -1.162105048673134
+    Attrib chord=2    0.9945979038464232
+    Attrib chord=3    -0.5269205781591717
+    Attrib chord=4    0.11780491318117507
+    Attrib chord=5    3.3796794014814804
+    Attrib chord=6    2.0113175493013236
+    Attrib pitch_in_chord=0    0.9821796361063527
+    Attrib pitch_in_chord=1    0.8381258294636005
+    Attrib pitch_in_chord=2    -1.0085157040466943
+    Attrib pitch_in_chord=3    -0.8009554624718761
+    Attrib pitch_in_chord=4    0.689671239398788
+    Attrib pitch_in_chord=5    -1.0739487124035447
+    Attrib pitch_in_chord=6    0.6698683933957054
+    Attrib pitch_in_chord=7    2.090142473981671
+    Attrib pitch_in_chord=8    -0.5016919653167409
+    Attrib pitch_in_chord=9    2.0173647953483984
+    Attrib pitch_in_chord=10    4.615733968804768
+    Attrib pitch_in_chord=11    0.29165991259399704
+    Attrib current_chord_tone=1    -0.11704530605744531
+    Attrib nar_rd    -3.0450601339231897
+    Attrib nar_rr    1.3784903868196383
+    Attrib nar_id    2.414414569560797
+    Attrib nar_cl    -0.06568688483410794
+    Attrib nar_pr    0.35697421227942133
+    Attrib nar_co    0.9606500031947768
+    Attrib beat_in_measure    0.8485396287008872
+    Attrib metric_strength=0    0.6860748433967113
+    Attrib metric_strength=1    -3.858841518922104
+    Attrib metric_strength=2    2.6967242025003477
+    Attrib metric_strength=3    2.305232230073768
+    Attrib phrase_num    1.784040808831607
+Sigmoid Node 22
+    Inputs    Weights
+    Threshold    -0.6797966585446946
+    Attrib duration_beats    1.2399583390687134
+    Attrib pitch    0.3869983176662928
+    Attrib duration_s    0.2545183631365511
+    Attrib prev_dur_beats    1.0813822287661292
+    Attrib prev_pitch    -0.05136536266203276
+    Attrib prev_dur_s    -1.561794111922916
+    Attrib interval_prev    0.1517294791356783
+    Attrib next_dur_beats    1.2793132428891587
+    Attrib next_pitch    -1.7085808424957472
+    Attrib next_dur_s    -0.24351565304379674
+    Attrib interval_next    -1.4255676097433645
+    Attrib pitch_in_oct=0    -1.2391399580904652
+    Attrib pitch_in_oct=1    -0.6489313112520855
+    Attrib pitch_in_oct=2    0.16945839616013325
+    Attrib pitch_in_oct=3    0.7741334580216656
+    Attrib pitch_in_oct=4    -0.43601845644372733
+    Attrib pitch_in_oct=5    0.16420979728571194
+    Attrib pitch_in_oct=6    -0.27902009354124463
+    Attrib pitch_in_oct=7    0.7296098266535752
+    Attrib pitch_in_oct=8    2.873970691562149
+    Attrib pitch_in_oct=9    1.5780390374890696
+    Attrib pitch_in_oct=10    0.3711006959520797
+    Attrib pitch_in_oct=11    2.3906154304522755
+    Attrib pitch_in_key=0    -0.08550987392140526
+    Attrib pitch_in_key=1    0.3239813880918568
+    Attrib pitch_in_key=2    0.6466662722875461
+    Attrib pitch_in_key=3    -0.05491565687429677
+    Attrib pitch_in_key=4    -0.21801984024200066
+    Attrib pitch_in_key=5    2.46014224956647
+    Attrib pitch_in_key=6    0.8018796371094943
+    Attrib pitch_in_key=7    1.2860605736618926
+    Attrib pitch_in_key=8    -0.6844840691886384
+    Attrib pitch_in_key=9    -0.7098911455945753
+    Attrib pitch_in_key=10    1.1793203997297559
+    Attrib pitch_in_key=11    1.5568787366744872
+    Attrib tonic_chord_tone=1    -1.6849117516405683
+    Attrib dominant_chord_tone=1    2.087456537409945
+    Attrib prob_chord_I    -1.7853770826043434
+    Attrib prob_chord_ii    -0.4837832632668881
+    Attrib prob_chord_iii    0.053427006554810696
+    Attrib prob_chord_IV    2.827227112066672
+    Attrib prob_chord_V    -1.6393989079034774
+    Attrib prob_chord_vi    -0.7868748317546046
+    Attrib prob_chord_vii    -3.676834763795336
+    Attrib chord=0    1.9123045522562097
+    Attrib chord=1    -0.2562056090442019
+    Attrib chord=2    -1.5305703071602605
+    Attrib chord=3    0.8570200034425015
+    Attrib chord=4    3.1949749201170015
+    Attrib chord=5    -0.19501329915474208
+    Attrib chord=6    -0.8621433245093307
+    Attrib pitch_in_chord=0    0.9608031984052569
+    Attrib pitch_in_chord=1    0.16257923654742623
+    Attrib pitch_in_chord=2    0.41453216777647933
+    Attrib pitch_in_chord=3    -1.4124436358417758
+    Attrib pitch_in_chord=4    3.075924967539903
+    Attrib pitch_in_chord=5    1.201541172016058
+    Attrib pitch_in_chord=6    0.6495099403869548
+    Attrib pitch_in_chord=7    -0.04442986672924969
+    Attrib pitch_in_chord=8    -0.5300770383783703
+    Attrib pitch_in_chord=9    0.8152251965677342
+    Attrib pitch_in_chord=10    0.979719879937562
+    Attrib pitch_in_chord=11    0.05716730370477448
+    Attrib current_chord_tone=1    0.9600030793597354
+    Attrib nar_rd    -3.722326868111027
+    Attrib nar_rr    -2.1556557213407768
+    Attrib nar_id    3.4137033182700502
+    Attrib nar_cl    -0.9032372800177453
+    Attrib nar_pr    -0.10125911101507709
+    Attrib nar_co    2.849063638037398
+    Attrib beat_in_measure    -0.37147599868689474
+    Attrib metric_strength=0    3.9538562875842906
+    Attrib metric_strength=1    -1.6899201911339152
+    Attrib metric_strength=2    0.7170626402046153
+    Attrib metric_strength=3    -1.6980440027691812
+    Attrib phrase_num    1.0975502666834054
+Sigmoid Node 23
+    Inputs    Weights
+    Threshold    -0.32666343609694504
+    Attrib duration_beats    0.35032276810839313
+    Attrib pitch    3.0182874536025257
+    Attrib duration_s    0.3044850940213307
+    Attrib prev_dur_beats    0.2580327440590443
+    Attrib prev_pitch    1.262898320479866
+    Attrib prev_dur_s    -0.5859888843012735
+    Attrib interval_prev    1.0679298385051093
+    Attrib next_dur_beats    1.5566609432818788
+    Attrib next_pitch    2.136937362578881
+    Attrib next_dur_s    0.8499423201635623
+    Attrib interval_next    -0.6097391717859703
+    Attrib pitch_in_oct=0    0.8465188985030991
+    Attrib pitch_in_oct=1    -0.22403686227031147
+    Attrib pitch_in_oct=2    -0.5388111947361989
+    Attrib pitch_in_oct=3    -0.44536170439647815
+    Attrib pitch_in_oct=4    0.22118914252780403
+    Attrib pitch_in_oct=5    2.2700747024377574
+    Attrib pitch_in_oct=6    1.5862710573201133
+    Attrib pitch_in_oct=7    0.3479714383028098
+    Attrib pitch_in_oct=8    -0.5694556471872965
+    Attrib pitch_in_oct=9    1.1252649858991837
+    Attrib pitch_in_oct=10    -0.6575869146367125
+    Attrib pitch_in_oct=11    -0.35161283380455105
+    Attrib pitch_in_key=0    1.088228966318492
+    Attrib pitch_in_key=1    0.6733652161488971
+    Attrib pitch_in_key=2    0.1488401273123716
+    Attrib pitch_in_key=3    -0.5772950957487324
+    Attrib pitch_in_key=4    0.12566103493687925
+    Attrib pitch_in_key=5    -0.262573886429571
+    Attrib pitch_in_key=6    0.37456719355626195
+    Attrib pitch_in_key=7    -0.5680991928558528
+    Attrib pitch_in_key=8    1.2715517014528916
+    Attrib pitch_in_key=9    0.09770091069294046
+    Attrib pitch_in_key=10    0.3300086091623672
+    Attrib pitch_in_key=11    0.9432547320195832
+    Attrib tonic_chord_tone=1    -0.30461657080127635
+    Attrib dominant_chord_tone=1    -0.15259127022597135
+    Attrib prob_chord_I    0.6873308490836831
+    Attrib prob_chord_ii    0.2143854998247656
+    Attrib prob_chord_iii    2.370315234154908
+    Attrib prob_chord_IV    0.6940523621935762
+    Attrib prob_chord_V    0.19135757369968306
+    Attrib prob_chord_vi    1.8382187395145448
+    Attrib prob_chord_vii    -0.5513629604478842
+    Attrib chord=0    -0.9177099432238431
+    Attrib chord=1    -1.4984341738812181
+    Attrib chord=2    1.5085404738129085
+    Attrib chord=3    1.014933782317516
+    Attrib chord=4    0.5187179395302913
+    Attrib chord=5    1.3238646329569683
+    Attrib chord=6    -0.07909793295872308
+    Attrib pitch_in_chord=0    0.11146230940795553
+    Attrib pitch_in_chord=1    0.4262453696908316
+    Attrib pitch_in_chord=2    -0.7517250034835266
+    Attrib pitch_in_chord=3    0.977198577159136
+    Attrib pitch_in_chord=4    0.7122851529852968
+    Attrib pitch_in_chord=5    -0.3621864261886846
+    Attrib pitch_in_chord=6    1.4990044856789086
+    Attrib pitch_in_chord=7    0.44309358548163835
+    Attrib pitch_in_chord=8    -0.0794109422056647
+    Attrib pitch_in_chord=9    0.44305847556729633
+    Attrib pitch_in_chord=10    0.5765623625482742
+    Attrib pitch_in_chord=11    -0.41825097903455893
+    Attrib current_chord_tone=1    0.4525630096027374
+    Attrib nar_rd    -0.43185303534801506
+    Attrib nar_rr    -2.7165769832151287
+    Attrib nar_id    -0.9844914858769606
+    Attrib nar_cl    -1.3787726454666316
+    Attrib nar_pr    0.027109714504554957
+    Attrib nar_co    -0.5408618696940468
+    Attrib beat_in_measure    3.024011543576297
+    Attrib metric_strength=0    2.5137271183440255
+    Attrib metric_strength=1    -0.4115031506508104
+    Attrib metric_strength=2    -0.6925794133653856
+    Attrib metric_strength=3    -0.650715949367237
+    Attrib phrase_num    -0.26138252979643534
+Sigmoid Node 24
+    Inputs    Weights
+    Threshold    -0.230992703587823
+    Attrib duration_beats    0.9120249258580373
+    Attrib pitch    -0.8675437616426408
+    Attrib duration_s    0.38882381927729365
+    Attrib prev_dur_beats    1.2071188102821795
+    Attrib prev_pitch    0.3187788059230997
+    Attrib prev_dur_s    -0.20721451468695862
+    Attrib interval_prev    -0.758774013568649
+    Attrib next_dur_beats    0.3730679578008281
+    Attrib next_pitch    1.048122634868471
+    Attrib next_dur_s    -0.4273153597527885
+    Attrib interval_next    1.125897574120072
+    Attrib pitch_in_oct=0    0.7686235967115268
+    Attrib pitch_in_oct=1    0.8572313131466754
+    Attrib pitch_in_oct=2    0.6008031394430788
+    Attrib pitch_in_oct=3    0.17886357128365798
+    Attrib pitch_in_oct=4    -1.6549187508347587
+    Attrib pitch_in_oct=5    0.4353597360775236
+    Attrib pitch_in_oct=6    0.27372020701483757
+    Attrib pitch_in_oct=7    -0.8227450863976201
+    Attrib pitch_in_oct=8    -0.20647589375774372
+    Attrib pitch_in_oct=9    -0.052011991808909364
+    Attrib pitch_in_oct=10    1.1162211000604108
+    Attrib pitch_in_oct=11    0.7394358106501986
+    Attrib pitch_in_key=0    -1.0978473425192024
+    Attrib pitch_in_key=1    -0.3049569394385596
+    Attrib pitch_in_key=2    1.8130708941863718
+    Attrib pitch_in_key=3    0.20541626441722544
+    Attrib pitch_in_key=4    0.80866606701788
+    Attrib pitch_in_key=5    0.6129395676150144
+    Attrib pitch_in_key=6    0.13239103828480447
+    Attrib pitch_in_key=7    -0.9983577486325061
+    Attrib pitch_in_key=8    -0.3387183963061754
+    Attrib pitch_in_key=9    1.7128208262620064
+    Attrib pitch_in_key=10    0.023418699377992874
+    Attrib pitch_in_key=11    -0.3557756225383246
+    Attrib tonic_chord_tone=1    -0.33109948730817385
+    Attrib dominant_chord_tone=1    -0.002526178349464917
+    Attrib prob_chord_I    2.171114914086637
+    Attrib prob_chord_ii    -2.94426392608455
+    Attrib prob_chord_iii    2.776467963431717
+    Attrib prob_chord_IV    -1.3962585006858586
+    Attrib prob_chord_V    -0.025765631698884194
+    Attrib prob_chord_vi    0.9862854466816751
+    Attrib prob_chord_vii    -0.24523403068174923
+    Attrib chord=0    0.09791390144985004
+    Attrib chord=1    1.7375639995653145
+    Attrib chord=2    0.41942635528445804
+    Attrib chord=3    -0.9847417861124588
+    Attrib chord=4    -0.7841242774924724
+    Attrib chord=5    0.7678422025748156
+    Attrib chord=6    -0.1872844228979371
+    Attrib pitch_in_chord=0    1.602803173200915
+    Attrib pitch_in_chord=1    0.22239957126786952
+    Attrib pitch_in_chord=2    0.4324620046672304
+    Attrib pitch_in_chord=3    -1.0511157995616305
+    Attrib pitch_in_chord=4    -0.840532776104535
+    Attrib pitch_in_chord=5    2.0554347193132507
+    Attrib pitch_in_chord=6    1.4549569318429865
+    Attrib pitch_in_chord=7    0.36712449829457594
+    Attrib pitch_in_chord=8    -0.34460904811990795
+    Attrib pitch_in_chord=9    -0.35798040560397426
+    Attrib pitch_in_chord=10    -0.5364562545960345
+    Attrib pitch_in_chord=11    -0.7784208605260926
+    Attrib current_chord_tone=1    -0.40507579604518434
+    Attrib nar_rd    -0.32288210090057823
+    Attrib nar_rr    1.949740786413535
+    Attrib nar_id    -2.2516701750905836
+    Attrib nar_cl    -0.6459325892088702
+    Attrib nar_pr    1.3943860867250752
+    Attrib nar_co    -1.0023799608974648
+    Attrib beat_in_measure    -0.03218881849241379
+    Attrib metric_strength=0    -0.8440504254292117
+    Attrib metric_strength=1    0.5637813204539058
+    Attrib metric_strength=2    2.3772345622758575
+    Attrib metric_strength=3    -1.7520312554018638
+    Attrib phrase_num    0.05527815082295627
+Sigmoid Node 25
+    Inputs    Weights
+    Threshold    -0.5247533682670935
+    Attrib duration_beats    0.704012615431585
+    Attrib pitch    0.9850072661610159
+    Attrib duration_s    0.925259255863815
+    Attrib prev_dur_beats    4.1064256498909835
+    Attrib prev_pitch    0.5658393596805412
+    Attrib prev_dur_s    4.5829455186011625
+    Attrib interval_prev    0.1365311477551776
+    Attrib next_dur_beats    -0.31983406590948465
+    Attrib next_pitch    3.5901271209114918
+    Attrib next_dur_s    -0.8646854636855394
+    Attrib interval_next    1.304635183852836
+    Attrib pitch_in_oct=0    3.5730867772020516
+    Attrib pitch_in_oct=1    0.17163794250017503
+    Attrib pitch_in_oct=2    -0.6335329351162995
+    Attrib pitch_in_oct=3    -1.0376424534723485
+    Attrib pitch_in_oct=4    -0.028113076267115625
+    Attrib pitch_in_oct=5    0.8864132923817754
+    Attrib pitch_in_oct=6    0.19412579785575504
+    Attrib pitch_in_oct=7    0.7875253441825767
+    Attrib pitch_in_oct=8    0.061990994985421086
+    Attrib pitch_in_oct=9    -2.537200354500393
+    Attrib pitch_in_oct=10    2.4114536156326256
+    Attrib pitch_in_oct=11    0.9747108708059476
+    Attrib pitch_in_key=0    1.7802964200978961
+    Attrib pitch_in_key=1    1.934437077067961
+    Attrib pitch_in_key=2    -0.14037574884602974
+    Attrib pitch_in_key=3    -0.7931680565903269
+    Attrib pitch_in_key=4    0.8477304564228054
+    Attrib pitch_in_key=5    0.04783638145215317
+    Attrib pitch_in_key=6    -1.2867956364834063
+    Attrib pitch_in_key=7    -0.6950056820119362
+    Attrib pitch_in_key=8    0.80276134270904
+    Attrib pitch_in_key=9    0.5834184559885911
+    Attrib pitch_in_key=10    1.3114697843578391
+    Attrib pitch_in_key=11    0.4308404282185679
+    Attrib tonic_chord_tone=1    1.1333250574996634
+    Attrib dominant_chord_tone=1    -1.404719113576537
+    Attrib prob_chord_I    -5.8277307280691
+    Attrib prob_chord_ii    -1.2509249557117355
+    Attrib prob_chord_iii    1.4580015721067061
+    Attrib prob_chord_IV    -1.2222599785816037
+    Attrib prob_chord_V    -1.2125195315796378
+    Attrib prob_chord_vi    -2.378334676467017
+    Attrib prob_chord_vii    -0.1093780400018841
+    Attrib chord=0    -0.9908749958500929
+    Attrib chord=1    1.191860291388075
+    Attrib chord=2    -0.6415241747157708
+    Attrib chord=3    1.0137158013572336
+    Attrib chord=4    0.3204124207525826
+    Attrib chord=5    0.9877534450051978
+    Attrib chord=6    0.47833028672062794
+    Attrib pitch_in_chord=0    -1.7975920337909204
+    Attrib pitch_in_chord=1    -1.1604228437686548
+    Attrib pitch_in_chord=2    -0.4362422610389311
+    Attrib pitch_in_chord=3    2.2061260221992773
+    Attrib pitch_in_chord=4    1.932325405004302
+    Attrib pitch_in_chord=5    0.24421057407289554
+    Attrib pitch_in_chord=6    1.9065129335652802
+    Attrib pitch_in_chord=7    1.0386673593986224
+    Attrib pitch_in_chord=8    -2.2412811478988806
+    Attrib pitch_in_chord=9    0.8053387938008538
+    Attrib pitch_in_chord=10    0.44258961225672944
+    Attrib pitch_in_chord=11    2.061019388969993
+    Attrib current_chord_tone=1    2.1626344162952202
+    Attrib nar_rd    0.4881847995814448
+    Attrib nar_rr    -4.276405842496085
+    Attrib nar_id    -0.6975284172100197
+    Attrib nar_cl    -4.243286641550253
+    Attrib nar_pr    1.4186450819571914
+    Attrib nar_co    -4.26240249827448
+    Attrib beat_in_measure    -0.5427882777555965
+    Attrib metric_strength=0    -0.162193473708783
+    Attrib metric_strength=1    0.07838123902973448
+    Attrib metric_strength=2    -1.3761481725919795
+    Attrib metric_strength=3    2.530289357641596
+    Attrib phrase_num    0.48323562065063136
+Sigmoid Node 26
+    Inputs    Weights
+    Threshold    -0.6485042987696635
+    Attrib duration_beats    -2.972176255907715
+    Attrib pitch    -0.5320413980889985
+    Attrib duration_s    -1.4810411290095293
+    Attrib prev_dur_beats    0.3187693436738673
+    Attrib prev_pitch    -0.3357191525134991
+    Attrib prev_dur_s    -0.36788419221177704
+    Attrib interval_prev    -0.2275912214322875
+    Attrib next_dur_beats    -0.7216699340491242
+    Attrib next_pitch    0.4575083951354644
+    Attrib next_dur_s    -1.2218952922531419
+    Attrib interval_next    0.37032230220301326
+    Attrib pitch_in_oct=0    2.8514823874965973
+    Attrib pitch_in_oct=1    -0.38205399067597234
+    Attrib pitch_in_oct=2    0.05113532649652439
+    Attrib pitch_in_oct=3    2.123305487643353
+    Attrib pitch_in_oct=4    -0.02982885600689756
+    Attrib pitch_in_oct=5    -0.26536279395499734
+    Attrib pitch_in_oct=6    3.1286998111267716
+    Attrib pitch_in_oct=7    1.2377280946151934
+    Attrib pitch_in_oct=8    1.0087551876398653
+    Attrib pitch_in_oct=9    -1.4772450335925942
+    Attrib pitch_in_oct=10    -0.777631904325132
+    Attrib pitch_in_oct=11    -1.4307857092731282
+    Attrib pitch_in_key=0    -0.5605391700898377
+    Attrib pitch_in_key=1    -0.24000150576921622
+    Attrib pitch_in_key=2    -0.5898765336465392
+    Attrib pitch_in_key=3    1.457569877755756
+    Attrib pitch_in_key=4    0.476652336262247
+    Attrib pitch_in_key=5    0.22184805282083975
+    Attrib pitch_in_key=6    1.1963559581955003
+    Attrib pitch_in_key=7    -1.851100129994543
+    Attrib pitch_in_key=8    3.2335801927337684
+    Attrib pitch_in_key=9    1.9917239791519175
+    Attrib pitch_in_key=10    -1.0218369315817677
+    Attrib pitch_in_key=11    1.688314628513275
+    Attrib tonic_chord_tone=1    -1.7386874140021102
+    Attrib dominant_chord_tone=1    -2.0092951319187318
+    Attrib prob_chord_I    1.1237884462428507
+    Attrib prob_chord_ii    -0.88357709278831
+    Attrib prob_chord_iii    0.796628657442763
+    Attrib prob_chord_IV    1.0007395816789093
+    Attrib prob_chord_V    0.6613318471967546
+    Attrib prob_chord_vi    -1.7010747532878785
+    Attrib prob_chord_vii    -0.8150287417503319
+    Attrib chord=0    2.281319737136236
+    Attrib chord=1    1.519101787863768
+    Attrib chord=2    -0.4873151461507602
+    Attrib chord=3    1.0684092044189522
+    Attrib chord=4    0.8819776586304805
+    Attrib chord=5    -1.6461545149127628
+    Attrib chord=6    -0.5113393387505479
+    Attrib pitch_in_chord=0    0.01156743675850066
+    Attrib pitch_in_chord=1    -0.48794386816296087
+    Attrib pitch_in_chord=2    0.3819660757710097
+    Attrib pitch_in_chord=3    1.1415822411682026
+    Attrib pitch_in_chord=4    1.2956564400286392
+    Attrib pitch_in_chord=5    1.0454761832581447
+    Attrib pitch_in_chord=6    -0.8914606747244976
+    Attrib pitch_in_chord=7    2.6047478521957936
+    Attrib pitch_in_chord=8    -0.7146381627051851
+    Attrib pitch_in_chord=9    1.2987686111743983
+    Attrib pitch_in_chord=10    -0.43144867343425913
+    Attrib pitch_in_chord=11    0.879693898252901
+    Attrib current_chord_tone=1    -0.9127210243797196
+    Attrib nar_rd    1.650400274389505
+    Attrib nar_rr    -1.5917391008730906
+    Attrib nar_id    -1.000833650897078
+    Attrib nar_cl    1.704816619590184
+    Attrib nar_pr    0.19404000561394635
+    Attrib nar_co    4.475451232410961
+    Attrib beat_in_measure    -2.182730904776033
+    Attrib metric_strength=0    -4.485719173169085
+    Attrib metric_strength=1    2.049787037994792
+    Attrib metric_strength=2    1.9931961308925334
+    Attrib metric_strength=3    1.6710887650955966
+    Attrib phrase_num    0.6288088614419257
+Sigmoid Node 27
+    Inputs    Weights
+    Threshold    -0.37068946326459346
+    Attrib duration_beats    -1.7589879522641414
+    Attrib pitch    0.4883692689360014
+    Attrib duration_s    0.6854785710093096
+    Attrib prev_dur_beats    -2.342316941242396
+    Attrib prev_pitch    0.32675615974564864
+    Attrib prev_dur_s    2.3205546499339524
+    Attrib interval_prev    -0.22831041101895322
+    Attrib next_dur_beats    -2.2018541270889695
+    Attrib next_pitch    0.9035990915496034
+    Attrib next_dur_s    -0.9331405322698314
+    Attrib interval_next    -1.7086777041883496
+    Attrib pitch_in_oct=0    2.9003043656712735
+    Attrib pitch_in_oct=1    -0.3489689975737384
+    Attrib pitch_in_oct=2    2.5477275148065015
+    Attrib pitch_in_oct=3    -2.4011738680672132
+    Attrib pitch_in_oct=4    0.7348522106311517
+    Attrib pitch_in_oct=5    0.6483907621396178
+    Attrib pitch_in_oct=6    -0.35771508551611364
+    Attrib pitch_in_oct=7    -1.803661727138834
+    Attrib pitch_in_oct=8    -0.9915440471099725
+    Attrib pitch_in_oct=9    0.31895124496708566
+    Attrib pitch_in_oct=10    0.2952204820224023
+    Attrib pitch_in_oct=11    1.8928660735429754
+    Attrib pitch_in_key=0    3.53141172118244
+    Attrib pitch_in_key=1    1.3008993885066182
+    Attrib pitch_in_key=2    -1.7533681969070103
+    Attrib pitch_in_key=3    -0.3909777720626721
+    Attrib pitch_in_key=4    -1.1815563338971553
+    Attrib pitch_in_key=5    -0.40360983593205046
+    Attrib pitch_in_key=6    0.23319549793053512
+    Attrib pitch_in_key=7    -1.399704344823673
+    Attrib pitch_in_key=8    1.5506754054805112
+    Attrib pitch_in_key=9    -0.39651005357134855
+    Attrib pitch_in_key=10    -0.3010970400362414
+    Attrib pitch_in_key=11    2.650085398239628
+    Attrib tonic_chord_tone=1    -0.5183329816300446
+    Attrib dominant_chord_tone=1    -1.1225086974514449
+    Attrib prob_chord_I    2.1977351469311723
+    Attrib prob_chord_ii    0.4691949437931582
+    Attrib prob_chord_iii    -2.23629696046311
+    Attrib prob_chord_IV    1.8375432311972846
+    Attrib prob_chord_V    2.4607378405178335
+    Attrib prob_chord_vi    -0.674461412377747
+    Attrib prob_chord_vii    2.8717578005368254
+    Attrib chord=0    0.5445710956024741
+    Attrib chord=1    -1.8328581152223984
+    Attrib chord=2    -0.2575687724325927
+    Attrib chord=3    1.2132152662143763
+    Attrib chord=4    -0.6541922967220549
+    Attrib chord=5    -0.34165142927935777
+    Attrib chord=6    3.106392663590328
+    Attrib pitch_in_chord=0    0.2807274963466132
+    Attrib pitch_in_chord=1    1.873395992986188
+    Attrib pitch_in_chord=2    -0.5180930988326161
+    Attrib pitch_in_chord=3    0.6517481317222229
+    Attrib pitch_in_chord=4    2.0089228736408375
+    Attrib pitch_in_chord=5    -0.27096485674185194
+    Attrib pitch_in_chord=6    1.6458853164024814
+    Attrib pitch_in_chord=7    -1.5692083537222903
+    Attrib pitch_in_chord=8    -0.0996575558930412
+    Attrib pitch_in_chord=9    1.2915096308713099
+    Attrib pitch_in_chord=10    0.056098430237865496
+    Attrib pitch_in_chord=11    -1.8234664347893446
+    Attrib current_chord_tone=1    0.6954336630331668
+    Attrib nar_rd    0.6107760932705646
+    Attrib nar_rr    -0.3586975731935876
+    Attrib nar_id    -3.0869116069936435
+    Attrib nar_cl    2.275793878487526
+    Attrib nar_pr    1.4947406606817748
+    Attrib nar_co    -0.5689395539444123
+    Attrib beat_in_measure    0.6858707817398222
+    Attrib metric_strength=0    -2.6915091484173255
+    Attrib metric_strength=1    0.787426335569515
+    Attrib metric_strength=2    1.2377021746609091
+    Attrib metric_strength=3    1.3033162473862223
+    Attrib phrase_num    -1.196663577317083
+Sigmoid Node 28
+    Inputs    Weights
+    Threshold    -0.5359610514224323
+    Attrib duration_beats    1.2754620492600137
+    Attrib pitch    -0.12208427560205176
+    Attrib duration_s    0.013251865561239728
+    Attrib prev_dur_beats    3.0214680557119777
+    Attrib prev_pitch    -2.173464372133342
+    Attrib prev_dur_s    0.32458634920135443
+    Attrib interval_prev    1.3305507954327311
+    Attrib next_dur_beats    0.33704175434202616
+    Attrib next_pitch    -0.561301820613543
+    Attrib next_dur_s    -0.39670702738852304
+    Attrib interval_next    -0.36275726980293593
+    Attrib pitch_in_oct=0    0.10225221826732622
+    Attrib pitch_in_oct=1    -0.04575164273922579
+    Attrib pitch_in_oct=2    1.3976831995184356
+    Attrib pitch_in_oct=3    5.079564970970635
+    Attrib pitch_in_oct=4    1.3882895792324588
+    Attrib pitch_in_oct=5    1.4830012593480533
+    Attrib pitch_in_oct=6    -0.5411994568666051
+    Attrib pitch_in_oct=7    -3.4754717622367877
+    Attrib pitch_in_oct=8    2.660861197243857
+    Attrib pitch_in_oct=9    0.6121045941697602
+    Attrib pitch_in_oct=10    -2.034983841674285
+    Attrib pitch_in_oct=11    -1.628112931138152
+    Attrib pitch_in_key=0    -0.47162861373099346
+    Attrib pitch_in_key=1    0.024872034612165524
+    Attrib pitch_in_key=2    -0.46779311591277783
+    Attrib pitch_in_key=3    -0.6050368833258095
+    Attrib pitch_in_key=4    0.8400786194357579
+    Attrib pitch_in_key=5    1.9087679326282896
+    Attrib pitch_in_key=6    0.5130510143573223
+    Attrib pitch_in_key=7    1.3437647858439077
+    Attrib pitch_in_key=8    0.9391660823503338
+    Attrib pitch_in_key=9    -0.32188209623921143
+    Attrib pitch_in_key=10    0.554368297356405
+    Attrib pitch_in_key=11    0.8050738835914949
+    Attrib tonic_chord_tone=1    -0.136152186409654
+    Attrib dominant_chord_tone=1    0.7732579623047856
+    Attrib prob_chord_I    0.761942300061868
+    Attrib prob_chord_ii    -1.5659125611258569
+    Attrib prob_chord_iii    -0.11423723957866083
+    Attrib prob_chord_IV    -0.6830102613813754
+    Attrib prob_chord_V    -1.6038649458965828
+    Attrib prob_chord_vi    -0.1963671463945687
+    Attrib prob_chord_vii    -2.4957249639747636
+    Attrib chord=0    2.999502284710937
+    Attrib chord=1    -0.005504085560303829
+    Attrib chord=2    -0.16854457199585748
+    Attrib chord=3    -0.11001697935850924
+    Attrib chord=4    -0.5223934869277785
+    Attrib chord=5    0.12230268928340296
+    Attrib chord=6    0.31585311417324796
+    Attrib pitch_in_chord=0    1.7766007466074043
+    Attrib pitch_in_chord=1    -0.44981011614734856
+    Attrib pitch_in_chord=2    -0.4903635380161499
+    Attrib pitch_in_chord=3    -2.177675162292127
+    Attrib pitch_in_chord=4    2.114068496439186
+    Attrib pitch_in_chord=5    1.3769834345314242
+    Attrib pitch_in_chord=6    1.4148596330720855
+    Attrib pitch_in_chord=7    0.3825475453677373
+    Attrib pitch_in_chord=8    0.12203364620241702
+    Attrib pitch_in_chord=9    0.5765261509897845
+    Attrib pitch_in_chord=10    0.8893711468082057
+    Attrib pitch_in_chord=11    -0.5374044640446155
+    Attrib current_chord_tone=1    1.073670922292602
+    Attrib nar_rd    0.9918476740965014
+    Attrib nar_rr    -4.101953131303981
+    Attrib nar_id    0.4314266527884845
+    Attrib nar_cl    -2.699723609772781
+    Attrib nar_pr    1.7801096503489275
+    Attrib nar_co    -0.6316263348389171
+    Attrib beat_in_measure    2.7019587639979012
+    Attrib metric_strength=0    -0.8674039388231449
+    Attrib metric_strength=1    2.3804383990604765
+    Attrib metric_strength=2    3.927753460383664
+    Attrib metric_strength=3    -4.515463988397449
+    Attrib phrase_num    0.7835570742108113
+Sigmoid Node 29
+    Inputs    Weights
+    Threshold    -0.33065283993082106
+    Attrib duration_beats    -0.6193742552006994
+    Attrib pitch    2.125376848093656
+    Attrib duration_s    -0.2837174933528805
+    Attrib prev_dur_beats    0.33778154850836595
+    Attrib prev_pitch    3.084786514743934
+    Attrib prev_dur_s    -0.742541347763819
+    Attrib interval_prev    -0.48352443991428656
+    Attrib next_dur_beats    -0.21082246145096425
+    Attrib next_pitch    0.14973769835005404
+    Attrib next_dur_s    -0.4409960666212742
+    Attrib interval_next    -1.4173495827564224
+    Attrib pitch_in_oct=0    1.2719141498798683
+    Attrib pitch_in_oct=1    1.5601765709678903
+    Attrib pitch_in_oct=2    -0.8051210062492594
+    Attrib pitch_in_oct=3    -0.046498561840571676
+    Attrib pitch_in_oct=4    -1.8565697144644306
+    Attrib pitch_in_oct=5    2.7935798408727295
+    Attrib pitch_in_oct=6    0.16424319361062584
+    Attrib pitch_in_oct=7    0.003544392629249641
+    Attrib pitch_in_oct=8    0.030760112243968414
+    Attrib pitch_in_oct=9    2.6539483993174264
+    Attrib pitch_in_oct=10    -0.866651478738846
+    Attrib pitch_in_oct=11    -1.6810957349652411
+    Attrib pitch_in_key=0    1.213852504132303
+    Attrib pitch_in_key=1    0.16087051076846073
+    Attrib pitch_in_key=2    -0.0612712455332604
+    Attrib pitch_in_key=3    0.6331652017195587
+    Attrib pitch_in_key=4    1.527835090322604
+    Attrib pitch_in_key=5    0.5900794922839676
+    Attrib pitch_in_key=6    0.07406722059292736
+    Attrib pitch_in_key=7    -0.27936647277571847
+    Attrib pitch_in_key=8    0.1891735809741114
+    Attrib pitch_in_key=9    -1.1778126409572154
+    Attrib pitch_in_key=10    0.7524051532023537
+    Attrib pitch_in_key=11    -0.46128267764019576
+    Attrib tonic_chord_tone=1    0.35730058311311974
+    Attrib dominant_chord_tone=1    -1.4091386617596182
+    Attrib prob_chord_I    1.778917146656545
+    Attrib prob_chord_ii    1.1236006397373621
+    Attrib prob_chord_iii    -0.38846569046238966
+    Attrib prob_chord_IV    2.7661032220078727
+    Attrib prob_chord_V    1.6309598713163178
+    Attrib prob_chord_vi    -1.3235395838904727
+    Attrib prob_chord_vii    -2.648966351132324
+    Attrib chord=0    -1.4161546229826976
+    Attrib chord=1    -0.6345147819349302
+    Attrib chord=2    2.9577882960883977
+    Attrib chord=3    0.5389465443095296
+    Attrib chord=4    1.1463821248232882
+    Attrib chord=5    -0.9823892914121656
+    Attrib chord=6    -0.03662011340349548
+    Attrib pitch_in_chord=0    -1.0972222502392373
+    Attrib pitch_in_chord=1    0.5737944022645243
+    Attrib pitch_in_chord=2    0.10857987576275348
+    Attrib pitch_in_chord=3    1.0022817295912503
+    Attrib pitch_in_chord=4    1.5578852963609051
+    Attrib pitch_in_chord=5    1.4445064142667376
+    Attrib pitch_in_chord=6    -1.4054007495917198
+    Attrib pitch_in_chord=7    -0.41666348505303225
+    Attrib pitch_in_chord=8    -0.8699663484753049
+    Attrib pitch_in_chord=9    0.4783434252678513
+    Attrib pitch_in_chord=10    1.818837668714827
+    Attrib pitch_in_chord=11    0.16924294119292282
+    Attrib current_chord_tone=1    -1.1608498449203417
+    Attrib nar_rd    1.7297544212022629
+    Attrib nar_rr    -0.4573539512790805
+    Attrib nar_id    -3.1470746852657547
+    Attrib nar_cl    -0.7768904841789213
+    Attrib nar_pr    0.0937084291945401
+    Attrib nar_co    1.5532754168876617
+    Attrib beat_in_measure    0.721726156167046
+    Attrib metric_strength=0    2.0141101624227717
+    Attrib metric_strength=1    0.5888808482876381
+    Attrib metric_strength=2    -2.5571963919807916
+    Attrib metric_strength=3    0.639121014330197
+    Attrib phrase_num    1.3394256192044498
+Sigmoid Node 30
+    Inputs    Weights
+    Threshold    -0.4908635656485829
+    Attrib duration_beats    3.121402110729405
+    Attrib pitch    -1.9202050256791012
+    Attrib duration_s    -0.10134240410361094
+    Attrib prev_dur_beats    2.260343379933574
+    Attrib prev_pitch    -4.3234429942037345
+    Attrib prev_dur_s    -0.21381422724865773
+    Attrib interval_prev    1.4493170953840027
+    Attrib next_dur_beats    1.9788269846766255
+    Attrib next_pitch    2.000523280837297
+    Attrib next_dur_s    -2.5543224935799875
+    Attrib interval_next    2.2421803067515715
+    Attrib pitch_in_oct=0    2.4994291785408422
+    Attrib pitch_in_oct=1    0.6072877606210771
+    Attrib pitch_in_oct=2    -1.0878395988279275
+    Attrib pitch_in_oct=3    -0.14284120994848665
+    Attrib pitch_in_oct=4    3.032893052528378
+    Attrib pitch_in_oct=5    -2.3176782030113463
+    Attrib pitch_in_oct=6    2.2579888521631934
+    Attrib pitch_in_oct=7    0.3416992477273399
+    Attrib pitch_in_oct=8    -0.01308273079444298
+    Attrib pitch_in_oct=9    0.3700806856529148
+    Attrib pitch_in_oct=10    0.44479751002380297
+    Attrib pitch_in_oct=11    -1.1907368180673021
+    Attrib pitch_in_key=0    -2.485840623729928
+    Attrib pitch_in_key=1    0.6033506697712784
+    Attrib pitch_in_key=2    2.821834222218085
+    Attrib pitch_in_key=3    -0.0025250785635977753
+    Attrib pitch_in_key=4    1.2106931910804657
+    Attrib pitch_in_key=5    0.3299485788920267
+    Attrib pitch_in_key=6    0.5996563713530341
+    Attrib pitch_in_key=7    -0.3102925367960754
+    Attrib pitch_in_key=8    0.25759628745366137
+    Attrib pitch_in_key=9    2.558483018610716
+    Attrib pitch_in_key=10    0.4712356546102044
+    Attrib pitch_in_key=11    -1.2949154602652955
+    Attrib tonic_chord_tone=1    -0.41123733543647656
+    Attrib dominant_chord_tone=1    0.31558871543603845
+    Attrib prob_chord_I    4.7460966407576475
+    Attrib prob_chord_ii    0.1530834524798588
+    Attrib prob_chord_iii    1.909426495107418
+    Attrib prob_chord_IV    -0.16083391396839805
+    Attrib prob_chord_V    3.791729158755596
+    Attrib prob_chord_vi    -2.690420336809884
+    Attrib prob_chord_vii    -3.213246238678572
+    Attrib chord=0    -0.47261774412024016
+    Attrib chord=1    2.1617152012554604
+    Attrib chord=2    -0.8035692660152713
+    Attrib chord=3    -0.5130625513279775
+    Attrib chord=4    -0.6408385863165907
+    Attrib chord=5    2.208462300530157
+    Attrib chord=6    0.4122695663195729
+    Attrib pitch_in_chord=0    0.8777524161976459
+    Attrib pitch_in_chord=1    -4.006651608769666E-4
+    Attrib pitch_in_chord=2    2.2523992398138937
+    Attrib pitch_in_chord=3    -1.3606868785820425
+    Attrib pitch_in_chord=4    1.5964869338483367
+    Attrib pitch_in_chord=5    0.4515660163161629
+    Attrib pitch_in_chord=6    0.26804535028453025
+    Attrib pitch_in_chord=7    0.09972328295813637
+    Attrib pitch_in_chord=8    0.3990455277673918
+    Attrib pitch_in_chord=9    -1.3409542257769227
+    Attrib pitch_in_chord=10    0.20460592160935306
+    Attrib pitch_in_chord=11    1.3102891379429
+    Attrib current_chord_tone=1    0.7172163827153155
+    Attrib nar_rd    -1.2314351585624
+    Attrib nar_rr    3.939615911503873
+    Attrib nar_id    -0.05373240818192612
+    Attrib nar_cl    -0.19109560473434253
+    Attrib nar_pr    2.167326246973309
+    Attrib nar_co    1.7803768844684593
+    Attrib beat_in_measure    3.1209383093041434
+    Attrib metric_strength=0    3.1677580847165414
+    Attrib metric_strength=1    -0.022351436663665535
+    Attrib metric_strength=2    -1.946826570058835
+    Attrib metric_strength=3    -0.23918091291972474
+    Attrib phrase_num    -1.3417588386711201
+Sigmoid Node 31
+    Inputs    Weights
+    Threshold    -0.7019672106119058
+    Attrib duration_beats    0.8138814623181582
+    Attrib pitch    3.089359906573586
+    Attrib duration_s    0.08751156034438787
+    Attrib prev_dur_beats    0.42805054972610984
+    Attrib prev_pitch    -2.0666496158265706
+    Attrib prev_dur_s    -1.4280667067826311
+    Attrib interval_prev    3.0730393949256136
+    Attrib next_dur_beats    0.530291365571558
+    Attrib next_pitch    -2.730750357268578
+    Attrib next_dur_s    -0.5224442649252591
+    Attrib interval_next    -3.8847478028191618
+    Attrib pitch_in_oct=0    7.314094177654267
+    Attrib pitch_in_oct=1    0.8574035304308252
+    Attrib pitch_in_oct=2    1.5219485132088597
+    Attrib pitch_in_oct=3    -0.23116532676715287
+    Attrib pitch_in_oct=4    -2.3753190941726228
+    Attrib pitch_in_oct=5    5.925868081990267
+    Attrib pitch_in_oct=6    -0.8549455635210718
+    Attrib pitch_in_oct=7    -1.7204059291836808
+    Attrib pitch_in_oct=8    -0.6814275615649685
+    Attrib pitch_in_oct=9    1.0643225474184106
+    Attrib pitch_in_oct=10    -4.306107219287561
+    Attrib pitch_in_oct=11    0.03002169991635603
+    Attrib pitch_in_key=0    3.1353870822638727
+    Attrib pitch_in_key=1    -0.016691233849262896
+    Attrib pitch_in_key=2    -0.33427976270982274
+    Attrib pitch_in_key=3    0.473856216772014
+    Attrib pitch_in_key=4    -1.9175385971420034
+    Attrib pitch_in_key=5    -0.4108269938546222
+    Attrib pitch_in_key=6    -0.17168654180847043
+    Attrib pitch_in_key=7    0.6749124039165777
+    Attrib pitch_in_key=8    1.0635057976456757
+    Attrib pitch_in_key=9    -0.43623181690549256
+    Attrib pitch_in_key=10    0.5264100572055721
+    Attrib pitch_in_key=11    3.888422723811655
+    Attrib tonic_chord_tone=1    -0.532910045487223
+    Attrib dominant_chord_tone=1    2.9734448393134976
+    Attrib prob_chord_I    6.970070562008252
+    Attrib prob_chord_ii    1.302305414511887
+    Attrib prob_chord_iii    -0.6974665305315134
+    Attrib prob_chord_IV    1.625811908782372
+    Attrib prob_chord_V    1.8611235948636393
+    Attrib prob_chord_vi    1.516027740154465
+    Attrib prob_chord_vii    -1.9061720683366539
+    Attrib chord=0    0.8617912767850351
+    Attrib chord=1    0.03245490491075606
+    Attrib chord=2    3.6327801534694646
+    Attrib chord=3    -0.7886713090989125
+    Attrib chord=4    -2.398912688756514
+    Attrib chord=5    -1.047181759082214
+    Attrib chord=6    2.872767055611031
+    Attrib pitch_in_chord=0    -1.1249497056187074
+    Attrib pitch_in_chord=1    0.9726825895258099
+    Attrib pitch_in_chord=2    2.989026693597693
+    Attrib pitch_in_chord=3    -0.18588263771982794
+    Attrib pitch_in_chord=4    2.624869204723977
+    Attrib pitch_in_chord=5    -0.5765540237778355
+    Attrib pitch_in_chord=6    0.9059236411993115
+    Attrib pitch_in_chord=7    0.1861623821413712
+    Attrib pitch_in_chord=8    2.262979393505645
+    Attrib pitch_in_chord=9    -1.752399618625411
+    Attrib pitch_in_chord=10    2.067372752030559
+    Attrib pitch_in_chord=11    -1.8985792726201485
+    Attrib current_chord_tone=1    -0.7427644749190443
+    Attrib nar_rd    -1.109608732629017
+    Attrib nar_rr    5.361098003028841
+    Attrib nar_id    3.5431202341195625
+    Attrib nar_cl    0.7261906283605322
+    Attrib nar_pr    -2.3566264486930533
+    Attrib nar_co    -3.4012925391266724
+    Attrib beat_in_measure    -2.597556440072358
+    Attrib metric_strength=0    -1.484999264782721
+    Attrib metric_strength=1    2.2036568342187506
+    Attrib metric_strength=2    0.40789485735547343
+    Attrib metric_strength=3    0.21231244829546342
+    Attrib phrase_num    -0.3572869660763567
+Sigmoid Node 32
+    Inputs    Weights
+    Threshold    -0.6166707216570324
+    Attrib duration_beats    -0.2821035635248171
+    Attrib pitch    1.9744669827078916
+    Attrib duration_s    -0.2818105243357775
+    Attrib prev_dur_beats    1.5399160565717835
+    Attrib prev_pitch    0.4608990451452654
+    Attrib prev_dur_s    2.745293425600222
+    Attrib interval_prev    0.8164639193361365
+    Attrib next_dur_beats    -0.6898139317615762
+    Attrib next_pitch    2.557659130338205
+    Attrib next_dur_s    -1.8846096240833758
+    Attrib interval_next    -0.1383263179284132
+    Attrib pitch_in_oct=0    1.600730176083544
+    Attrib pitch_in_oct=1    2.834656373974697
+    Attrib pitch_in_oct=2    2.3932953069976235
+    Attrib pitch_in_oct=3    -0.07262475245695582
+    Attrib pitch_in_oct=4    0.8515980457929792
+    Attrib pitch_in_oct=5    -1.5540397376806199
+    Attrib pitch_in_oct=6    -0.4904683544533046
+    Attrib pitch_in_oct=7    -0.660259803545737
+    Attrib pitch_in_oct=8    0.18855461447538968
+    Attrib pitch_in_oct=9    1.065040166817495
+    Attrib pitch_in_oct=10    0.1998882558825088
+    Attrib pitch_in_oct=11    -0.43752139006758006
+    Attrib pitch_in_key=0    -2.1208705286639478
+    Attrib pitch_in_key=1    1.678473448689989
+    Attrib pitch_in_key=2    -0.04802730353021968
+    Attrib pitch_in_key=3    0.262080842164714
+    Attrib pitch_in_key=4    -0.472616370407638
+    Attrib pitch_in_key=5    1.3568233492628263
+    Attrib pitch_in_key=6    0.637953167855512
+    Attrib pitch_in_key=7    2.47345955382256
+    Attrib pitch_in_key=8    0.7883625437872783
+    Attrib pitch_in_key=9    1.7962679759544085
+    Attrib pitch_in_key=10    0.3254243599277103
+    Attrib pitch_in_key=11    -0.650429207786559
+    Attrib tonic_chord_tone=1    -0.11203843348271422
+    Attrib dominant_chord_tone=1    0.5515764635615774
+    Attrib prob_chord_I    -1.14449793022416
+    Attrib prob_chord_ii    2.1010230501640046
+    Attrib prob_chord_iii    0.03402398953611124
+    Attrib prob_chord_IV    -0.4670331572945993
+    Attrib prob_chord_V    2.015269696084503
+    Attrib prob_chord_vi    1.3435433833222417
+    Attrib prob_chord_vii    -0.5745204153901768
+    Attrib chord=0    0.4110103286716889
+    Attrib chord=1    1.1104482804502047
+    Attrib chord=2    -0.2566333291322535
+    Attrib chord=3    0.8966402559177798
+    Attrib chord=4    1.4840858941591977
+    Attrib chord=5    0.07632333262042496
+    Attrib chord=6    -0.6191891870855066
+    Attrib pitch_in_chord=0    1.8661541101951702
+    Attrib pitch_in_chord=1    2.7374775082573337
+    Attrib pitch_in_chord=2    1.9146527091789138
+    Attrib pitch_in_chord=3    -0.944818554119501
+    Attrib pitch_in_chord=4    0.24924545789428157
+    Attrib pitch_in_chord=5    -1.0137733035255876
+    Attrib pitch_in_chord=6    -1.195216396361602
+    Attrib pitch_in_chord=7    1.9719713133940098
+    Attrib pitch_in_chord=8    0.7494529599591914
+    Attrib pitch_in_chord=9    -1.39274946593656
+    Attrib pitch_in_chord=10    0.230568144574227
+    Attrib pitch_in_chord=11    0.8778224255857072
+    Attrib current_chord_tone=1    1.0887048291372738
+    Attrib nar_rd    1.0436523669797433
+    Attrib nar_rr    5.4757702485289155
+    Attrib nar_id    0.8534638397921134
+    Attrib nar_cl    -0.7031700671463392
+    Attrib nar_pr    0.7106670970692637
+    Attrib nar_co    -2.2066084492882316
+    Attrib beat_in_measure    -5.126934539160242
+    Attrib metric_strength=0    3.142902604390923
+    Attrib metric_strength=1    -2.9550200865286436
+    Attrib metric_strength=2    -0.12237259843082032
+    Attrib metric_strength=3    1.2130670740739449
+    Attrib phrase_num    1.966461854581205
+Sigmoid Node 33
+    Inputs    Weights
+    Threshold    -0.5853518455469165
+    Attrib duration_beats    -0.4598619767264186
+    Attrib pitch    -4.919055607704425
+    Attrib duration_s    -0.713733969417148
+    Attrib prev_dur_beats    0.7905830190172266
+    Attrib prev_pitch    -2.3042132539250164
+    Attrib prev_dur_s    -0.4230227527637301
+    Attrib interval_prev    -1.5600021128749504
+    Attrib next_dur_beats    1.2489299351175518
+    Attrib next_pitch    -0.9341600849584542
+    Attrib next_dur_s    0.19824521432673967
+    Attrib interval_next    2.321950583864194
+    Attrib pitch_in_oct=0    -0.3911646470196505
+    Attrib pitch_in_oct=1    0.5688366902407404
+    Attrib pitch_in_oct=2    -0.279169980716695
+    Attrib pitch_in_oct=3    0.4261988803532675
+    Attrib pitch_in_oct=4    0.7839616843538854
+    Attrib pitch_in_oct=5    0.9989868793863774
+    Attrib pitch_in_oct=6    0.006756234007677598
+    Attrib pitch_in_oct=7    4.022023825435098
+    Attrib pitch_in_oct=8    0.09109402756343822
+    Attrib pitch_in_oct=9    -0.6468094579570227
+    Attrib pitch_in_oct=10    2.045693398430044
+    Attrib pitch_in_oct=11    -1.4875484674725858
+    Attrib pitch_in_key=0    -2.2708076754811044
+    Attrib pitch_in_key=1    0.68418108447216
+    Attrib pitch_in_key=2    -0.0967922552958033
+    Attrib pitch_in_key=3    0.5425994342784087
+    Attrib pitch_in_key=4    4.154912491321011
+    Attrib pitch_in_key=5    0.29018458934451
+    Attrib pitch_in_key=6    0.8248685537705894
+    Attrib pitch_in_key=7    3.005501501701205
+    Attrib pitch_in_key=8    0.5391577998536827
+    Attrib pitch_in_key=9    -1.7354872896287648
+    Attrib pitch_in_key=10    0.4976855626303177
+    Attrib pitch_in_key=11    -0.15156478223187697
+    Attrib tonic_chord_tone=1    1.395028499637349
+    Attrib dominant_chord_tone=1    1.3952804800542151
+    Attrib prob_chord_I    2.576686944643337
+    Attrib prob_chord_ii    5.965426720736982
+    Attrib prob_chord_iii    0.6655655476351583
+    Attrib prob_chord_IV    3.5321387171888996
+    Attrib prob_chord_V    0.5803144780637379
+    Attrib prob_chord_vi    1.32513121425268
+    Attrib prob_chord_vii    5.163974566759886
+    Attrib chord=0    2.8185785192799706
+    Attrib chord=1    0.3340800106394164
+    Attrib chord=2    1.2594151002476799
+    Attrib chord=3    -0.9997571968893928
+    Attrib chord=4    0.48859488084103136
+    Attrib chord=5    -1.105259349118869
+    Attrib chord=6    0.3679284786764308
+    Attrib pitch_in_chord=0    -2.2232247591876635
+    Attrib pitch_in_chord=1    0.6797979436572017
+    Attrib pitch_in_chord=2    -0.1633095215308737
+    Attrib pitch_in_chord=3    2.6851840698663234
+    Attrib pitch_in_chord=4    4.580233429829577
+    Attrib pitch_in_chord=5    0.3724605119694662
+    Attrib pitch_in_chord=6    0.692091868093076
+    Attrib pitch_in_chord=7    -1.8703145852427594
+    Attrib pitch_in_chord=8    0.5430843810324747
+    Attrib pitch_in_chord=9    0.839290779960259
+    Attrib pitch_in_chord=10    -0.28760590890990695
+    Attrib pitch_in_chord=11    0.2742243853651046
+    Attrib current_chord_tone=1    1.391225622201747
+    Attrib nar_rd    1.0695316361536955
+    Attrib nar_rr    1.7012629897710752
+    Attrib nar_id    1.1579152699940163
+    Attrib nar_cl    1.603915378736508
+    Attrib nar_pr    -0.5250121768335101
+    Attrib nar_co    6.943467965937683
+    Attrib beat_in_measure    6.137017775698696
+    Attrib metric_strength=0    0.4151897838795543
+    Attrib metric_strength=1    -1.6601985952350462
+    Attrib metric_strength=2    5.137460469031666
+    Attrib metric_strength=3    -2.630036055346593
+    Attrib phrase_num    0.9603514452155427
+Sigmoid Node 34
+    Inputs    Weights
+    Threshold    -0.5541646402145095
+    Attrib duration_beats    1.6054625373468727
+    Attrib pitch    -2.768742039531448
+    Attrib duration_s    -0.14925693746143276
+    Attrib prev_dur_beats    -0.1984572195839808
+    Attrib prev_pitch    -3.519639147309683
+    Attrib prev_dur_s    -2.146437836938843
+    Attrib interval_prev    0.3626817128605228
+    Attrib next_dur_beats    -0.24572450043761546
+    Attrib next_pitch    -0.5326733880471549
+    Attrib next_dur_s    -1.5390190441664493
+    Attrib interval_next    1.2906838135404284
+    Attrib pitch_in_oct=0    -0.6791631584529653
+    Attrib pitch_in_oct=1    1.000059950699364
+    Attrib pitch_in_oct=2    -4.572344133295295
+    Attrib pitch_in_oct=3    1.3375578310887586
+    Attrib pitch_in_oct=4    0.8800506884405939
+    Attrib pitch_in_oct=5    0.9172105826104611
+    Attrib pitch_in_oct=6    -0.20065775945931066
+    Attrib pitch_in_oct=7    1.0816069795643959
+    Attrib pitch_in_oct=8    0.39986615214189414
+    Attrib pitch_in_oct=9    0.1792595729693318
+    Attrib pitch_in_oct=10    6.159268806773961
+    Attrib pitch_in_oct=11    -0.7266337693710352
+    Attrib pitch_in_key=0    -2.2235638205478057
+    Attrib pitch_in_key=1    0.6606109782433127
+    Attrib pitch_in_key=2    -1.999068948437541
+    Attrib pitch_in_key=3    0.3762560764816258
+    Attrib pitch_in_key=4    1.1872032021349677
+    Attrib pitch_in_key=5    0.38040043426403997
+    Attrib pitch_in_key=6    1.9512576801558326
+    Attrib pitch_in_key=7    5.490058594793865
+    Attrib pitch_in_key=8    2.8173838981353816
+    Attrib pitch_in_key=9    -0.6710715649887047
+    Attrib pitch_in_key=10    -1.825785548295446
+    Attrib pitch_in_key=11    -0.37853821128228476
+    Attrib tonic_chord_tone=1    2.0194373610937846
+    Attrib dominant_chord_tone=1    1.8927682586233794
+    Attrib prob_chord_I    -1.9765488229876111
+    Attrib prob_chord_ii    -0.3412186450338474
+    Attrib prob_chord_iii    -2.3199392045757987
+    Attrib prob_chord_IV    -0.7479480747241662
+    Attrib prob_chord_V    0.20913563210434089
+    Attrib prob_chord_vi    -8.052737957458623
+    Attrib prob_chord_vii    2.34276784020488
+    Attrib chord=0    -0.6745940273957372
+    Attrib chord=1    -0.9618740172968723
+    Attrib chord=2    0.5462770312707914
+    Attrib chord=3    2.7789808171610018
+    Attrib chord=4    0.46552917540305916
+    Attrib chord=5    0.8014407497032556
+    Attrib chord=6    -0.12001850363997572
+    Attrib pitch_in_chord=0    1.0025115672448945
+    Attrib pitch_in_chord=1    -0.8031288056893454
+    Attrib pitch_in_chord=2    2.6273460057035343
+    Attrib pitch_in_chord=3    1.4892726140254138
+    Attrib pitch_in_chord=4    -1.3852222876857951
+    Attrib pitch_in_chord=5    -0.5288214365300641
+    Attrib pitch_in_chord=6    -1.0949695860480049
+    Attrib pitch_in_chord=7    -0.71951556478052
+    Attrib pitch_in_chord=8    0.5222843337988085
+    Attrib pitch_in_chord=9    0.7273571313793614
+    Attrib pitch_in_chord=10    2.7127744209907916
+    Attrib pitch_in_chord=11    1.3288445852089414
+    Attrib current_chord_tone=1    -1.0206768605002494
+    Attrib nar_rd    3.6861699091443034
+    Attrib nar_rr    2.5733256831685134
+    Attrib nar_id    -3.3310206916868803
+    Attrib nar_cl    -0.5004965166960965
+    Attrib nar_pr    -1.3679691867278914
+    Attrib nar_co    -2.068234291752657
+    Attrib beat_in_measure    3.7994546628305033
+    Attrib metric_strength=0    0.38655466310154457
+    Attrib metric_strength=1    2.4286205573275366
+    Attrib metric_strength=2    -4.025585705391117
+    Attrib metric_strength=3    2.3944675580552985
+    Attrib phrase_num    0.0075894221267486335
+Sigmoid Node 35
+    Inputs    Weights
+    Threshold    -0.2585721616765092
+    Attrib duration_beats    -0.8507091854227495
+    Attrib pitch    1.1872752786435954
+    Attrib duration_s    0.7192646383957552
+    Attrib prev_dur_beats    0.1059178128497702
+    Attrib prev_pitch    -1.3446673028296081
+    Attrib prev_dur_s    0.3833014720163021
+    Attrib interval_prev    1.5496766804998126
+    Attrib next_dur_beats    0.2939532425318921
+    Attrib next_pitch    5.378272507737975
+    Attrib next_dur_s    1.4059779937039603
+    Attrib interval_next    2.6031196532568908
+    Attrib pitch_in_oct=0    -0.2857094839382607
+    Attrib pitch_in_oct=1    -1.7983238165007354
+    Attrib pitch_in_oct=2    -3.013013096244909
+    Attrib pitch_in_oct=3    4.72591569266532
+    Attrib pitch_in_oct=4    -0.48173131106636363
+    Attrib pitch_in_oct=5    1.8299888055321207
+    Attrib pitch_in_oct=6    -1.1491069447128457
+    Attrib pitch_in_oct=7    -0.8351023384752908
+    Attrib pitch_in_oct=8    1.6545785063734706
+    Attrib pitch_in_oct=9    3.163078803262952
+    Attrib pitch_in_oct=10    0.5331212240413279
+    Attrib pitch_in_oct=11    -1.516009932504518
+    Attrib pitch_in_key=0    -1.612605715059769
+    Attrib pitch_in_key=1    0.08828107912569019
+    Attrib pitch_in_key=2    0.8440452103655688
+    Attrib pitch_in_key=3    1.669264246914762
+    Attrib pitch_in_key=4    1.195267719425675
+    Attrib pitch_in_key=5    1.8084154325099973
+    Attrib pitch_in_key=6    -0.9185101969145288
+    Attrib pitch_in_key=7    -1.343135357745019
+    Attrib pitch_in_key=8    3.0435558588842624
+    Attrib pitch_in_key=9    0.11914129482264584
+    Attrib pitch_in_key=10    -2.6238772518738296
+    Attrib pitch_in_key=11    0.4201800599853162
+    Attrib tonic_chord_tone=1    -2.390107014615282
+    Attrib dominant_chord_tone=1    -0.673310609375435
+    Attrib prob_chord_I    5.6784540431042565
+    Attrib prob_chord_ii    -1.4944552848699084
+    Attrib prob_chord_iii    -4.488043827315651
+    Attrib prob_chord_IV    3.1759150766637934
+    Attrib prob_chord_V    -1.0060076440783352
+    Attrib prob_chord_vi    0.997328257603844
+    Attrib prob_chord_vii    5.445860896212892
+    Attrib chord=0    -1.0294599704773524
+    Attrib chord=1    0.746300286675633
+    Attrib chord=2    -0.9923198203440039
+    Attrib chord=3    1.6414853588045575
+    Attrib chord=4    -0.17508446224275137
+    Attrib chord=5    -1.5801391815700085
+    Attrib chord=6    2.8617393382640577
+    Attrib pitch_in_chord=0    -2.355397748700035
+    Attrib pitch_in_chord=1    -1.468091113125158
+    Attrib pitch_in_chord=2    2.698566929024567
+    Attrib pitch_in_chord=3    -0.20064453308467445
+    Attrib pitch_in_chord=4    0.03754111894562767
+    Attrib pitch_in_chord=5    -0.58333487717195
+    Attrib pitch_in_chord=6    1.3874669242788211
+    Attrib pitch_in_chord=7    -1.2021440187294776
+    Attrib pitch_in_chord=8    1.3333801102310112
+    Attrib pitch_in_chord=9    -0.7007771482754072
+    Attrib pitch_in_chord=10    3.9195722707264293
+    Attrib pitch_in_chord=11    -0.02843148489688564
+    Attrib current_chord_tone=1    -1.6347516771234822
+    Attrib nar_rd    -0.19849110460591637
+    Attrib nar_rr    1.4593574933849174
+    Attrib nar_id    -1.1714866840384417
+    Attrib nar_cl    -0.10464501212997626
+    Attrib nar_pr    0.4288498019348048
+    Attrib nar_co    1.3077032473390489
+    Attrib beat_in_measure    1.6352340208669742
+    Attrib metric_strength=0    1.166727742051301
+    Attrib metric_strength=1    -0.05252399791305474
+    Attrib metric_strength=2    -0.4639123896238667
+    Attrib metric_strength=3    -0.10727085357039971
+    Attrib phrase_num    0.6406459705707719
+Sigmoid Node 36
+    Inputs    Weights
+    Threshold    -0.41339885630139167
+    Attrib duration_beats    0.05127499959446687
+    Attrib pitch    -1.500324334594587
+    Attrib duration_s    -0.14407148681151874
+    Attrib prev_dur_beats    0.16854757026864653
+    Attrib prev_pitch    -2.1196057998441047
+    Attrib prev_dur_s    -0.9144746732406023
+    Attrib interval_prev    0.3009746640153456
+    Attrib next_dur_beats    3.6514078957379486
+    Attrib next_pitch    1.262137053242529
+    Attrib next_dur_s    0.6553222904826228
+    Attrib interval_next    1.6555091715436354
+    Attrib pitch_in_oct=0    0.8535720828216635
+    Attrib pitch_in_oct=1    2.528663850454718
+    Attrib pitch_in_oct=2    0.633999714005424
+    Attrib pitch_in_oct=3    0.7570415872727647
+    Attrib pitch_in_oct=4    0.3604259900391713
+    Attrib pitch_in_oct=5    1.0984743497238145
+    Attrib pitch_in_oct=6    -0.821479216867847
+    Attrib pitch_in_oct=7    2.119557739843928
+    Attrib pitch_in_oct=8    0.15730086481156802
+    Attrib pitch_in_oct=9    -0.6869007722265283
+    Attrib pitch_in_oct=10    0.6135247983116896
+    Attrib pitch_in_oct=11    -3.1123111416483864
+    Attrib pitch_in_key=0    0.03622777118404398
+    Attrib pitch_in_key=1    1.5926837938489782
+    Attrib pitch_in_key=2    0.08453645171039323
+    Attrib pitch_in_key=3    0.4460690768794832
+    Attrib pitch_in_key=4    1.6551115687328066
+    Attrib pitch_in_key=5    -0.3882790183112637
+    Attrib pitch_in_key=6    0.07439956793579851
+    Attrib pitch_in_key=7    -0.24450132856988038
+    Attrib pitch_in_key=8    0.9250699435104223
+    Attrib pitch_in_key=9    -0.25320903636164094
+    Attrib pitch_in_key=10    -0.2631583609558984
+    Attrib pitch_in_key=11    0.6963545772539284
+    Attrib tonic_chord_tone=1    -0.11609049252303484
+    Attrib dominant_chord_tone=1    -0.30176831853048636
+    Attrib prob_chord_I    3.3293381915435045
+    Attrib prob_chord_ii    -1.1867848909946783
+    Attrib prob_chord_iii    2.149035047297777
+    Attrib prob_chord_IV    -0.6302359000063437
+    Attrib prob_chord_V    2.6377248977332948
+    Attrib prob_chord_vi    -2.662028780416098
+    Attrib prob_chord_vii    -0.8553000783662854
+    Attrib chord=0    -0.9101822508946747
+    Attrib chord=1    -0.30227658551088543
+    Attrib chord=2    2.037135500292954
+    Attrib chord=3    0.6114640173251914
+    Attrib chord=4    -1.0571856348197681
+    Attrib chord=5    1.8246934321414656
+    Attrib chord=6    0.1436420800612887
+    Attrib pitch_in_chord=0    1.2420133886218725
+    Attrib pitch_in_chord=1    0.27940731563611426
+    Attrib pitch_in_chord=2    0.3766081164422302
+    Attrib pitch_in_chord=3    0.13257152549077694
+    Attrib pitch_in_chord=4    0.5421373488097577
+    Attrib pitch_in_chord=5    0.3653954879870305
+    Attrib pitch_in_chord=6    0.031019035310263836
+    Attrib pitch_in_chord=7    -0.6601643674098946
+    Attrib pitch_in_chord=8    0.7004353419602476
+    Attrib pitch_in_chord=9    1.8198882592796135
+    Attrib pitch_in_chord=10    -0.2726138965700282
+    Attrib pitch_in_chord=11    -0.14288562096821986
+    Attrib current_chord_tone=1    -0.723427317410257
+    Attrib nar_rd    -1.0108493562089107
+    Attrib nar_rr    1.9833073737109124
+    Attrib nar_id    2.267245188418225
+    Attrib nar_cl    3.994876946414914
+    Attrib nar_pr    -0.925069035807181
+    Attrib nar_co    -1.266742444242622
+    Attrib beat_in_measure    4.401956567261931
+    Attrib metric_strength=0    0.9050883020614855
+    Attrib metric_strength=1    -0.15202874654148602
+    Attrib metric_strength=2    1.0552334376910628
+    Attrib metric_strength=3    -0.8860765934769036
+    Attrib phrase_num    0.17138231435992754
+Sigmoid Node 37
+    Inputs    Weights
+    Threshold    -0.43571896719254777
+    Attrib duration_beats    -0.021693562353945216
+    Attrib pitch    0.5313631767142802
+    Attrib duration_s    -0.12028067505721433
+    Attrib prev_dur_beats    1.2652162723157
+    Attrib prev_pitch    0.3178389934204899
+    Attrib prev_dur_s    1.0731617298771616
+    Attrib interval_prev    0.06009618245031484
+    Attrib next_dur_beats    0.32873754619126777
+    Attrib next_pitch    1.3016614754355957
+    Attrib next_dur_s    -0.11055725716287385
+    Attrib interval_next    0.27998048197518344
+    Attrib pitch_in_oct=0    -1.0196375277952843
+    Attrib pitch_in_oct=1    -0.42096005606147346
+    Attrib pitch_in_oct=2    1.2934927606570434
+    Attrib pitch_in_oct=3    -0.7793904544078148
+    Attrib pitch_in_oct=4    -0.20071717754913598
+    Attrib pitch_in_oct=5    3.214885246141299
+    Attrib pitch_in_oct=6    0.3847813071412864
+    Attrib pitch_in_oct=7    0.6661591465257088
+    Attrib pitch_in_oct=8    0.59603482485776
+    Attrib pitch_in_oct=9    -0.9949616602723137
+    Attrib pitch_in_oct=10    0.6635093857612993
+    Attrib pitch_in_oct=11    0.6051187333989938
+    Attrib pitch_in_key=0    -0.31986718008488646
+    Attrib pitch_in_key=1    0.6181203882215873
+    Attrib pitch_in_key=2    0.728929604382184
+    Attrib pitch_in_key=3    -0.4884819917227756
+    Attrib pitch_in_key=4    0.3442388647114677
+    Attrib pitch_in_key=5    -0.03501534091223472
+    Attrib pitch_in_key=6    0.43354451760059365
+    Attrib pitch_in_key=7    0.023872936299989798
+    Attrib pitch_in_key=8    1.3384770153442171
+    Attrib pitch_in_key=9    0.07441006467927247
+    Attrib pitch_in_key=10    0.6824208586776529
+    Attrib pitch_in_key=11    0.5580838882830321
+    Attrib tonic_chord_tone=1    -1.011577495025287
+    Attrib dominant_chord_tone=1    0.46937925563049226
+    Attrib prob_chord_I    0.4576777353598712
+    Attrib prob_chord_ii    1.587930840155164
+    Attrib prob_chord_iii    0.5843497796913801
+    Attrib prob_chord_IV    2.2265330997133175
+    Attrib prob_chord_V    1.9703947936600916
+    Attrib prob_chord_vi    1.1042152848750928
+    Attrib prob_chord_vii    2.088878258545872
+    Attrib chord=0    -2.1520824590573016
+    Attrib chord=1    -1.0312813031308865
+    Attrib chord=2    0.318928284134528
+    Attrib chord=3    1.5680951983353855
+    Attrib chord=4    2.44168866811575
+    Attrib chord=5    1.4792426696542447
+    Attrib chord=6    -0.7375390543180796
+    Attrib pitch_in_chord=0    -0.6529827122339992
+    Attrib pitch_in_chord=1    -0.33924773114232215
+    Attrib pitch_in_chord=2    -0.42393821920205793
+    Attrib pitch_in_chord=3    0.25369416133018197
+    Attrib pitch_in_chord=4    -0.16600881520860541
+    Attrib pitch_in_chord=5    1.0075682686756522
+    Attrib pitch_in_chord=6    0.2349325437208464
+    Attrib pitch_in_chord=7    1.800733781340277
+    Attrib pitch_in_chord=8    0.21353164490799917
+    Attrib pitch_in_chord=9    2.417985191599919
+    Attrib pitch_in_chord=10    -1.2463981096169376
+    Attrib pitch_in_chord=11    0.8819839404389812
+    Attrib current_chord_tone=1    -0.7327307772602627
+    Attrib nar_rd    -0.254242135913541
+    Attrib nar_rr    -1.1574030187673292
+    Attrib nar_id    -1.0075917840285098
+    Attrib nar_cl    -0.13513062760283648
+    Attrib nar_pr    -0.3785554676106899
+    Attrib nar_co    -1.451294677422397
+    Attrib beat_in_measure    -2.321202050673362
+    Attrib metric_strength=0    3.0526091380418015
+    Attrib metric_strength=1    -1.4143281611245493
+    Attrib metric_strength=2    -1.150813723095632
+    Attrib metric_strength=3    0.3703549645558515
+    Attrib phrase_num    -0.6936947996848724
+Sigmoid Node 38
+    Inputs    Weights
+    Threshold    -0.39586126971561425
+    Attrib duration_beats    1.4037618455053373
+    Attrib pitch    -1.4031622367847576
+    Attrib duration_s    0.6693375839516331
+    Attrib prev_dur_beats    0.5722738917675566
+    Attrib prev_pitch    -2.976777736160476
+    Attrib prev_dur_s    -1.592840969362809
+    Attrib interval_prev    0.9109241234101098
+    Attrib next_dur_beats    0.9769511136568275
+    Attrib next_pitch    -1.8720200993349996
+    Attrib next_dur_s    -0.6626129169200847
+    Attrib interval_next    -0.5326548983521765
+    Attrib pitch_in_oct=0    -0.6492295459804454
+    Attrib pitch_in_oct=1    0.997588014386275
+    Attrib pitch_in_oct=2    0.8456719692447662
+    Attrib pitch_in_oct=3    2.459230132223099
+    Attrib pitch_in_oct=4    0.6849638570993755
+    Attrib pitch_in_oct=5    0.49363076736403055
+    Attrib pitch_in_oct=6    0.036413917658997284
+    Attrib pitch_in_oct=7    -0.021112408458377932
+    Attrib pitch_in_oct=8    -0.9844437348647043
+    Attrib pitch_in_oct=9    -0.5774338961797844
+    Attrib pitch_in_oct=10    1.1232462772040728
+    Attrib pitch_in_oct=11    -0.10915361841128457
+    Attrib pitch_in_key=0    2.234443362370814
+    Attrib pitch_in_key=1    0.659691229088218
+    Attrib pitch_in_key=2    1.0630658834298186
+    Attrib pitch_in_key=3    -0.1411282564842365
+    Attrib pitch_in_key=4    0.036690090024618816
+    Attrib pitch_in_key=5    0.1849271604855934
+    Attrib pitch_in_key=6    0.8121317825908662
+    Attrib pitch_in_key=7    -1.5551374162794336
+    Attrib pitch_in_key=8    -0.5007306849569475
+    Attrib pitch_in_key=9    -0.0017019821237357004
+    Attrib pitch_in_key=10    0.7335574860690459
+    Attrib pitch_in_key=11    0.8393255688219823
+    Attrib tonic_chord_tone=1    -0.44019836195615697
+    Attrib dominant_chord_tone=1    -0.5459494733390409
+    Attrib prob_chord_I    0.1621121721503281
+    Attrib prob_chord_ii    -2.3855672605042835
+    Attrib prob_chord_iii    2.1000060705240657
+    Attrib prob_chord_IV    -0.5752707033838824
+    Attrib prob_chord_V    -0.7118116585791399
+    Attrib prob_chord_vi    -0.1654302017281074
+    Attrib prob_chord_vii    -0.3488039749637028
+    Attrib chord=0    0.2050587976020491
+    Attrib chord=1    1.3858046358435032
+    Attrib chord=2    0.359962874369548
+    Attrib chord=3    -0.027303893052944242
+    Attrib chord=4    0.19956436338577616
+    Attrib chord=5    0.14190761845355168
+    Attrib chord=6    -0.16336436728928785
+    Attrib pitch_in_chord=0    0.42989218005272023
+    Attrib pitch_in_chord=1    0.21584119834845408
+    Attrib pitch_in_chord=2    0.5849734776013705
+    Attrib pitch_in_chord=3    -0.29782941674428304
+    Attrib pitch_in_chord=4    1.48583114367834
+    Attrib pitch_in_chord=5    1.148333836273158
+    Attrib pitch_in_chord=6    -0.35205184476466717
+    Attrib pitch_in_chord=7    -0.8448140825962989
+    Attrib pitch_in_chord=8    0.37206560708958775
+    Attrib pitch_in_chord=9    1.7777864797730842
+    Attrib pitch_in_chord=10    -0.33086620873063094
+    Attrib pitch_in_chord=11    0.08908163602162364
+    Attrib current_chord_tone=1    -0.2837038056373333
+    Attrib nar_rd    -0.3091830265154198
+    Attrib nar_rr    0.39427553071042565
+    Attrib nar_id    1.3571968793884903
+    Attrib nar_cl    -3.300721454942362
+    Attrib nar_pr    1.6042433179373312
+    Attrib nar_co    -0.8359361485418982
+    Attrib beat_in_measure    1.142124589721638
+    Attrib metric_strength=0    -0.6242850941652759
+    Attrib metric_strength=1    1.2602864947317283
+    Attrib metric_strength=2    0.9339336112702741
+    Attrib metric_strength=3    -0.8394350109487573
+    Attrib phrase_num    -0.3636928936870682
+Class 
+    Input
+    Node 0
+
+
+Time taken to build model: 51.23 seconds
+
+=== Predictions on test data ===
+
+inst#,actual,predicted,error
+1,52.546,67.701,15.155
+2,41.115,34.312,-6.803
+3,10.337,33.225,22.888
+4,83.752,47.489,-36.263
+5,45.266,83.296,38.03
+6,72.436,74.731,2.295
+7,34.558,62.127,27.568
+8,28.994,84.334,55.34
+9,12.937,-46.161,-59.099
+10,53.667,80.629,26.961
+11,58.339,83.731,25.393
+12,55.809,83.594,27.785
+13,26.031,120.738,94.707
+14,44.41,79.277,34.867
+15,68.501,95.12,26.619
+16,42.908,84.307,41.399
+17,14.209,34.417,20.208
+18,21.204,58.224,37.019
+19,34.553,57.904,23.351
+20,16.932,30.923,13.991
+21,43.774,83.868,40.094
+22,38.964,55.559,16.595
+23,38.709,12.257,-26.451
+24,45.813,87.504,41.691
+25,44.569,55.876,11.307
+26,64.846,72.192,7.346
+27,58.65,88.522,29.872
+28,29.177,55.907,26.73
+29,24.255,21.507,-2.747
+30,66.227,123.839,57.612
+31,26.732,17.828,-8.904
+32,91.025,67.557,-23.467
+33,10,38.002,28.002
+34,59.605,73.757,14.151
+35,38.88,57.252,18.372
+36,41.338,56.12,14.782
+37,25.938,33.182,7.244
+38,17.449,43.203,25.754
+39,43.923,32.586,-11.337
+40,43.978,82.2,38.223
+41,41.07,41.851,0.781
+42,63.882,81.441,17.558
+43,10,53.378,43.378
+44,52.178,89.346,37.168
+45,22.632,40.564,17.931
+46,79.33,90.835,11.504
+47,17.299,43.867,26.568
+48,46.571,58.397,11.826
+49,36.435,9.777,-26.657
+50,53.399,60.93,7.532
+51,31.835,30.601,-1.234
+52,16.396,83.868,67.472
+53,31.54,83.929,52.388
+54,36.848,75.064,38.216
+55,41.059,86.152,45.092
+56,75.857,144.004,68.148
+57,42.295,118.195,75.9
+58,15.266,37.539,22.273
+59,13.634,32.586,18.951
+60,10,27.325,17.325
+61,32.391,33.532,1.141
+62,21.664,74.658,52.994
+63,11.804,40.878,29.074
+64,42.325,46.428,4.104
+65,70.799,107.277,36.478
+66,26.263,49.579,23.317
+67,58.117,83.625,25.508
+68,56.641,78.42,21.779
+69,61.578,51.941,-9.637
+70,74.604,70.123,-4.481
+71,52.669,140.068,87.399
+72,30.607,8.909,-21.698
+73,11.828,-95.731,-107.559
+74,35.989,55.921,19.932
+75,10,48.182,38.182
+76,43.674,111.789,68.116
+77,53.081,90.765,37.683
+78,54.994,69.187,14.194
+79,47.201,83.227,36.027
+80,61.45,50.966,-10.484
+81,23.796,52.342,28.546
+82,73.911,68.873,-5.038
+83,21.481,-5.574,-27.055
+84,64.989,145.277,80.289
+85,45.609,59.195,13.586
+86,10,36.729,26.729
+87,10.637,50.693,40.056
+88,46.91,20.985,-25.925
+89,12.005,34.245,22.24
+90,61.071,67.996,6.926
+91,18.786,90.601,71.815
+92,15.086,81.602,66.517
+93,57.197,34.671,-22.526
+94,15.677,55.907,40.23
+95,17.661,65.774,48.114
+96,58.584,128.511,69.927
+97,43.816,69.063,25.247
+98,65.322,47.333,-17.989
+99,42.963,104.683,61.72
+100,10,36.25,26.25
+101,31.335,88.056,56.721
+102,65.747,111.923,46.177
+103,48.194,84.297,36.104
+104,49.586,91.494,41.909
+105,10,52.901,42.901
+106,49.754,83.756,34.002
+107,18.573,73.646,55.073
+108,23.896,56.394,32.498
+109,10,35.992,25.992
+110,24.872,84.307,59.435
+111,10,89.076,79.076
+112,14.875,55.184,40.309
+113,43.682,125.953,82.271
+114,14.696,100.426,85.731
+115,73.989,83.731,9.742
+116,66.559,27.807,-38.753
+117,16.08,32.787,16.706
+118,55.276,71.094,15.818
+119,50.469,62.399,11.93
+120,56.802,55.686,-1.116
+121,10.755,20.328,9.574
+122,14.528,40.564,26.035
+123,15.381,10.997,-4.384
+124,81.502,98.806,17.304
+125,32.977,58.926,25.949
+126,24.353,20.712,-3.642
+127,29.236,20.359,-8.877
+128,26.729,34.759,8.03
+129,19.416,55.094,35.678
+130,18.958,53.57,34.611
+131,19.481,38.305,18.824
+132,18.667,55.184,36.517
+133,10,84.06,74.06
+134,21.716,11.84,-9.877
+135,19.27,40.228,20.958
+136,40.318,108.958,68.64
+137,34.678,87.081,52.403
+138,30.862,70.962,40.1
+139,13.223,72.717,59.494
+140,67.71,105.004,37.294
+141,32.116,88.08,55.964
+142,10,26.08,16.08
+143,27.997,85.281,57.284
+144,37.364,53.809,16.446
+145,25.799,52.901,27.102
+146,11.495,31.351,19.856
+147,61.623,83.929,22.305
+148,15.383,38.101,22.718
+149,40.023,95.12,55.098
+150,16.626,61.436,44.81
+151,90.806,19.149,-71.658
+152,16.015,27.409,11.394
+153,43.659,145.679,102.019
+154,31.309,26.354,-4.955
+155,65.65,45.431,-20.219
+156,23.124,27.287,4.162
+157,47.009,-8.556,-55.566
+158,57.709,83.802,26.093
+159,56.298,89.211,32.913
+160,10.351,50.876,40.524
+161,11.413,48.715,37.302
+162,55.298,116.792,61.495
+163,10,-3.973,-13.973
+1,69.191,84.13,14.938
+2,24.505,4.207,-20.299
+3,10,16.626,6.626
+4,64.131,65.634,1.503
+5,71.758,60.232,-11.526
+6,25.565,64.949,39.384
+7,57.179,67.769,10.59
+8,76.301,87.184,10.882
+9,21.609,18.732,-2.877
+10,65.858,62.985,-2.873
+11,67.879,83.489,15.61
+12,10,14.522,4.522
+13,39.323,17.866,-21.457
+14,19.678,35.861,16.182
+15,26.553,10.153,-16.399
+16,18.025,23.488,5.463
+17,58.395,54.362,-4.033
+18,44.701,33.635,-11.065
+19,10,57.026,47.026
+20,30.666,31.284,0.618
+21,63.906,9.085,-54.822
+22,37.544,49.465,11.921
+23,45.358,73.08,27.723
+24,35.277,19.678,-15.598
+25,70.656,57.105,-13.551
+26,31.793,63.281,31.488
+27,10,17.939,7.939
+28,41.823,46.094,4.27
+29,18.893,46.978,28.085
+30,24.895,24.69,-0.205
+31,11.597,34.892,23.295
+32,49.08,82.398,33.318
+33,37.637,8.048,-29.589
+34,12.325,12.725,0.399
+35,34.675,6.735,-27.94
+36,19.011,14.939,-4.073
+37,12.309,16.399,4.09
+38,32.046,28.2,-3.846
+39,27.99,63.675,35.685
+40,56.799,57.558,0.759
+41,22.109,21.617,-0.492
+42,30.53,62.165,31.635
+43,45.975,53.402,7.427
+44,76.18,69.794,-6.385
+45,27.396,-8.001,-35.397
+46,41.332,80.853,39.521
+47,69.75,31.284,-38.466
+48,21.36,25.93,4.57
+49,24.106,37.507,13.4
+50,31.445,-16.137,-47.582
+51,54.528,64.522,9.994
+52,56.799,23.047,-33.752
+53,21.644,14.268,-7.376
+54,55.926,47.383,-8.543
+55,32.585,42.852,10.268
+56,46.768,67.829,21.061
+57,16.309,9.958,-6.351
+58,16.623,12.725,-3.899
+59,11.061,44.072,33.011
+60,81.966,-25.087,-107.053
+61,10,12.469,2.469
+62,38.818,64.698,25.879
+63,84.566,88.242,3.676
+64,49.035,56.712,7.676
+65,10,23.083,13.083
+66,13.852,-0.949,-14.801
+67,84.797,74.665,-10.133
+68,21.338,40.538,19.2
+69,10,69.024,59.024
+70,55.683,-1.51,-57.193
+71,47.215,69.027,21.812
+72,55.766,23.041,-32.724
+73,10,36.843,26.843
+74,19.333,43.122,23.789
+75,45.644,39.476,-6.168
+76,31.354,44.072,12.718
+77,47.465,81.42,33.955
+78,77.842,43.898,-33.944
+79,16.263,22.162,5.899
+80,38.615,54.577,15.963
+81,18.16,39.8,21.64
+82,83.479,54.192,-29.287
+83,33.411,57.347,23.936
+84,52.911,47.822,-5.089
+85,57.435,82.378,24.942
+86,58.073,61.995,3.922
+87,33.978,19.35,-14.628
+88,45.54,24.812,-20.728
+89,20.425,16.306,-4.119
+90,38.83,65.646,26.816
+91,36.691,52.81,16.118
+92,65.318,74.337,9.019
+93,81.144,-10.374,-91.518
+94,26.437,29.745,3.308
+95,46.734,40.014,-6.72
+96,13.084,30.848,17.764
+97,10.025,13.679,3.655
+98,47.549,62.763,15.214
+99,41.048,11.32,-29.728
+100,74.54,88.472,13.932
+101,36.728,26.814,-9.915
+102,63.575,-28.26,-91.835
+103,11.322,39.8,28.479
+104,53.813,28.249,-25.564
+105,34.052,75.656,41.604
+106,33.924,49.151,15.228
+107,45.864,50.458,4.593
+108,42.11,-6.393,-48.503
+109,46.41,59.769,13.36
+110,10.924,37.411,26.487
+111,10,13.679,3.679
+112,21.976,44.106,22.13
+113,26.29,30.849,4.559
+114,31.719,32.645,0.926
+115,16.536,11.258,-5.277
+116,14.443,41.307,26.864
+117,11.451,59.769,48.318
+118,29.513,84.217,54.705
+119,34.773,48.674,13.901
+120,55.117,48.904,-6.213
+121,16.099,48.337,32.238
+122,10,39.61,29.61
+123,29.873,51.337,21.464
+124,42.354,40.7,-1.654
+125,42.29,36.967,-5.323
+126,10,16.269,6.269
+127,43.245,30.334,-12.911
+128,38.541,-8.916,-47.457
+129,32.196,31.482,-0.714
+130,65.519,68.927,3.408
+131,73.216,66.946,-6.271
+132,19.669,46.13,26.461
+133,96.271,87.317,-8.955
+134,37.907,81.687,43.78
+135,17.705,24.933,7.228
+136,30.853,-11.479,-42.332
+137,16.214,14.914,-1.3
+138,38.171,55.188,17.017
+139,46.313,50.587,4.274
+140,51.865,41.354,-10.511
+141,15.319,33.09,17.771
+142,31.681,-19.555,-51.236
+143,41.102,78.367,37.265
+144,76.267,60.828,-15.439
+145,10,7.438,-2.562
+146,98.516,88.49,-10.026
+147,61.43,54.192,-7.238
+148,63.509,51.423,-12.086
+149,60.132,9.487,-50.645
+150,65.212,44.682,-20.53
+151,55.792,54.052,-1.741
+152,44.672,26.058,-18.614
+153,41.781,21.505,-20.276
+154,38.849,45.694,6.845
+155,48.447,73.165,24.718
+156,28.182,8.455,-19.727
+157,20.57,41.787,21.217
+158,75.518,61.378,-14.14
+159,83.75,72.382,-11.367
+160,15.213,11.258,-3.955
+161,66.53,64.755,-1.776
+162,60.877,22.291,-38.586
+163,71.087,79.198,8.111
+1,10,57.555,47.555
+2,76.392,63.642,-12.749
+3,46.244,43.245,-2.998
+4,21.663,58.751,37.089
+5,19.343,32.329,12.987
+6,15.607,35.374,19.768
+7,41.245,3.104,-38.141
+8,35.468,38.285,2.816
+9,57.868,48.053,-9.816
+10,32.959,72.317,39.358
+11,67.578,63.738,-3.84
+12,70.535,77.518,6.983
+13,54.761,26.536,-28.225
+14,27.605,6.192,-21.414
+15,41.807,44.482,2.675
+16,10,-4.517,-14.517
+17,20.953,48.725,27.772
+18,63.05,40.021,-23.029
+19,14.68,44.363,29.683
+20,40.134,18.795,-21.339
+21,18.787,-26.106,-44.893
+22,78.037,92.159,14.121
+23,49.247,58.109,8.862
+24,40.906,91.989,51.083
+25,29.074,-20.555,-49.629
+26,10,16.766,6.766
+27,38.351,24.327,-14.024
+28,10,16.27,6.27
+29,22.487,64.035,41.548
+30,94.038,-10.846,-104.884
+31,55.041,18.779,-36.263
+32,13.862,19.532,5.67
+33,69.473,69.936,0.464
+34,99.235,91.089,-8.146
+35,10,25.399,15.399
+36,43.006,48.759,5.752
+37,37.226,82.868,45.643
+38,18.105,33.191,15.087
+39,53.91,87.689,33.779
+40,88.654,39.295,-49.36
+41,30.202,72.131,41.929
+42,10,33.316,23.316
+43,36.311,56.501,20.191
+44,85.43,85.148,-0.281
+45,49.607,36.993,-12.614
+46,49.275,32.329,-16.946
+47,70.23,35.797,-34.433
+48,15.918,-0.281,-16.199
+49,26.886,13.845,-13.041
+50,19.592,33.981,14.389
+51,23.393,59.28,35.887
+52,15.393,64.809,49.416
+53,18.69,33.744,15.054
+54,49.724,40.663,-9.061
+55,32.424,78.644,46.22
+56,15.774,-2.869,-18.643
+57,59.79,5.722,-54.068
+58,28.514,16.729,-11.785
+59,30.609,15.688,-14.921
+60,13.432,12.795,-0.636
+61,19.297,16.054,-3.244
+62,29.028,35.071,6.043
+63,38.763,28.653,-10.11
+64,53.985,77.47,23.485
+65,24.228,27.06,2.832
+66,16.878,51.204,34.326
+67,54.331,46.91,-7.421
+68,55.998,44.905,-11.094
+69,53.59,8.038,-45.551
+70,65.441,58.197,-7.244
+71,10,14.27,4.27
+72,43.229,51.018,7.789
+73,35.716,55.757,20.041
+74,33.882,48.725,14.843
+75,31.455,4.136,-27.319
+76,15.946,25.552,9.605
+77,74.696,22.683,-52.013
+78,47.485,83.758,36.273
+79,21.464,6.575,-14.889
+80,39.55,19.177,-20.373
+81,39.782,42.215,2.433
+82,10,13.633,3.633
+83,44.779,21.143,-23.636
+84,49.488,91.443,41.955
+85,37.336,-13.283,-50.619
+86,30.793,28.716,-2.077
+87,54.816,70.452,15.636
+88,56.996,36.11,-20.887
+89,60.31,90.671,30.361
+90,67.88,67.847,-0.033
+91,49.936,66.036,16.1
+92,28.92,62.321,33.401
+93,10,70.112,60.112
+94,15.686,5.03,-10.656
+95,17.635,23.341,5.706
+96,10,26.962,16.962
+97,60.214,-6.899,-67.113
+98,11.129,35.4,24.27
+99,10,21.669,11.669
+100,31.406,26.848,-4.558
+101,18.754,52.452,33.698
+102,13.132,33.702,20.57
+103,47.856,41.547,-6.309
+104,48.955,58.929,9.974
+105,19.4,23.158,3.758
+106,53.739,48.24,-5.499
+107,45.548,52.049,6.501
+108,19.117,12.795,-6.321
+109,38.886,36.438,-2.448
+110,63.084,53.248,-9.836
+111,71.352,-13.283,-84.636
+112,35.709,53.524,17.815
+113,10,17.892,7.892
+114,62.083,81.65,19.566
+115,34.669,23.699,-10.971
+116,26.259,60.925,34.666
+117,40.228,32.258,-7.97
+118,40.696,14.343,-26.353
+119,31.415,25.643,-5.773
+120,13.62,19.532,5.912
+121,17.051,15.385,-1.665
+122,48.273,59.682,11.409
+123,43.421,-31.858,-75.278
+124,57.482,14.211,-43.271
+125,84.371,26.917,-57.454
+126,65.45,73.807,8.357
+127,55.396,61.673,6.277
+128,10,64.809,54.809
+129,14.021,11.639,-2.382
+130,60.411,71.768,11.358
+131,39.863,54.765,14.902
+132,66.933,75.985,9.052
+133,38.007,62.201,24.195
+134,14.286,13.09,-1.195
+135,14.282,19.188,4.905
+136,35.349,44.697,9.347
+137,20.928,-18.937,-39.866
+138,60.388,39.251,-21.137
+139,22.105,-7.141,-29.247
+140,70.542,60.699,-9.843
+141,61.022,69.282,8.259
+142,10,14.749,4.749
+143,10,10.035,0.035
+144,27.407,-54.781,-82.189
+145,56.838,26.869,-29.97
+146,11.134,35.4,24.266
+147,57.912,51.114,-6.798
+148,49.345,33.317,-16.028
+149,47.425,71.747,24.322
+150,49.606,52.961,3.355
+151,86.797,50.557,-36.241
+152,17.098,19.188,2.09
+153,49.209,38.707,-10.502
+154,41.61,42.67,1.059
+155,14.282,34.29,20.007
+156,61.707,76.391,14.683
+157,32.869,73.251,40.383
+158,51.765,78.081,26.316
+159,48.63,65.583,16.952
+160,63.668,83.545,19.877
+161,43.005,34.059,-8.946
+162,30.559,39.756,9.197
+163,55.018,40.852,-14.167
+1,19.418,10.847,-8.571
+2,10,30.269,20.269
+3,19.978,68.855,48.877
+4,53.425,20.086,-33.339
+5,42.115,-3.586,-45.7
+6,51.079,35.609,-15.47
+7,29.038,10.568,-18.469
+8,10,17.758,7.758
+9,10.533,15.436,4.904
+10,31.355,1.868,-29.487
+11,14.71,36.803,22.093
+12,48.617,74.279,25.662
+13,49.65,39.133,-10.517
+14,16.958,19.765,2.807
+15,10,-26.258,-36.258
+16,14.094,33.532,19.439
+17,12.762,5.106,-7.657
+18,12.49,-1.601,-14.091
+19,26.607,19.754,-6.853
+20,34.041,45.432,11.391
+21,29.541,10.249,-19.292
+22,21.929,18.016,-3.912
+23,61.713,53.193,-8.52
+24,11.794,10.249,-1.546
+25,48.266,68.17,19.904
+26,72.221,52.707,-19.514
+27,72.566,48.263,-24.302
+28,54.46,63.847,9.387
+29,52.934,27.745,-25.19
+30,48.404,39.98,-8.425
+31,17.51,10.775,-6.735
+32,71.357,68.407,-2.95
+33,49.84,39.879,-9.961
+34,52.175,51.228,-0.947
+35,25.636,11.595,-14.041
+36,53.08,12.739,-40.341
+37,14.666,4.264,-10.402
+38,28.846,21.538,-7.308
+39,15.888,1.991,-13.897
+40,47.53,27.308,-20.222
+41,49.001,92.217,43.216
+42,10,8.227,-1.773
+43,44.302,48.977,4.675
+44,54.338,22.11,-32.229
+45,100.467,40.451,-60.016
+46,46.856,43.314,-3.542
+47,28.499,27.293,-1.206
+48,14.54,42.542,28.002
+49,31.759,21.088,-10.67
+50,42.832,55.385,12.552
+51,23.975,19.1,-4.875
+52,83.918,53.883,-30.034
+53,12.615,13.459,0.844
+54,74.689,59.146,-15.543
+55,17.017,42.542,25.525
+56,17.026,23.03,6.004
+57,46.392,39.301,-7.091
+58,95.873,41.135,-54.738
+59,10,-7.626,-17.626
+60,12.123,10.249,-1.874
+61,39.316,48.521,9.206
+62,40.252,43.924,3.672
+63,50.036,34.662,-15.374
+64,47.518,53.852,6.334
+65,21.776,-4.983,-26.759
+66,17.825,40.043,22.218
+67,59.496,85.903,26.407
+68,10.362,6.721,-3.641
+69,10,37.464,27.464
+70,10,9.403,-0.597
+71,35.262,23.501,-11.761
+72,10,45.012,35.012
+73,19.156,23.836,4.68
+74,30.603,39.967,9.365
+75,77.079,44.628,-32.451
+76,10,-16.614,-26.614
+77,61.313,21.164,-40.148
+78,40.582,50.92,10.338
+79,10,9.403,-0.597
+80,41.845,39.273,-2.572
+81,45.407,-0.796,-46.203
+82,102.387,75.508,-26.879
+83,15.06,9.294,-5.766
+84,15.817,-6.316,-22.133
+85,93.625,45.218,-48.407
+86,13.335,15.436,2.102
+87,44.614,38.984,-5.63
+88,10,17.758,7.758
+89,35.565,56.739,21.174
+90,10,-7.665,-17.665
+91,39.275,43.955,4.68
+92,34.434,33.38,-1.055
+93,13.14,12.087,-1.053
+94,44.068,48.531,4.463
+95,45.91,15.011,-30.899
+96,71.736,55.885,-15.851
+97,49.301,63.413,14.113
+98,36.209,62.477,26.268
+99,35.421,5.933,-29.488
+100,81.566,33.797,-47.769
+101,25.694,13.904,-11.79
+102,24.58,0.978,-23.602
+103,35.756,32.855,-2.901
+104,57.648,54.186,-3.462
+105,12.754,-5.668,-18.422
+106,37.005,52.943,15.937
+107,63.366,50.368,-12.997
+108,53.973,53.647,-0.325
+109,20.17,28.444,8.274
+110,10,28.953,18.953
+111,76.48,64.028,-12.452
+112,42.188,42.633,0.445
+113,19.188,40.849,21.661
+114,30.068,29.055,-1.013
+115,10,19.498,9.498
+116,58.302,41.699,-16.602
+117,45.846,18.802,-27.044
+118,25.763,35.233,9.47
+119,57.372,55.366,-2.006
+120,58.177,49.181,-8.995
+121,48.543,24.2,-24.343
+122,12.72,25.323,12.603
+123,58.176,55.232,-2.943
+124,16.017,13.718,-2.299
+125,44.606,27.703,-16.903
+126,29.389,79.744,50.355
+127,32.583,46.361,13.778
+128,63.576,5.608,-57.968
+129,31.625,43.832,12.207
+130,34.585,31.96,-2.624
+131,14.617,4.152,-10.465
+132,65.284,78.971,13.687
+133,51.233,44.489,-6.744
+134,41.615,53.471,11.857
+135,65.231,49.536,-15.695
+136,16.87,42.542,25.672
+137,10,21.569,11.569
+138,19.08,22.492,3.412
+139,10,43.69,33.69
+140,49.763,39.865,-9.898
+141,83.99,52.002,-31.988
+142,56.288,62.477,6.19
+143,36.779,21.088,-15.691
+144,52.327,40.668,-11.659
+145,23.493,48.556,25.063
+146,52.418,61.773,9.355
+147,34.661,30.88,-3.781
+148,19.38,33.679,14.299
+149,85.759,44.237,-41.522
+150,14.249,19.498,5.25
+151,85.715,98.434,12.72
+152,36.457,83.05,46.593
+153,10,14.97,4.97
+154,47.765,36.803,-10.962
+155,53.227,83.244,30.017
+156,14.482,5.27,-9.212
+157,41.774,68.089,26.315
+158,20.593,42.542,21.949
+159,94.926,53.587,-41.339
+160,91.75,17.389,-74.361
+161,38.785,24.2,-14.586
+162,34.397,41.321,6.924
+163,32.459,15.702,-16.757
+1,29.136,62.883,33.747
+2,34.626,97.203,62.576
+3,19.41,-2.382,-21.792
+4,10,101.707,91.707
+5,10,35.649,25.649
+6,71.452,90.198,18.745
+7,101.75,83.432,-18.318
+8,11.604,58.28,46.676
+9,23.184,21.974,-1.21
+10,10,45.667,35.667
+11,16.671,57.374,40.703
+12,24.884,35.466,10.582
+13,11.352,29.68,18.328
+14,40.164,36.178,-3.986
+15,31.842,40.166,8.324
+16,40.863,69.479,28.616
+17,59.432,75.733,16.301
+18,12.691,83.971,71.28
+19,20.245,24.294,4.048
+20,33.63,61.483,27.853
+21,15.906,41.293,25.388
+22,10,44.705,34.705
+23,17.026,78.117,61.09
+24,13.358,57.933,44.575
+25,61.745,61.953,0.209
+26,48.265,95.046,46.78
+27,45.59,41.112,-4.478
+28,56.799,80.714,23.915
+29,23.138,64.392,41.254
+30,10,51.951,41.951
+31,24.369,97.754,73.385
+32,28.043,30.654,2.611
+33,61.874,101.597,39.723
+34,13.274,62.891,49.617
+35,20.332,30.041,9.709
+36,56.173,87.375,31.201
+37,41.534,77.741,36.207
+38,59.899,100.514,40.616
+39,24.323,102.554,78.231
+40,72.454,103.163,30.709
+41,27.51,45.596,18.086
+42,33.477,56.127,22.65
+43,15.219,53.191,37.973
+44,64.177,104.247,40.07
+45,41.152,48.267,7.115
+46,38.895,76.012,37.117
+47,10,57.374,47.374
+48,40.529,62.891,22.362
+49,10,1.256,-8.744
+50,14.75,53.831,39.08
+51,69.041,89.136,20.095
+52,21.882,60.014,38.132
+53,23.844,66.83,42.986
+54,19.115,41.052,21.936
+55,63.924,54.96,-8.963
+56,53.311,102.743,49.431
+57,11.3,45.667,34.368
+58,13.652,48.267,34.615
+59,42.267,87.071,44.804
+60,33.359,67.653,34.293
+61,11.334,12.543,1.209
+62,13.962,77.451,63.489
+63,31.518,60.367,28.849
+64,10,49.726,39.726
+65,27.304,83.317,56.013
+66,33.924,63.163,29.238
+67,67.538,99.46,31.922
+68,23.808,62.395,38.587
+69,41.087,103.885,62.799
+70,10.802,51.589,40.787
+71,22.552,57.814,35.261
+72,76.592,56.373,-20.219
+73,10,33.258,23.258
+74,15.237,17.402,2.165
+75,60.365,79.562,19.197
+76,10,47.522,37.522
+77,10,44.998,34.998
+78,10.767,62.26,51.493
+79,10,38.665,28.665
+80,27.733,79.717,51.985
+81,36.086,64.514,28.429
+82,11.399,30.041,18.642
+83,39.55,76.581,37.031
+84,17.324,55.508,38.184
+85,30.852,59.694,28.842
+86,59.953,94.01,34.057
+87,33.453,110.827,77.374
+88,11.612,76.052,64.44
+89,74.095,44.712,-29.383
+90,52.693,66.718,14.026
+91,25.107,60.846,35.739
+92,90.93,105.001,14.071
+93,53.043,97.868,44.825
+94,57.446,55.624,-1.822
+95,64.484,53.537,-10.947
+96,14.219,36.459,22.239
+97,44.441,107.33,62.89
+98,10,41.363,31.363
+99,68.706,6.077,-62.629
+100,27.994,57.916,29.923
+101,67.674,85.51,17.836
+102,11.542,62.091,50.55
+103,12.367,56.341,43.974
+104,12.881,52.699,39.819
+105,33.626,73.404,39.778
+106,56.977,104.354,47.377
+107,10,50.015,40.015
+108,12.237,17.402,5.165
+109,55.228,20.366,-34.863
+110,24.516,78.099,53.583
+111,25.207,67.233,42.026
+112,32.674,58.31,25.636
+113,13.706,57.933,44.227
+114,32.948,97.598,64.65
+115,41.91,67.476,25.566
+116,80.067,61.429,-18.639
+117,59.536,82.731,23.195
+118,74.613,78.293,3.68
+119,54.127,93.495,39.368
+120,14.058,53.191,39.133
+121,52.897,76.88,23.983
+122,10,50.733,40.733
+123,77.73,69.464,-8.266
+124,63.149,97.682,34.533
+125,32.312,80.908,48.597
+126,49.906,82.75,32.843
+127,70.119,71.193,1.074
+128,30.381,83.453,53.072
+129,42.469,96.237,53.768
+130,14.186,57.933,43.746
+131,68.197,104.411,36.214
+132,85.874,24.543,-61.332
+133,74.103,14.636,-59.467
+134,32.135,62.844,30.709
+135,16.067,48.267,32.2
+136,51.683,54.268,2.584
+137,10,40.242,30.242
+138,57.959,88.827,30.868
+139,42.571,63.486,20.915
+140,86.872,96.466,9.594
+141,10,28.059,18.059
+142,10.615,60.409,49.794
+143,22.999,35.466,12.467
+144,13.465,62.798,49.334
+145,55.367,74.177,18.81
+146,34.933,72.006,37.073
+147,13.306,43.843,30.537
+148,20.758,58.711,37.953
+149,17.769,37.356,19.587
+150,46.962,80.944,33.982
+151,38.383,29.885,-8.498
+152,11.665,57.098,45.432
+153,36.144,45.667,9.523
+154,11.042,17.517,6.474
+155,38.837,46.48,7.644
+156,90.406,93.166,2.76
+157,30.552,77.861,47.309
+158,10.045,8.552,-1.493
+159,13.444,42.244,28.8
+160,51.949,71.283,19.334
+161,45.598,104.023,58.426
+162,42.428,73.815,31.387
+163,14.387,-26.361,-40.747
+1,52.333,42.666,-9.667
+2,35.262,47.415,12.153
+3,39.621,76.726,37.105
+4,16.276,9.26,-7.016
+5,29.571,76.241,46.669
+6,91.333,91.006,-0.327
+7,46.04,29.458,-16.582
+8,10,8.921,-1.079
+9,27.397,40.119,12.722
+10,21.72,24.241,2.522
+11,10.495,24.874,14.379
+12,89.643,48.641,-41.001
+13,10,-0.496,-10.496
+14,13.501,19.46,5.959
+15,43.276,69.335,26.059
+16,43.694,36.564,-7.131
+17,31.783,36.715,4.932
+18,23.362,45.143,21.781
+19,15.633,35.733,20.1
+20,43.231,52.712,9.481
+21,53.68,27.302,-26.379
+22,69.831,45.877,-23.953
+23,27.355,36.188,8.832
+24,14.132,8.772,-5.36
+25,44.439,71.788,27.349
+26,64.116,101.29,37.174
+27,10,8.477,-1.523
+28,45.284,31.438,-13.846
+29,37.72,-10.945,-48.665
+30,45.119,71.021,25.902
+31,49.151,68.599,19.448
+32,33.096,70.975,37.879
+33,28.422,71.643,43.221
+34,11.694,25.842,14.148
+35,64.471,66.45,1.979
+36,29.677,62.091,32.414
+37,19.554,37.364,17.81
+38,32.146,7.415,-24.731
+39,14.187,18.072,3.884
+40,26.826,42.261,15.435
+41,10,-16.446,-26.446
+42,10,-3.514,-13.514
+43,18.885,5.435,-13.449
+44,20.544,25.39,4.845
+45,18.281,8.965,-9.316
+46,34.639,78.556,43.917
+47,61.429,-1.77,-63.2
+48,46.092,139.864,93.772
+49,68.618,79.343,10.725
+50,64.479,69.644,5.166
+51,14.025,29.207,15.183
+52,58.358,19.596,-38.761
+53,27.219,18.849,-8.369
+54,35.009,27.462,-7.547
+55,13.684,40.274,26.59
+56,26.12,52.033,25.914
+57,53.501,35.261,-18.24
+58,20.5,3.263,-17.237
+59,43.504,81.319,37.815
+60,14.698,10.335,-4.363
+61,32.295,42.182,9.887
+62,54.804,-5.912,-60.717
+63,37.925,24.132,-13.793
+64,10,7.733,-2.267
+65,33.754,41.378,7.624
+66,46.553,-16.512,-63.065
+67,10,32.238,22.238
+68,17.399,54.985,37.586
+69,44.773,5.966,-38.807
+70,44.513,64.098,19.585
+71,12.097,27.878,15.781
+72,60.22,68.788,8.567
+73,41.332,30.461,-10.872
+74,28.256,54.381,26.125
+75,82.331,38.755,-43.576
+76,31.268,22.902,-8.367
+77,22.495,9.687,-12.808
+78,10,9.278,-0.722
+79,36.317,67.674,31.357
+80,29.249,60.259,31.011
+81,37.592,62.202,24.61
+82,27.992,43.617,15.624
+83,61.425,71.156,9.731
+84,65.827,30.417,-35.409
+85,10,-1.802,-11.802
+86,34.827,5.186,-29.641
+87,10,-11.08,-21.08
+88,31.195,50.074,18.879
+89,46.674,22.913,-23.761
+90,58.162,51.959,-6.203
+91,14.263,7.328,-6.936
+92,51.301,24.169,-27.132
+93,88.437,51.015,-37.422
+94,42.391,85.27,42.879
+95,47.653,45.088,-2.566
+96,33.141,62.453,29.313
+97,45.665,50.506,4.841
+98,42.745,28.743,-14.003
+99,61.279,62.211,0.932
+100,32.808,8.248,-24.56
+101,24.518,45.643,21.125
+102,49.733,80.529,30.796
+103,55.125,-32.173,-87.298
+104,10,8.477,-1.523
+105,10.351,29.207,18.857
+106,58.821,28.055,-30.766
+107,27.007,44.193,17.186
+108,52.028,-17.838,-69.866
+109,77.361,72.969,-4.392
+110,59.773,14.173,-45.6
+111,79.853,30.653,-49.2
+112,18.633,65.993,47.36
+113,64.56,62.211,-2.349
+114,56.768,51.558,-5.21
+115,19.345,41.022,21.678
+116,49.912,68.722,18.81
+117,45.186,31.488,-13.698
+118,17.252,25.842,8.59
+119,47.09,5.212,-41.879
+120,22.334,21.346,-0.988
+121,43.245,12.76,-30.485
+122,46.54,33.866,-12.673
+123,58.027,57.109,-0.919
+124,18.034,-8.167,-26.201
+125,40.021,27.837,-12.184
+126,59.088,-86.727,-145.815
+127,38.77,62.218,23.448
+128,48.019,58.896,10.878
+129,61.804,113.315,51.511
+130,27.415,55.563,28.148
+131,23.477,52.712,29.235
+132,45.739,31.572,-14.167
+133,31.643,22.833,-8.81
+134,11.457,-16.135,-27.592
+135,12.98,21.535,8.554
+136,24.011,43.402,19.391
+137,46.031,82.141,36.11
+138,59.736,12.876,-46.861
+139,46.849,27.148,-19.702
+140,10,17.751,7.751
+141,24.814,46.595,21.78
+142,39.841,-34.622,-74.463
+143,13.028,15.779,2.751
+144,45.215,67.934,22.719
+145,61.539,68.586,7.047
+146,68.326,47.321,-21.005
+147,35.376,26.865,-8.51
+148,58.967,35.171,-23.796
+149,35.262,-8.638,-43.899
+150,34.664,42.918,8.254
+151,59.227,38.488,-20.739
+152,65.87,43.402,-22.468
+153,64.245,78.891,14.645
+154,11.226,22.829,11.604
+155,57.943,34.346,-23.597
+156,27.745,42.431,14.686
+157,23.5,30.456,6.956
+158,17.413,40.274,22.861
+159,31.612,29.848,-1.764
+160,33.996,18.799,-15.197
+161,62.038,34.883,-27.155
+162,31.53,15.27,-16.26
+163,60.695,60.362,-0.334
+1,15.438,31.684,16.246
+2,22.771,18.805,-3.966
+3,80.579,23.141,-57.438
+4,33.824,21.748,-12.077
+5,11.402,15.981,4.579
+6,66.964,7.42,-59.544
+7,10,5.193,-4.807
+8,12.22,18.784,6.564
+9,59.575,-4.016,-63.59
+10,78.455,70.727,-7.729
+11,16.935,-2.543,-19.478
+12,10,34.377,24.377
+13,14.624,-12.929,-27.554
+14,42.639,20.063,-22.576
+15,10,29.245,19.245
+16,16.101,7.394,-8.706
+17,66.696,43.044,-23.652
+18,61.798,33.274,-28.524
+19,42.253,29.41,-12.843
+20,10,4.681,-5.319
+21,68.892,71.703,2.811
+22,31.928,59.834,27.906
+23,55.681,47.631,-8.05
+24,23.518,13.131,-10.387
+25,26.114,69.66,43.546
+26,34.914,51.495,16.581
+27,35.529,19.025,-16.504
+28,80.583,51.031,-29.553
+29,53.272,27.495,-25.778
+30,69.283,43.374,-25.909
+31,30.351,41.13,10.778
+32,15.579,18.236,2.657
+33,13.141,16.631,3.49
+34,10.235,8.631,-1.605
+35,20.683,40.081,19.398
+36,41.922,73.071,31.149
+37,32.674,42.919,10.245
+38,58.739,49.884,-8.855
+39,41.255,55.98,14.724
+40,39.667,26.342,-13.325
+41,34.987,45.988,11.001
+42,27.826,14.336,-13.49
+43,18.529,20.954,2.425
+44,18.43,20.487,2.057
+45,33.561,3.531,-30.03
+46,57.592,44.483,-13.108
+47,34.384,-2.07,-36.453
+48,59.931,7.24,-52.691
+49,37.461,12.772,-24.689
+50,53.473,18.722,-34.751
+51,11.677,18.002,6.325
+52,11.581,20.48,8.898
+53,32.913,48.438,15.525
+54,10,62.703,52.703
+55,18.157,34.595,16.438
+56,36.295,15.282,-21.013
+57,31.358,18.304,-13.054
+58,10,51.372,41.372
+59,69.444,92.248,22.803
+60,52.972,26.342,-26.63
+61,50.136,40.119,-10.018
+62,21.968,11.437,-10.53
+63,18.084,70.203,52.119
+64,28.704,6.302,-22.403
+65,35.669,54.564,18.895
+66,34.395,-13.61,-48.005
+67,33.615,38.805,5.19
+68,76.337,40.823,-35.513
+69,43.366,41.805,-1.561
+70,88.744,40.773,-47.972
+71,54.304,23.556,-30.748
+72,35.314,31.29,-4.024
+73,40.259,23.141,-17.117
+74,33.081,61.151,28.07
+75,17.373,13.347,-4.025
+76,34.73,50.622,15.891
+77,62.028,8.48,-53.548
+78,63.252,19.834,-43.418
+79,27.818,42.558,14.739
+80,57.054,9.162,-47.892
+81,10,17.695,7.695
+82,23.674,45.743,22.069
+83,33.468,38.279,4.81
+84,46.426,25.707,-20.718
+85,56.763,38.857,-17.906
+86,29.451,9.097,-20.354
+87,10,21.285,11.285
+88,10,22.154,12.154
+89,24.25,18.805,-5.445
+90,10.87,1.2,-9.67
+91,57.017,2.813,-54.204
+92,11.208,31.684,20.476
+93,14.342,3.474,-10.869
+94,14.394,9.162,-5.232
+95,64.639,60.777,-3.862
+96,10,-1.373,-11.373
+97,10,20.063,10.063
+98,10,-10.193,-20.193
+99,26.885,21.874,-5.01
+100,80.825,66.834,-13.991
+101,33.851,53.652,19.801
+102,48.921,13.825,-35.096
+103,38.628,18.885,-19.743
+104,65.469,102.178,36.709
+105,43.097,40.823,-2.274
+106,10,16.959,6.959
+107,43.893,62.11,18.217
+108,16.079,15.817,-0.262
+109,50.482,9.46,-41.022
+110,13.904,-0.616,-14.52
+111,26.882,60.147,33.265
+112,29.464,68.958,39.495
+113,10,23.699,13.699
+114,54.764,58.267,3.503
+115,16.334,13.766,-2.567
+116,51.588,39.247,-12.341
+117,49.482,18.766,-30.717
+118,48.604,73.64,25.036
+119,10,8.427,-1.573
+120,21.255,27.034,5.779
+121,12.638,37.234,24.596
+122,55.103,26.271,-28.832
+123,61.54,86.41,24.869
+124,12.857,9.162,-3.695
+125,33.18,39.36,6.18
+126,59.865,70.645,10.78
+127,39.465,73.235,33.77
+128,29.358,21.715,-7.643
+129,43.567,36.395,-7.172
+130,21.24,71.347,50.108
+131,11.175,12.935,1.76
+132,42.015,68.612,26.597
+133,28.35,46.262,17.912
+134,10,23.214,13.214
+135,72.091,73.546,1.455
+136,43.298,3.634,-39.663
+137,16.239,27.593,11.354
+138,27.107,67.999,40.892
+139,34.506,57.441,22.935
+140,10,4.301,-5.699
+141,86.723,40.823,-45.899
+142,46.738,21.874,-24.864
+143,15.701,25.427,9.726
+144,10,40.034,30.034
+145,13.074,12.969,-0.105
+146,81.19,73.269,-7.921
+147,10,3.541,-6.459
+148,22.179,15.087,-7.093
+149,28.701,16.929,-11.772
+150,15.284,21.272,5.988
+151,25.483,12.043,-13.439
+152,27.292,37.108,9.816
+153,13.432,13.347,-0.085
+154,35.896,21.79,-14.107
+155,43.713,44.149,0.436
+156,62.546,71.566,9.02
+157,70.673,77.187,6.513
+158,30.21,56.352,26.142
+159,36.278,17.549,-18.729
+160,26.864,16.45,-10.414
+161,58.653,44.786,-13.867
+162,42.563,-9.148,-51.711
+1,54.666,61.097,6.431
+2,61.533,64.925,3.393
+3,50.731,27.572,-23.159
+4,36.109,46.786,10.677
+5,27.596,25.975,-1.622
+6,12.604,23.173,10.569
+7,24.686,15.47,-9.217
+8,55.949,79.307,23.358
+9,49.561,39.535,-10.026
+10,10,10.049,0.049
+11,66.353,20.168,-46.184
+12,15.785,13.065,-2.72
+13,10,35.271,25.271
+14,43.027,-4.946,-47.973
+15,51.937,32.396,-19.541
+16,21,13.747,-7.253
+17,11.589,14.89,3.3
+18,34.327,30.119,-4.208
+19,22.629,13.17,-9.459
+20,24.487,13.993,-10.494
+21,10,13.241,3.241
+22,64.023,55.869,-8.154
+23,47.437,59.285,11.848
+24,72.049,86.484,14.435
+25,13.35,12.842,-0.508
+26,17.127,43.169,26.043
+27,10,13.711,3.711
+28,61.675,57.576,-4.099
+29,65.384,62.686,-2.698
+30,40.486,14.194,-26.292
+31,50.825,52.31,1.485
+32,20.421,19.714,-0.708
+33,65.062,66.34,1.278
+34,14.727,35.886,21.16
+35,42.548,9.144,-33.404
+36,47.661,44.321,-3.34
+37,19.922,-9.59,-29.512
+38,18.768,14.205,-4.562
+39,44.145,55.561,11.415
+40,68.441,85.217,16.776
+41,13.12,19.857,6.737
+42,30.891,53.145,22.255
+43,45.504,24.253,-21.251
+44,36.861,47.008,10.147
+45,40.494,13.035,-27.459
+46,49.309,47.161,-2.148
+47,68.332,50.565,-17.767
+48,45.757,65.632,19.875
+49,10,24.713,14.713
+50,37.936,24.746,-13.19
+51,14.393,13.417,-0.976
+52,44.985,11.847,-33.137
+53,12.627,15.429,2.802
+54,10,14.743,4.743
+55,66.547,26.112,-40.435
+56,15.829,-37.397,-53.227
+57,58.126,38.897,-19.229
+58,78.94,58.966,-19.974
+59,68.326,-24.963,-93.289
+60,27.667,36.652,8.985
+61,25.336,23.495,-1.841
+62,59.021,64.873,5.852
+63,69.521,57.576,-11.945
+64,14.027,10.809,-3.218
+65,37.675,54.24,16.565
+66,92.517,42.926,-49.592
+67,25.681,44.711,19.03
+68,10,33.079,23.079
+69,14.635,-11.135,-25.77
+70,10,7.35,-2.65
+71,49.488,68.596,19.108
+72,63.776,31.677,-32.099
+73,14.975,27.006,12.032
+74,11.475,28.45,16.974
+75,67.361,47.669,-19.693
+76,41.417,48.436,7.019
+77,37.441,82.766,45.325
+78,10,-74.393,-84.393
+79,24.081,1.382,-22.7
+80,17.025,5.962,-11.063
+81,106.654,71.648,-35.006
+82,51.02,45.246,-5.773
+83,26.208,45.53,19.322
+84,10,30.043,20.043
+85,10,-15.239,-25.239
+86,63.77,72.158,8.389
+87,10,5.634,-4.366
+88,50.274,75.699,25.425
+89,37.609,56.352,18.744
+90,73.285,86.099,12.814
+91,10,16.1,6.1
+92,43.896,55.983,12.087
+93,10,52.791,42.791
+94,12.635,26.406,13.771
+95,64.749,78.6,13.851
+96,30.163,23.9,-6.263
+97,26.257,33.775,7.518
+98,28.309,48.389,20.08
+99,10,29.529,19.529
+100,100.362,24.746,-75.615
+101,58.507,57.733,-0.774
+102,16.364,31.732,15.368
+103,13.538,53.29,39.751
+104,29.042,45.255,16.213
+105,31.993,53.675,21.682
+106,14.742,11.313,-3.429
+107,10,31.822,21.822
+108,15.478,14.89,-0.588
+109,10,17.22,7.22
+110,47.737,54.845,7.108
+111,35.532,97.749,62.216
+112,61.776,11.313,-50.463
+113,33.775,54.902,21.127
+114,26.77,41.195,14.425
+115,60.32,28.422,-31.898
+116,13.239,11.371,-1.867
+117,18.119,14.205,-3.913
+118,47.931,58.718,10.786
+119,31.886,-7.549,-39.434
+120,15.359,10.049,-5.31
+121,24.804,7.782,-17.022
+122,39.708,45.969,6.261
+123,50.058,-7.714,-57.772
+124,14.483,30.119,15.636
+125,27.136,2.438,-24.698
+126,10,9.915,-0.085
+127,28.061,24.52,-3.541
+128,52.341,48.426,-3.915
+129,35.594,5.613,-29.981
+130,44.567,41.889,-2.678
+131,30.955,61.291,30.336
+132,88.299,21.602,-66.697
+133,71.428,56.112,-15.316
+134,10.459,73.494,63.035
+135,24.261,54.071,29.81
+136,49.099,81.737,32.638
+137,14.572,14.364,-0.209
+138,87.919,62.721,-25.198
+139,102.022,87.179,-14.843
+140,84.137,55.936,-28.202
+141,62.569,43.419,-19.15
+142,45.506,46.476,0.97
+143,26.19,64.196,38.007
+144,33.703,21.648,-12.055
+145,46.639,49.605,2.966
+146,67.23,54.662,-12.568
+147,41.987,50.884,8.897
+148,88.483,-53.878,-142.361
+149,24.544,-24.47,-49.014
+150,79.034,53.051,-25.983
+151,49.72,47.425,-2.294
+152,46.702,0.767,-45.934
+153,10.223,11.34,1.117
+154,43.268,41.783,-1.485
+155,70.296,59.663,-10.633
+156,19.401,56.545,37.144
+157,73.968,61.418,-12.549
+158,72.44,56.186,-16.254
+159,10,22.058,12.058
+160,24.045,13.17,-10.874
+161,23.911,47.316,23.405
+162,10,8.601,-1.399
+1,54.823,34.29,-20.533
+2,83.512,69.236,-14.276
+3,84.814,67.375,-17.439
+4,22.222,14.706,-7.517
+5,54.95,32.844,-22.106
+6,56.008,32.615,-23.392
+7,49.701,53.714,4.013
+8,48.034,18.994,-29.04
+9,10,-0.815,-10.815
+10,24.449,20.925,-3.524
+11,25.809,44.821,19.012
+12,40.227,28.197,-12.03
+13,22.624,51.327,28.704
+14,10,-32.166,-42.166
+15,19.298,33.995,14.697
+16,41.145,52.054,10.909
+17,28.104,14.037,-14.067
+18,62.891,70.879,7.987
+19,93.713,8.989,-84.724
+20,26.742,39.693,12.95
+21,47.44,59.874,12.434
+22,10,5.834,-4.166
+23,19.976,-1.664,-21.639
+24,49.462,29.481,-19.98
+25,18.705,38.768,20.063
+26,44.881,34.959,-9.922
+27,11.59,66.643,55.053
+28,39.399,-43.392,-82.791
+29,29.155,6.498,-22.657
+30,53.393,56.394,3.001
+31,40.366,9.068,-31.299
+32,37.028,23.607,-13.421
+33,35.922,57.95,22.028
+34,43.103,24.56,-18.543
+35,19.759,56.663,36.904
+36,12.325,-2.656,-14.981
+37,39.547,81.622,42.075
+38,29.88,39.766,9.886
+39,10,-11.773,-21.773
+40,66.455,60.576,-5.879
+41,50.683,68.524,17.841
+42,66.144,21.673,-44.471
+43,10,24.912,14.912
+44,30.262,-4.491,-34.753
+45,39.31,-51.495,-90.805
+46,26.207,38.958,12.751
+47,74.349,68.872,-5.478
+48,50.855,32.528,-18.327
+49,90.767,53.14,-37.627
+50,44.846,-2.656,-47.502
+51,15.838,-1.664,-17.502
+52,10,32.835,22.835
+53,13.127,50.03,36.903
+54,48.863,46.802,-2.06
+55,42.616,60.141,17.525
+56,10,0.933,-9.067
+57,14.709,18.922,4.213
+58,52.666,47.665,-5.001
+59,12.341,34.979,22.638
+60,47.512,64.314,16.802
+61,25.717,30.766,5.049
+62,70.179,68.182,-1.997
+63,36.105,67.824,31.72
+64,11.96,7.776,-4.184
+65,49.856,33.141,-16.716
+66,37.509,0.078,-37.432
+67,69.636,68.933,-0.703
+68,91.729,56.91,-34.819
+69,25.218,6.844,-18.374
+70,41.147,59.029,17.882
+71,13.291,12.75,-0.541
+72,73.43,67.432,-5.999
+73,13.087,14.416,1.33
+74,10,-0.099,-10.099
+75,41.383,50.459,9.076
+76,77.003,33.995,-43.008
+77,56.76,47.936,-8.824
+78,29.594,67.011,37.417
+79,38.157,34.163,-3.993
+80,15.613,26.615,11.002
+81,33.943,63.467,29.524
+82,49.998,51.285,1.288
+83,52.302,19.408,-32.894
+84,49.719,48.242,-1.478
+85,74.636,61.833,-12.803
+86,38.991,-51.495,-90.486
+87,38.024,79.624,41.6
+88,93.469,13.903,-79.566
+89,10.961,30.766,19.805
+90,15.911,33.722,17.811
+91,68.157,68.872,0.715
+92,68.804,18.024,-50.78
+93,71.063,28.293,-42.77
+94,14.984,33.916,18.932
+95,76.965,80.203,3.237
+96,10,-29.62,-39.62
+97,23.104,-2.656,-25.76
+98,53.152,62.862,9.71
+99,62.324,42.166,-20.157
+100,35.166,44.889,9.723
+101,54.864,57.326,2.461
+102,44.008,34.43,-9.578
+103,60.393,31.659,-28.734
+104,18.162,13.149,-5.013
+105,69.249,49.081,-20.168
+106,37.987,42.905,4.918
+107,45.151,-7.087,-52.237
+108,13.762,-2.656,-16.418
+109,12.498,65.204,52.706
+110,11.288,13.127,1.838
+111,50.411,37.397,-13.014
+112,20.277,56.345,36.068
+113,49.309,37.977,-11.332
+114,41.542,-33.668,-75.21
+115,15.91,16.737,0.828
+116,58.893,64.935,6.042
+117,28.765,31.831,3.066
+118,42.587,67.862,25.275
+119,26.24,-1.664,-27.903
+120,38.485,66.084,27.599
+121,18.928,-0.294,-19.221
+122,18.61,33.916,15.307
+123,46.004,41.01,-4.994
+124,38.616,58.748,20.132
+125,10,11.837,1.837
+126,64.684,75.082,10.398
+127,24.002,48.747,24.745
+128,31.009,53.699,22.69
+129,12.097,-0.294,-12.391
+130,10,30.132,20.132
+131,38.474,62.284,23.81
+132,53.857,36.442,-17.415
+133,54.303,46.015,-8.288
+134,40.849,40.051,-0.799
+135,74.861,52.34,-22.521
+136,62.214,32.396,-29.819
+137,41.988,36.178,-5.81
+138,78.74,67.371,-11.369
+139,10,8.005,-1.995
+140,22.07,-5.892,-27.962
+141,35.863,-8.411,-44.274
+142,92.962,69.21,-23.752
+143,10.914,-6.374,-17.288
+144,10,1.558,-8.442
+145,13.679,34.693,21.014
+146,58.163,9.002,-49.161
+147,10,-6.275,-16.275
+148,79.881,2.527,-77.354
+149,63.14,-6.395,-69.535
+150,78.933,28.815,-50.118
+151,65.284,64.036,-1.248
+152,62.526,42.22,-20.306
+153,10,13.089,3.089
+154,32.564,43.404,10.839
+155,24.531,30.248,5.717
+156,45.402,31.76,-13.643
+157,57.586,9.017,-48.568
+158,63.84,63.89,0.049
+159,34.514,34.281,-0.233
+160,38.362,-18.796,-57.158
+161,85.835,17.513,-68.321
+162,20.281,57.699,37.418
+1,53.399,82.944,29.545
+2,14.556,28.317,13.761
+3,14.219,6.55,-7.669
+4,42.909,58.549,15.64
+5,54.527,43.539,-10.988
+6,10,19.593,9.593
+7,52.809,39.975,-12.833
+8,53.881,61.814,7.933
+9,68.95,62.428,-6.522
+10,47.852,82.123,34.27
+11,75.763,69.265,-6.497
+12,40.417,95.166,54.749
+13,39.017,66.465,27.449
+14,16.157,65.661,49.504
+15,30.742,51.286,20.544
+16,20.467,31.195,10.728
+17,16.915,48.533,31.618
+18,37.635,72.847,35.212
+19,52.396,82.306,29.909
+20,46.709,51.452,4.744
+21,15.184,21.336,6.152
+22,65.5,29.332,-36.168
+23,10,19.382,9.382
+24,65.638,68.646,3.008
+25,60.399,22.844,-37.556
+26,23.182,9.657,-13.525
+27,10,7.972,-2.028
+28,10,17.323,7.323
+29,17.305,49.725,32.42
+30,30.747,30.674,-0.073
+31,14.914,9.623,-5.291
+32,36.307,63.885,27.578
+33,99.931,138.665,38.734
+34,55.953,58.52,2.567
+35,25.187,62.569,37.382
+36,41.64,66.675,25.036
+37,23.893,104.199,80.306
+38,83.187,45.73,-37.457
+39,10,19.448,9.448
+40,54.36,33.229,-21.131
+41,34.461,68.971,34.51
+42,20.595,40.905,20.31
+43,67.934,88.167,20.233
+44,33.454,75.69,42.236
+45,13.792,28.146,14.354
+46,69.032,115.34,46.308
+47,20.064,3.074,-16.991
+48,62.826,74.898,12.072
+49,83.806,-3.691,-87.497
+50,31.273,34.935,3.663
+51,53.834,64.067,10.232
+52,68.723,61.769,-6.954
+53,11.011,20.292,9.28
+54,10,36.083,26.083
+55,48.929,55.844,6.915
+56,96.772,-38.331,-135.103
+57,32.468,51.582,19.115
+58,42.929,50.808,7.879
+59,39.517,48.346,8.828
+60,15.217,17.39,2.173
+61,72.705,53.01,-19.696
+62,37.557,79.804,42.247
+63,60.209,95.968,35.759
+64,53.226,-43.077,-96.303
+65,84.16,41.887,-42.273
+66,10,6.608,-3.392
+67,13.061,47.779,34.717
+68,37.615,27.915,-9.7
+69,14.859,18.82,3.961
+70,22.102,10.797,-11.304
+71,19.483,49.725,30.241
+72,78.218,116.083,37.865
+73,28.392,58.549,30.156
+74,35.32,48.027,12.708
+75,14.75,18.197,3.447
+76,41.86,33.088,-8.772
+77,14.979,1.864,-13.115
+78,17.831,48.346,30.515
+79,55.542,57.374,1.831
+80,17.882,47.983,30.102
+81,81.684,38.709,-42.975
+82,31.762,55.055,23.293
+83,10.509,17.08,6.571
+84,17.125,69.265,52.14
+85,12.47,1.864,-10.606
+86,76.428,159.048,82.619
+87,10,2.422,-7.578
+88,10,6.608,-3.392
+89,52.008,9.722,-42.286
+90,63.611,36.706,-26.905
+91,38.517,60.816,22.299
+92,69.586,60.245,-9.341
+93,44.153,7.974,-36.179
+94,58.379,59.267,0.888
+95,24.12,20.168,-3.952
+96,84.833,49.206,-35.626
+97,23.087,60.666,37.579
+98,50.79,88.18,37.39
+99,71.217,59.157,-12.06
+100,42.869,44.339,1.47
+101,77.544,81.641,4.097
+102,49.397,46.807,-2.589
+103,19.351,33.733,14.382
+104,39.503,56.253,16.75
+105,10,55.678,45.678
+106,10,33.229,23.229
+107,40.467,64.822,24.356
+108,46.098,45.654,-0.444
+109,56.207,31.048,-25.159
+110,38.868,56.103,17.236
+111,63.752,76.55,12.798
+112,15.8,28.067,12.267
+113,102.498,33.219,-69.279
+114,15.826,28.146,12.32
+115,56.826,68.642,11.817
+116,11.674,76.148,64.473
+117,55.115,70.006,14.89
+118,52.911,88.167,35.256
+119,15.414,20.727,5.313
+120,35.044,72.405,37.361
+121,30.701,29.625,-1.076
+122,36.92,70.336,33.416
+123,12.997,18.82,5.823
+124,14.009,6.663,-7.346
+125,57.558,84.296,26.738
+126,15.77,-6.182,-21.952
+127,48.834,69.152,20.318
+128,56.612,93.554,36.942
+129,40.222,8.709,-31.513
+130,61.999,30.79,-31.209
+131,10,39.587,29.587
+132,10,29.747,19.747
+133,10.018,1.864,-8.154
+134,65.302,73.614,8.313
+135,75.366,90.993,15.626
+136,53.022,69.152,16.13
+137,13.605,31.22,17.615
+138,60.643,57.438,-3.205
+139,16.731,20.49,3.758
+140,91.933,46.551,-45.382
+141,10,55.678,45.678
+142,22.244,45.594,23.35
+143,10,30.099,20.099
+144,89.073,28.267,-60.805
+145,22.79,-4.952,-27.742
+146,82.807,57.29,-25.517
+147,41.193,44.437,3.243
+148,12.636,47.779,35.142
+149,34.066,28.067,-5.999
+150,60.886,43.275,-17.611
+151,33.186,79.665,46.479
+152,28.257,15.716,-12.54
+153,12.366,65.511,53.145
+154,42.994,69.901,26.906
+155,10.471,39.179,28.708
+156,36.471,68.369,31.899
+157,57.908,57.177,-0.732
+158,27.155,47.116,19.961
+159,10.177,21.549,11.372
+160,35.065,44.651,9.586
+161,57.054,82.543,25.488
+162,47.816,28.504,-19.312
+
+=== Cross-validation ===
+=== Summary ===
+
+Correlation coefficient                  0.3789
+Mean absolute error                     22.7075
+Root mean squared error                 29.8396
+Relative absolute error                123.0431 %
+Root relative squared error            135.3082 %
+Total Number of Instances             1626     
+
