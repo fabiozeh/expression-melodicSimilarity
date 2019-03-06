@@ -1,0 +1,5 @@
+Dataset compiled and authored by Esteban Maestre, Panos Papiotis, Marco Marchini and Alfonso Perez. Copyright © 2015 Music Technology Group, Universitat Pompeu Fabra. All Rights Reserved.
+ 
+The QUARTET dataset is offered free of charge for internal non-commercial use only.  You may not redistribute, publically communicate or modify it, unless expressly permitted by the Universitat Pompeu Fabra (UPF) or by applicable law. The individual contents of the dataset may be protected by copyright, and a non-transferrable limited license to reproduce and use the same is granted for the indicated purpose only.
+ 
+The dataset and its contents are made available on an “as is” basis and without warranties of any kind, including without limitation satisfactory quality and conformity, merchantability, fitness for a particular purpose, accuracy or completeness, or absence of errors. Subject to any liability that may not be excluded or limited by law, the UPF is not liable for, and expressly excludes, all liability for loss or damage however and whenever caused to anyone by any use of the QUARTET dataset or any part of it.

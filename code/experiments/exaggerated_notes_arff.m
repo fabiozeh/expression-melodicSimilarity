@@ -1,4 +1,5 @@
 %% generate all arffs with velocity, onset deviations and duration deviations
+%% Prerequisite: scripts from repository https://github.com/fabiozeh/score2arff under ../util folder
 
 clear
 

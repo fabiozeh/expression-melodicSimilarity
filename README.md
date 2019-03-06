@@ -1,10 +1,10 @@
 Expressive Dynamic Modeling for Violin
 --------------------------------------
 
-This repository contains code developed at Universitat Pompeu Fabra for supporting research in music expressivity modelling.
+This repository contains code developed at Universitat Pompeu Fabra for supporting research in music expression modeling.
 
-All code available has been developed and tested in Mathworks MATLAB r2016a. No additional installations required. Due to licensing restrictions, not all datasets used can be made available.
-To reproduce the experiment of expressive dynamic modeling for violin, refer to the script _main.m_ in the code folder.
+All code available has been developed and tested in Mathworks MATLAB r2018a. No additional installations required. Due to licensing restrictions, not all datasets used have been made available.
+To reproduce the different experiments, refer to the scripts in the code/experiments folder. A specific README file in that folder states the purpose of each one.
 
 When cloning this repository, remember to do so with the "recursive" option (Git 1.6.5 or later) in order to load submodules as well.
 ```
